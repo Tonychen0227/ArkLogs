@@ -207,10 +207,25 @@ async def scrape_games(page):
 
 async def scrape_game_details(page, game_url):
     """Navigate to a game page and extract stats for both players."""
+    # Capture tableinfos API response
+    table_infos = {}
+
+    async def capture_tableinfos(response):
+        nonlocal table_infos
+        if "table/table/tableinfos.html" in response.url:
+            try:
+                table_infos = await response.json()
+            except Exception:
+                pass
+
+    page.on("response", capture_tableinfos)
+
     await page.goto(game_url)
     await page.wait_for_load_state("networkidle")
     await page.wait_for_selector("#player_stats_table", timeout=15000)
     await page.wait_for_timeout(1000)
+
+    page.remove_listener("response", capture_tableinfos)
 
     data = await page.evaluate("""
         () => {
@@ -271,6 +286,7 @@ async def scrape_game_details(page, game_url):
             return { players, stats };
         }
     """)
+    data["table_infos"] = table_infos
     return data
 
 
@@ -357,6 +373,7 @@ async def main():
                             "epoch_ms": detail["epoch_ms"],
                             "conceded": detail["conceded"],
                             "is_arena": is_arena,
+                            "table_infos": detail.get("table_infos", {}),
                             "player_name": player.get("name", ""),
                             "player_profile_link": player.get("profile_link", ""),
                             "player_elo_before": player.get("elo_before", ""),
