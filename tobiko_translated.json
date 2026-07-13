@@ -1,0 +1,5680 @@
+{
+ "table_id": 790200872,
+ "game": "Ark Nova",
+ "players": {
+  "98907091": "XiaoFeiLie",
+  "94892221": "summer66"
+ },
+ "moves": [
+  {
+   "move": 2,
+   "t": 1768441449,
+   "actions": [
+    {
+     "v": "DRAFT_ACTION",
+     "p": 98907091,
+     "pick": "Sponsors2"
+    }
+   ]
+  },
+  {
+   "move": 3,
+   "t": 1768441454,
+   "actions": [
+    {
+     "v": "DRAFT_ACTION",
+     "p": 94892221,
+     "pick": "Build1"
+    }
+   ]
+  },
+  {
+   "move": 4,
+   "t": 1768441460,
+   "actions": [
+    {
+     "v": "DRAFT_ACTION",
+     "p": 98907091,
+     "pick": "Build3"
+    }
+   ]
+  },
+  {
+   "move": 5,
+   "t": 1768441462,
+   "actions": [
+    {
+     "v": "DRAFT_ACTION",
+     "p": 94892221,
+     "pick": "Animals3"
+    }
+   ]
+  },
+  {
+   "move": 6,
+   "t": 1768441465,
+   "actions": [
+    {
+     "v": "DRAFT_ACTION_KEEP",
+     "p": 94892221,
+     "pick": [
+      "Build1",
+      "Animals3"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 7,
+   "t": 1768441468,
+   "actions": [
+    {
+     "v": "DRAFT_ACTION_KEEP",
+     "p": 98907091,
+     "pick": [
+      "Sponsors2",
+      "Build3"
+     ]
+    },
+    {
+     "v": "DRAW",
+     "p": 98907091,
+     "cards": [
+      "A548_ShortsnoutedSeahorse",
+      "A415_Raccoon",
+      "A505_BaldEagle",
+      "A433_GiantPanda",
+      "P119_ReleaseLowMountain",
+      "A510_WhiteStork",
+      "S264_FreerangeNewWorldMonkeys",
+      "A525_GuineaPig"
+     ]
+    },
+    {
+     "v": "DRAW",
+     "p": 98907091,
+     "cards": [
+      "F012_DesignerZoo",
+      "F002_SmallAnimalZoo"
+     ]
+    },
+    {
+     "v": "DRAW",
+     "p": 94892221,
+     "cards": [
+      "S268_ConferenceOnEurope",
+      "S242_Geologist",
+      "A545_LongcombSawfish",
+      "A487_EuropeanGrassSnake",
+      "P136_ReptileManagementPlan",
+      "A499_CinereousVulture",
+      "P129_Geological",
+      "S224_MigrationRecording"
+     ]
+    },
+    {
+     "v": "DRAW",
+     "p": 94892221,
+     "cards": [
+      "F008_SponsoredZoo_MW",
+      "F016_AccessibleZoo"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 8,
+   "t": 1768441511,
+   "actions": [
+    {
+     "v": "DRAFT_HAND",
+     "p": 98907091,
+     "keep": [
+      "A505_BaldEagle",
+      "A433_GiantPanda",
+      "S264_FreerangeNewWorldMonkeys",
+      "A525_GuineaPig"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 9,
+   "t": 1768441571,
+   "actions": [
+    {
+     "v": "DRAFT_HAND",
+     "p": 94892221,
+     "keep": [
+      "A545_LongcombSawfish",
+      "A499_CinereousVulture",
+      "P129_Geological",
+      "S224_MigrationRecording"
+     ]
+    },
+    {
+     "v": "DISCARD",
+     "p": 94892221,
+     "cards": [
+      "A545_LongcombSawfish",
+      "A499_CinereousVulture",
+      "P129_Geological",
+      "S224_MigrationRecording"
+     ]
+    },
+    {
+     "v": "DISCARD",
+     "p": 98907091,
+     "cards": [
+      "A505_BaldEagle",
+      "A433_GiantPanda",
+      "S264_FreerangeNewWorldMonkeys",
+      "A525_GuineaPig"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 10,
+   "t": 1768441581,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Build1",
+     "strength": 5,
+     "level": 1
+    }
+   ]
+  },
+  {
+   "move": 11,
+   "t": 1768441587,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 94892221,
+     "building": "large-aquarium",
+     "size": 5,
+     "at": [
+      3,
+      12
+     ],
+     "rot": 4,
+     "pay": 10
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "placement bonus",
+     "get": {
+      "xtoken": 1
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "placement bonus",
+     "get": {
+      "xtoken": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 13,
+   "t": 1768441593,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 94892221,
+     "building": "pavilion",
+     "size": 1,
+     "at": [
+      3,
+      6
+     ],
+     "rot": 0,
+     "pay": 3
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "building a pavilion",
+     "get": {
+      "appeal": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 14,
+   "t": 1768441596,
+   "actions": [
+    {
+     "v": "SNAP",
+     "p": 94892221,
+     "cards": [
+      "A544_CaribbeanReefShark"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 16,
+   "t": 1768441602,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Association",
+     "strength": 5,
+     "level": 1
+    }
+   ]
+  },
+  {
+   "move": 17,
+   "t": 1768441624,
+   "actions": [
+    {
+     "v": "WORKER",
+     "p": 98907091,
+     "strength": "4",
+     "meeples": [
+      {
+       "kind": "worker",
+       "at": "association_4"
+      }
+     ]
+    },
+    {
+     "v": "WORKER",
+     "p": 98907091,
+     "meeples": [
+      {
+       "kind": "fac-science-rep",
+       "at": "university_1"
+      }
+     ]
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": " from university",
+     "get": {
+      "reputation": 2
+     }
+    }
+   ]
+  },
+  {
+   "move": 19,
+   "t": 1768441633,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Animals3",
+     "strength": 2,
+     "level": 1
+    }
+   ]
+  },
+  {
+   "move": 20,
+   "t": 1768441636,
+   "actions": [
+    {
+     "v": "ANIMAL",
+     "p": 94892221,
+     "card": "A487_EuropeanGrassSnake",
+     "pay": 6,
+     "fromDisplay": false,
+     "into": [
+      1
+     ]
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "appeal": 3
+     }
+    }
+   ]
+  },
+  {
+   "move": 27,
+   "t": 1768441669,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Cards",
+     "strength": 5,
+     "level": 1
+    },
+    {
+     "v": "BREAK",
+     "p": 98907091,
+     "n": 2,
+     "at": 2,
+     "max": 9
+    }
+   ]
+  },
+  {
+   "move": 28,
+   "t": 1768441679,
+   "actions": [
+    {
+     "v": "DRAW",
+     "p": 98907091,
+     "cards": [
+      "A516_NorhternCassowary",
+      "A436_AmericanBison",
+      "A539_AmericanWhitespottedFilefish"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 29,
+   "t": 1768441686,
+   "actions": [
+    {
+     "v": "DISCARD",
+     "p": 98907091,
+     "cards": [
+      "A516_NorhternCassowary"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 31,
+   "t": 1768441692,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Association",
+     "strength": 4,
+     "level": 1
+    }
+   ]
+  },
+  {
+   "move": 35,
+   "t": 1768441701,
+   "actions": [
+    {
+     "v": "WORKER",
+     "p": 94892221,
+     "strength": "4",
+     "meeples": [
+      {
+       "kind": "worker",
+       "at": "association_4"
+      }
+     ]
+    },
+    {
+     "v": "WORKER",
+     "p": 94892221,
+     "meeples": [
+      {
+       "kind": "fac-science-primate",
+       "at": "university_1"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "move": 36,
+   "t": 1768441705,
+   "actions": [
+    {
+     "v": "DRAW",
+     "p": 94892221,
+     "cards": [
+      "A458_JapaneseMacaque"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 37,
+   "t": 1768441709,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Build3",
+     "strength": 5,
+     "level": 1
+    }
+   ]
+  },
+  {
+   "move": 38,
+   "t": 1768441724,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 98907091,
+     "building": "large-aquarium",
+     "size": 5,
+     "at": [
+      5,
+      0
+     ],
+     "rot": 1,
+     "pay": 10
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "placement bonus",
+     "get": {
+      "money": 2
+     }
+    }
+   ]
+  },
+  {
+   "move": 41,
+   "t": 1768441742,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "increasing card strength",
+     "get": {
+      "xtoken": -2
+     }
+    },
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Sponsors",
+     "strength": 7,
+     "level": 1
+    }
+   ]
+  },
+  {
+   "move": 42,
+   "t": 1768441744,
+   "actions": [
+    {
+     "v": "BREAK",
+     "p": 94892221,
+     "n": 7,
+     "at": 9,
+     "max": 9
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "triggering break",
+     "get": {
+      "xtoken": 1
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "money": 7
+     }
+    }
+   ]
+  },
+  {
+   "move": 44,
+   "t": 1768441751,
+   "actions": [
+    {
+     "v": "BREAK_DISCARD",
+     "p": 94892221,
+     "keep": [
+      "A458_JapaneseMacaque",
+      "S268_ConferenceOnEurope"
+     ],
+     "n": 2
+    }
+   ]
+  },
+  {
+   "move": 45,
+   "t": 1768441787,
+   "actions": [
+    {
+     "v": "BREAK_DISCARD",
+     "p": 98907091,
+     "keep": [
+      "A415_Raccoon",
+      "A539_AmericanWhitespottedFilefish",
+      "A436_AmericanBison"
+     ],
+     "n": 3
+    },
+    {
+     "v": "DISCARD",
+     "p": 98907091,
+     "cards": [
+      "A415_Raccoon",
+      "A539_AmericanWhitespottedFilefish",
+      "A436_AmericanBison"
+     ]
+    },
+    {
+     "v": "DISCARD",
+     "p": 94892221,
+     "cards": [
+      "A458_JapaneseMacaque",
+      "S268_ConferenceOnEurope"
+     ]
+    },
+    {
+     "v": "WORKER",
+     "meeples": [
+      {
+       "kind": "worker",
+       "at": "reserve"
+      },
+      {
+       "kind": "worker",
+       "at": "reserve"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "move": 46,
+   "t": 1768441791,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "appeal income",
+     "get": {
+      "money": 9
+     }
+    }
+   ]
+  },
+  {
+   "move": 48,
+   "t": 1768441797,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "appeal income",
+     "get": {
+      "money": 6
+     }
+    }
+   ]
+  },
+  {
+   "move": 50,
+   "t": 1768441803,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Sponsors2",
+     "strength": 5,
+     "level": 1
+    }
+   ]
+  },
+  {
+   "move": 51,
+   "t": 1768441806,
+   "actions": [
+    {
+     "v": "BREAK",
+     "p": 98907091,
+     "n": 5,
+     "at": 5,
+     "max": 9
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "get": {
+      "money": 5
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "Sponsors2 effect",
+     "get": {
+      "money": 3
+     }
+    }
+   ]
+  },
+  {
+   "move": 57,
+   "t": 1768441832,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Animals3",
+     "strength": 4,
+     "level": 1
+    }
+   ]
+  },
+  {
+   "move": 58,
+   "t": 1768441835,
+   "actions": [
+    {
+     "v": "ANIMAL",
+     "p": 94892221,
+     "card": "A544_CaribbeanReefShark",
+     "pay": 18,
+     "fromDisplay": false,
+     "into": [
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "move": 60,
+   "t": 1768441840,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "Shark Attack",
+     "get": {
+      "appeal": 4
+     }
+    }
+   ]
+  },
+  {
+   "move": 61,
+   "t": 1768441843,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "appeal": 5
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "reputation": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 63,
+   "t": 1768441852,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Association",
+     "strength": 4,
+     "level": 1
+    }
+   ]
+  },
+  {
+   "move": 64,
+   "t": 1768441859,
+   "actions": [
+    {
+     "v": "WORKER",
+     "p": 98907091,
+     "strength": "4",
+     "meeples": [
+      {
+       "kind": "worker",
+       "at": "association_4"
+      }
+     ]
+    },
+    {
+     "v": "WORKER",
+     "p": 98907091,
+     "meeples": [
+      {
+       "kind": "fac-rep-hand",
+       "at": "university_2"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "move": 65,
+   "t": 1768441863,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": " from university",
+     "get": {
+      "reputation": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 66,
+   "t": 1768441865,
+   "actions": [
+    {
+     "v": "UPGRADE",
+     "p": 98907091,
+     "card": "Animals"
+    }
+   ]
+  },
+  {
+   "move": 68,
+   "t": 1768441873,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Build1",
+     "strength": 5,
+     "level": 1
+    }
+   ]
+  },
+  {
+   "move": 69,
+   "t": 1768441878,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 94892221,
+     "building": "size-2",
+     "size": 2,
+     "at": [
+      5,
+      6
+     ],
+     "rot": 5,
+     "pay": 4
+    }
+   ]
+  },
+  {
+   "move": 72,
+   "t": 1768441885,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Build3",
+     "strength": 3,
+     "level": 1
+    }
+   ]
+  },
+  {
+   "move": 73,
+   "t": 1768441892,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 98907091,
+     "building": "size-4",
+     "size": 4,
+     "at": [
+      3,
+      0
+     ],
+     "rot": 2,
+     "pay": 8
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "placement bonus",
+     "get": {
+      "money": 2
+     }
+    }
+   ]
+  },
+  {
+   "move": 75,
+   "t": 1768441898,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Association",
+     "strength": 5,
+     "level": 1
+    }
+   ]
+  },
+  {
+   "move": 76,
+   "t": 1768441903,
+   "actions": [
+    {
+     "v": "WORKER",
+     "p": 94892221,
+     "strength": 5,
+     "meeples": [
+      {
+       "kind": "worker",
+       "at": "association_5"
+      }
+     ]
+    },
+    {
+     "v": "WORKER",
+     "meeples": [
+      {
+       "kind": "token",
+       "at": "P101_SpeciesDiversity_1"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "move": 78,
+   "t": 1768441908,
+   "actions": [
+    {
+     "v": "SNAP",
+     "p": 94892221,
+     "cards": [
+      "P113_ReleaseBavarian"
+     ]
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "Species Diversity",
+     "get": {
+      "conservation": 3
+     }
+    }
+   ]
+  },
+  {
+   "move": 79,
+   "t": 1768441910,
+   "actions": [
+    {
+     "v": "ASSOC",
+     "p": 94892221,
+     "bonus": "1 x upgrade-card"
+    }
+   ]
+  },
+  {
+   "move": 83,
+   "t": 1768441928,
+   "actions": [
+    {
+     "v": "UPGRADE",
+     "p": 94892221,
+     "card": "Sponsors"
+    }
+   ]
+  },
+  {
+   "move": 85,
+   "t": 1768441934,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Animals",
+     "strength": 5,
+     "level": 2
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "max strength Animals",
+     "get": {
+      "reputation": 1
+     }
+    },
+    {
+     "v": "ASSOC",
+     "p": 98907091,
+     "bonus": "1 x upgrade-card"
+    }
+   ]
+  },
+  {
+   "move": 86,
+   "t": 1768441942,
+   "actions": [
+    {
+     "v": "UPGRADE",
+     "p": 98907091,
+     "card": "Sponsors2"
+    }
+   ]
+  },
+  {
+   "move": 90,
+   "t": 1768441979,
+   "actions": [
+    {
+     "v": "ANIMAL",
+     "p": 98907091,
+     "card": "A419_EuropeanBadger",
+     "pay": 8,
+     "fromDisplay": true,
+     "into": [
+      2
+     ]
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "get": {
+      "appeal": 3
+     }
+    }
+   ]
+  },
+  {
+   "move": 91,
+   "t": 1768441986,
+   "actions": [
+    {
+     "v": "ANIMAL",
+     "p": 98907091,
+     "card": "A510_WhiteStork",
+     "pay": 9,
+     "fromDisplay": false,
+     "into": [
+      9
+     ]
+    }
+   ]
+  },
+  {
+   "move": 92,
+   "t": 1768441989,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "get": {
+      "appeal": 4
+     }
+    }
+   ]
+  },
+  {
+   "move": 95,
+   "t": 1768442005,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Sponsors",
+     "strength": 5,
+     "level": 2
+    }
+   ]
+  },
+  {
+   "move": 96,
+   "t": 1768442007,
+   "actions": [
+    {
+     "v": "BREAK",
+     "p": 94892221,
+     "n": 5,
+     "at": 9,
+     "max": 9
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "triggering break",
+     "get": {
+      "xtoken": 1
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "money": 10
+     }
+    }
+   ]
+  },
+  {
+   "move": 97,
+   "t": 1768442011,
+   "actions": [
+    {
+     "v": "WORKER",
+     "meeples": [
+      {
+       "kind": "worker",
+       "at": "reserve"
+      },
+      {
+       "kind": "worker",
+       "at": "reserve"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "move": 98,
+   "t": 1768442015,
+   "actions": [
+    {
+     "v": "ASSOC",
+     "p": 94892221,
+     "bonus": "1 x Snapping"
+    }
+   ]
+  },
+  {
+   "move": 99,
+   "t": 1768442017,
+   "actions": [
+    {
+     "v": "SNAP",
+     "p": 94892221,
+     "cards": [
+      "S262_Explorer"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 100,
+   "t": 1768442020,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "appeal income",
+     "get": {
+      "money": 14
+     }
+    }
+   ]
+  },
+  {
+   "move": 102,
+   "t": 1768442027,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "appeal income",
+     "get": {
+      "money": 11
+     }
+    }
+   ]
+  },
+  {
+   "move": 104,
+   "t": 1768442033,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Sponsors2",
+     "strength": 4,
+     "level": 2
+    }
+   ]
+  },
+  {
+   "move": 105,
+   "t": 1768442037,
+   "actions": [
+    {
+     "v": "SPONSOR",
+     "p": 98907091,
+     "card": "S270_MarineResearchExpedition",
+     "fromDisplay": true
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "playing sponsor from reputation range",
+     "get": {
+      "money": -1
+     }
+    }
+   ]
+  },
+  {
+   "move": 107,
+   "t": 1768442043,
+   "actions": [
+    {
+     "v": "DRAW",
+     "p": 98907091,
+     "cards": [
+      "S226_ForeignInstitute",
+      "P127_PrimateBreeding",
+      "A554_AfricanPenguin"
+     ]
+    },
+    {
+     "v": "DISCARD",
+     "p": 98907091,
+     "cards": [
+      "P127_PrimateBreeding",
+      "A554_AfricanPenguin"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 108,
+   "t": 1768442052,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Build1",
+     "strength": 4,
+     "level": 1
+    }
+   ]
+  },
+  {
+   "move": 109,
+   "t": 1768442057,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 94892221,
+     "building": "size-4",
+     "size": 4,
+     "at": [
+      5,
+      12
+     ],
+     "rot": 5,
+     "pay": 8
+    }
+   ]
+  },
+  {
+   "move": 110,
+   "t": 1768442061,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 94892221,
+     "building": "pavilion",
+     "size": 1,
+     "at": [
+      7,
+      12
+     ],
+     "rot": 0,
+     "pay": 3
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "building a pavilion",
+     "get": {
+      "appeal": 1
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "placement bonus",
+     "get": {
+      "xtoken": 1
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "Map 13 quarter bonus",
+     "get": {
+      "reputation": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 112,
+   "t": 1768442070,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Cards",
+     "strength": 5,
+     "level": 1
+    },
+    {
+     "v": "BREAK",
+     "p": 98907091,
+     "n": 2,
+     "at": 2,
+     "max": 9
+    }
+   ]
+  },
+  {
+   "move": 113,
+   "t": 1768442081,
+   "actions": [
+    {
+     "v": "DRAW",
+     "p": 98907091,
+     "cards": [
+      "S253_OkapiStable",
+      "P124_PredatorBreeding",
+      "A528_BennettsWallaby"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 114,
+   "t": 1768442086,
+   "actions": [
+    {
+     "v": "DISCARD",
+     "p": 98907091,
+     "cards": [
+      "A528_BennettsWallaby"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 116,
+   "t": 1768442092,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "increasing card strength",
+     "get": {
+      "xtoken": -2
+     }
+    },
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Association",
+     "strength": 5,
+     "level": 1
+    }
+   ]
+  },
+  {
+   "move": 117,
+   "t": 1768442099,
+   "actions": [
+    {
+     "v": "WORKER",
+     "p": 94892221,
+     "strength": 5,
+     "meeples": [
+      {
+       "kind": "worker",
+       "at": "association_5"
+      }
+     ]
+    },
+    {
+     "v": "PROJECT",
+     "p": 94892221,
+     "cards": [
+      "P113_ReleaseBavarian"
+     ],
+     "fromDisplay": false
+    },
+    {
+     "v": "WORKER",
+     "meeples": [
+      {
+       "kind": "token",
+       "at": "P113_ReleaseBavarian_2"
+      }
+     ]
+    },
+    {
+     "v": "RELEASE",
+     "p": 94892221,
+     "card": "A487_EuropeanGrassSnake",
+     "gain": {
+      "appeal": 3
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "map bonus space",
+     "get": {
+      "money": 5
+     }
+    }
+   ]
+  },
+  {
+   "move": 118,
+   "t": 1768442104,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "adding a new conservation project",
+     "get": {
+      "reputation": 1
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "Bavarian Forest national park",
+     "get": {
+      "conservation": 3
+     }
+    }
+   ]
+  },
+  {
+   "move": 119,
+   "t": 1768442106,
+   "actions": [
+    {
+     "v": "ASSOC",
+     "p": 94892221,
+     "bonus": "1 x Fac"
+    }
+   ]
+  },
+  {
+   "move": 120,
+   "t": 1768442109,
+   "actions": [
+    {
+     "v": "WORKER",
+     "p": 94892221,
+     "meeples": [
+      {
+       "kind": "fac-science-rep",
+       "at": "university_2"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "move": 122,
+   "t": 1768442113,
+   "actions": [
+    {
+     "v": "UPGRADE",
+     "p": 94892221,
+     "card": "Animals3"
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": " from university",
+     "get": {
+      "reputation": 2
+     }
+    },
+    {
+     "v": "ASSOC",
+     "p": 94892221,
+     "bonus": "1 x upgrade-card"
+    }
+   ]
+  },
+  {
+   "move": 126,
+   "t": 1768442121,
+   "actions": [
+    {
+     "v": "UPGRADE",
+     "p": 94892221,
+     "card": "Build1"
+    }
+   ]
+  },
+  {
+   "move": 128,
+   "t": 1768442126,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Association",
+     "strength": 5,
+     "level": 1
+    }
+   ]
+  },
+  {
+   "move": 129,
+   "t": 1768442172,
+   "actions": [
+    {
+     "v": "WORKER",
+     "p": 98907091,
+     "strength": 5,
+     "meeples": [
+      {
+       "kind": "worker",
+       "at": "association_5"
+      }
+     ]
+    },
+    {
+     "v": "PROJECT",
+     "p": 98907091,
+     "cards": [
+      "P119_ReleaseLowMountain"
+     ],
+     "fromDisplay": false
+    },
+    {
+     "v": "WORKER",
+     "meeples": [
+      {
+       "kind": "token",
+       "at": "P119_ReleaseLowMountain_0"
+      }
+     ]
+    },
+    {
+     "v": "RELEASE",
+     "p": 98907091,
+     "card": "A510_WhiteStork",
+     "gain": {
+      "appeal": 4
+     }
+    }
+   ]
+  },
+  {
+   "move": 131,
+   "t": 1768442197,
+   "actions": [
+    {
+     "v": "SNAP",
+     "p": 98907091,
+     "cards": [
+      "A418_EurasianLynx"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 132,
+   "t": 1768442203,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "Low Mountain Range",
+     "get": {
+      "conservation": 5
+     }
+    }
+   ]
+  },
+  {
+   "move": 134,
+   "t": 1768442209,
+   "actions": [
+    {
+     "v": "ASSOC",
+     "p": 98907091,
+     "bonus": "3 x bonus-kiosk-pavilion"
+    }
+   ]
+  },
+  {
+   "move": 135,
+   "t": 1768442215,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 98907091,
+     "building": "kiosk",
+     "size": 1,
+     "at": [
+      4,
+      9
+     ],
+     "rot": 0,
+     "pay": 0
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "placement bonus",
+     "get": {
+      "xtoken": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 136,
+   "t": 1768442227,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 98907091,
+     "building": "pavilion",
+     "size": 1,
+     "at": [
+      1,
+      0
+     ],
+     "rot": 0,
+     "pay": 0
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "building a pavilion",
+     "get": {
+      "appeal": 1
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "Map 13 quarter bonus",
+     "get": {
+      "money": 3
+     }
+    }
+   ]
+  },
+  {
+   "move": 137,
+   "t": 1768442240,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 98907091,
+     "building": "pavilion",
+     "size": 1,
+     "at": [
+      5,
+      10
+     ],
+     "rot": 0,
+     "pay": 0
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "building a pavilion",
+     "get": {
+      "appeal": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 138,
+   "t": 1768442245,
+   "actions": [
+    {
+     "v": "ASSOC",
+     "p": 98907091,
+     "bonus": "1 x upgrade-card"
+    }
+   ]
+  },
+  {
+   "move": 139,
+   "t": 1768442250,
+   "actions": [
+    {
+     "v": "UPGRADE",
+     "p": 98907091,
+     "card": "Build3"
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "adding a new conservation project",
+     "get": {
+      "reputation": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 141,
+   "t": 1768442258,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "increasing card strength",
+     "get": {
+      "xtoken": -1
+     }
+    },
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Sponsors",
+     "strength": 4,
+     "level": 2
+    }
+   ]
+  },
+  {
+   "move": 142,
+   "t": 1768442261,
+   "actions": [
+    {
+     "v": "SPONSOR",
+     "p": 94892221,
+     "card": "S262_Explorer",
+     "fromDisplay": false
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "money": 8
+     }
+    }
+   ]
+  },
+  {
+   "move": 144,
+   "t": 1768442266,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Build3",
+     "strength": 5,
+     "level": 2
+    }
+   ]
+  },
+  {
+   "move": 145,
+   "t": 1768442300,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 98907091,
+     "building": "size-3",
+     "size": 3,
+     "at": [
+      3,
+      6
+     ],
+     "rot": 2,
+     "pay": 6
+    }
+   ]
+  },
+  {
+   "move": 146,
+   "t": 1768442304,
+   "actions": [
+    {
+     "v": "SNAP",
+     "p": 98907091,
+     "cards": [
+      "A559_CoquerelsSifaka"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 147,
+   "t": 1768442318,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 98907091,
+     "building": "petting-zoo",
+     "size": 3,
+     "at": [
+      6,
+      11
+     ],
+     "rot": 1,
+     "pay": 6
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "placement bonus",
+     "get": {
+      "xtoken": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 149,
+   "t": 1768442327,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Animals3",
+     "strength": 5,
+     "level": 2
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "max strength Animals",
+     "get": {
+      "reputation": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 153,
+   "t": 1768442340,
+   "actions": [
+    {
+     "v": "ANIMAL",
+     "p": 94892221,
+     "card": "A502_GreatHornbill",
+     "pay": 16,
+     "fromDisplay": true,
+     "into": [
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "move": 154,
+   "t": 1768442342,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "appeal": 6
+     }
+    }
+   ]
+  },
+  {
+   "move": 155,
+   "t": 1768442344,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "money": 4
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "appeal": 2
+     }
+    }
+   ]
+  },
+  {
+   "move": 156,
+   "t": 1768442346,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "Animals3 ability",
+     "get": {
+      "money": -2,
+      "appeal": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 160,
+   "t": 1768442363,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Animals",
+     "strength": 5,
+     "level": 2
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "max strength Animals",
+     "get": {
+      "reputation": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 161,
+   "t": 1768442373,
+   "actions": [
+    {
+     "v": "ANIMAL",
+     "p": 98907091,
+     "card": "A548_ShortsnoutedSeahorse",
+     "pay": 7,
+     "fromDisplay": false,
+     "into": [
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "move": 163,
+   "t": 1768442382,
+   "actions": [
+    {
+     "v": "DISCARD",
+     "p": 98907091,
+     "cards": [
+      "P124_PredatorBreeding"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 165,
+   "t": 1768442388,
+   "actions": [
+    {
+     "v": "DRAW",
+     "p": 98907091,
+     "cards": [
+      "S232_SponsorshipReptiles",
+      "A546_SandTigerShark",
+      "A422_AustralianSeaLion"
+     ]
+    },
+    {
+     "v": "DISCARD",
+     "p": 98907091,
+     "cards": [
+      "A546_SandTigerShark",
+      "A422_AustralianSeaLion"
+     ]
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "get": {
+      "appeal": 2
+     }
+    }
+   ]
+  },
+  {
+   "move": 168,
+   "t": 1768442399,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Cards",
+     "strength": 5,
+     "level": 1
+    },
+    {
+     "v": "BREAK",
+     "p": 94892221,
+     "n": 2,
+     "at": 4,
+     "max": 9
+    }
+   ]
+  },
+  {
+   "move": 169,
+   "t": 1768442415,
+   "actions": [
+    {
+     "v": "DRAW",
+     "p": 94892221,
+     "cards": [
+      "S212_ExpertOnAustralia",
+      "A483_BoaConstrictor",
+      "P123_BirdBreeding"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 170,
+   "t": 1768442423,
+   "actions": [
+    {
+     "v": "DISCARD",
+     "p": 94892221,
+     "cards": [
+      "P136_ReptileManagementPlan"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 172,
+   "t": 1768442427,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Sponsors2",
+     "strength": 5,
+     "level": 2
+    }
+   ]
+  },
+  {
+   "move": 173,
+   "t": 1768442435,
+   "actions": [
+    {
+     "v": "SPONSOR",
+     "p": 98907091,
+     "card": "S226_ForeignInstitute",
+     "fromDisplay": false
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "get": {
+      "reputation": 2
+     }
+    },
+    {
+     "v": "ASSOC",
+     "p": 98907091,
+     "bonus": "1 x add-worker"
+    },
+    {
+     "v": "WORKER",
+     "p": 98907091,
+     "meeples": [
+      {
+       "kind": "worker",
+       "at": "reserve"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "move": 175,
+   "t": 1768442450,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Build1",
+     "strength": 5,
+     "level": 2
+    }
+   ]
+  },
+  {
+   "move": 176,
+   "t": 1768442455,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 94892221,
+     "building": "kiosk",
+     "size": 1,
+     "at": [
+      7,
+      8
+     ],
+     "rot": 0,
+     "pay": 2
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "placement bonus",
+     "get": {
+      "appeal": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 177,
+   "t": 1768442460,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 94892221,
+     "building": "small-aquarium",
+     "size": 2,
+     "at": [
+      6,
+      5
+     ],
+     "rot": 5,
+     "pay": 4
+    }
+   ]
+  },
+  {
+   "move": 178,
+   "t": 1768442464,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 94892221,
+     "building": "pavilion",
+     "size": 1,
+     "at": [
+      8,
+      7
+     ],
+     "rot": 0,
+     "pay": 2
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "building a pavilion",
+     "get": {
+      "appeal": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 179,
+   "t": 1768442468,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 94892221,
+     "building": "pavilion",
+     "size": 1,
+     "at": [
+      8,
+      9
+     ],
+     "rot": 0,
+     "pay": 2
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "building a pavilion",
+     "get": {
+      "appeal": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 182,
+   "t": 1768442483,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Association",
+     "strength": 4,
+     "level": 1
+    }
+   ]
+  },
+  {
+   "move": 183,
+   "t": 1768442488,
+   "actions": [
+    {
+     "v": "WORKER",
+     "p": 98907091,
+     "strength": "3",
+     "meeples": [
+      {
+       "kind": "worker",
+       "at": "association_3"
+      }
+     ]
+    },
+    {
+     "v": "WORKER",
+     "p": 98907091,
+     "meeples": [
+      {
+       "kind": "partner-Africa",
+       "at": "partner_1"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "move": 185,
+   "t": 1768442495,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Sponsors",
+     "strength": 4,
+     "level": 2
+    }
+   ]
+  },
+  {
+   "move": 186,
+   "t": 1768442498,
+   "actions": [
+    {
+     "v": "SPONSOR",
+     "p": 94892221,
+     "card": "S212_ExpertOnAustralia",
+     "fromDisplay": false
+    }
+   ]
+  },
+  {
+   "move": 187,
+   "t": 1768442501,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "appeal": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 188,
+   "t": 1768442503,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "money": 2
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "appeal": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 190,
+   "t": 1768442509,
+   "actions": [
+    {
+     "v": "DISCARD",
+     "p": 94892221,
+     "cards": [
+      "P123_BirdBreeding"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 195,
+   "t": 1768442525,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Cards",
+     "strength": 5,
+     "level": 1
+    },
+    {
+     "v": "BREAK",
+     "p": 98907091,
+     "n": 2,
+     "at": 6,
+     "max": 9
+    }
+   ]
+  },
+  {
+   "move": 196,
+   "t": 1768442539,
+   "actions": [
+    {
+     "v": "SNAP",
+     "p": 98907091,
+     "cards": [
+      "A457_Mandrill"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 198,
+   "t": 1768442545,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Cards",
+     "strength": 3,
+     "level": 1
+    },
+    {
+     "v": "BREAK",
+     "p": 94892221,
+     "n": 2,
+     "at": 8,
+     "max": 9
+    }
+   ]
+  },
+  {
+   "move": 199,
+   "t": 1768442549,
+   "actions": [
+    {
+     "v": "DRAW",
+     "p": 94892221,
+     "cards": [
+      "A488_SlowWorm",
+      "A508_ScarletMacaw"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 200,
+   "t": 1768442557,
+   "actions": [
+    {
+     "v": "DISCARD",
+     "p": 94892221,
+     "cards": [
+      "A508_ScarletMacaw"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 202,
+   "t": 1768442566,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Sponsors2",
+     "strength": 3,
+     "level": 2
+    }
+   ]
+  },
+  {
+   "move": 203,
+   "t": 1768442575,
+   "actions": [
+    {
+     "v": "BREAK",
+     "p": 98907091,
+     "n": 3,
+     "at": 9,
+     "max": 9
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "triggering break",
+     "get": {
+      "xtoken": 1
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "get": {
+      "money": 6
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "Sponsors2 effect",
+     "get": {
+      "money": 5
+     }
+    }
+   ]
+  },
+  {
+   "move": 204,
+   "t": 1768442586,
+   "actions": [
+    {
+     "v": "WORKER",
+     "meeples": [
+      {
+       "kind": "worker",
+       "at": "reserve"
+      },
+      {
+       "kind": "worker",
+       "at": "reserve"
+      },
+      {
+       "kind": "worker",
+       "at": "reserve"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "move": 205,
+   "t": 1768442595,
+   "actions": [
+    {
+     "v": "ASSOC",
+     "p": 98907091,
+     "bonus": "0 x MAP_13_INCOME"
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "Map 13 quarter bonus",
+     "get": {
+      "money": 3
+     }
+    }
+   ]
+  },
+  {
+   "move": 206,
+   "t": 1768442600,
+   "actions": [
+    {
+     "v": "ASSOC",
+     "p": 98907091,
+     "bonus": "1 x Snapping"
+    }
+   ]
+  },
+  {
+   "move": 207,
+   "t": 1768442616,
+   "actions": [
+    {
+     "v": "SNAP",
+     "p": 98907091,
+     "cards": [
+      "S240_ExpertInHerbivores"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 208,
+   "t": 1768442619,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "appeal income",
+     "get": {
+      "money": 12
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "kiosk income",
+     "get": {
+      "money": 2
+     }
+    }
+   ]
+  },
+  {
+   "move": 209,
+   "t": 1768442623,
+   "actions": [
+    {
+     "v": "ASSOC",
+     "p": 94892221,
+     "bonus": "5 x money"
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "map bonus space",
+     "get": {
+      "money": 5
+     }
+    }
+   ]
+  },
+  {
+   "move": 210,
+   "t": 1768442625,
+   "actions": [
+    {
+     "v": "ASSOC",
+     "p": 94892221,
+     "bonus": "1 x Snapping"
+    }
+   ]
+  },
+  {
+   "move": 211,
+   "t": 1768442628,
+   "actions": [
+    {
+     "v": "SNAP",
+     "p": 94892221,
+     "cards": [
+      "P131_LargeAnimals_MW"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 212,
+   "t": 1768442630,
+   "actions": [
+    {
+     "v": "ASSOC",
+     "p": 94892221,
+     "bonus": "2 x MAP_13_INCOME"
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "Map 13 quarter bonus",
+     "get": {
+      "reputation": 1
+     }
+    },
+    {
+     "v": "ASSOC",
+     "p": 94892221,
+     "bonus": "1 x add-worker"
+    },
+    {
+     "v": "WORKER",
+     "p": 94892221,
+     "meeples": [
+      {
+       "kind": "worker",
+       "at": "reserve"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "move": 213,
+   "t": 1768442633,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "kiosk income",
+     "get": {
+      "money": 4
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "appeal income",
+     "get": {
+      "money": 19
+     }
+    }
+   ]
+  },
+  {
+   "move": 215,
+   "t": 1768442637,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Association",
+     "strength": 5,
+     "level": 1
+    }
+   ]
+  },
+  {
+   "move": 216,
+   "t": 1768442644,
+   "actions": [
+    {
+     "v": "WORKER",
+     "p": 94892221,
+     "strength": 5,
+     "meeples": [
+      {
+       "kind": "worker",
+       "at": "association_5"
+      }
+     ]
+    },
+    {
+     "v": "WORKER",
+     "meeples": [
+      {
+       "kind": "token",
+       "at": "P119_ReleaseLowMountain_2"
+      }
+     ]
+    },
+    {
+     "v": "RELEASE",
+     "p": 94892221,
+     "card": "A502_GreatHornbill",
+     "gain": {
+      "appeal": 6
+     }
+    }
+   ]
+  },
+  {
+   "move": 217,
+   "t": 1768442648,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "Low Mountain Range",
+     "get": {
+      "conservation": 3
+     }
+    }
+   ]
+  },
+  {
+   "move": 218,
+   "t": 1768442650,
+   "actions": [
+    {
+     "v": "ASSOC",
+     "p": 94892221,
+     "bonus": "1 x size-3"
+    }
+   ]
+  },
+  {
+   "move": 219,
+   "t": 1768442654,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 94892221,
+     "building": "size-3",
+     "size": 3,
+     "at": [
+      8,
+      3
+     ],
+     "rot": 1,
+     "pay": 0
+    }
+   ]
+  },
+  {
+   "move": 220,
+   "t": 1768442656,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "Map 13 quarter bonus",
+     "get": {
+      "appeal": 2
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "placement bonus",
+     "get": {
+      "appeal": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 221,
+   "t": 1768442661,
+   "actions": [
+    {
+     "v": "CUT",
+     "p": 94892221,
+     "size": 2,
+     "building": "8",
+     "gain": {
+      "money": 4
+     }
+    }
+   ]
+  },
+  {
+   "move": 223,
+   "t": 1768442667,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Build3",
+     "strength": 5,
+     "level": 2
+    }
+   ]
+  },
+  {
+   "move": 224,
+   "t": 1768442677,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 98907091,
+     "building": "size-5",
+     "size": 5,
+     "at": [
+      0,
+      5
+     ],
+     "rot": 3,
+     "pay": 10
+    }
+   ]
+  },
+  {
+   "move": 225,
+   "t": 1768442682,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 98907091,
+     "building": "kiosk",
+     "size": 1,
+     "at": [
+      1,
+      8
+     ],
+     "rot": 0,
+     "pay": 2
+    }
+   ]
+  },
+  {
+   "move": 227,
+   "t": 1768442692,
+   "actions": [
+    {
+     "v": "MARK",
+     "p": 98907091,
+     "cards": [
+      "A442_Moose"
+     ]
+    },
+    {
+     "v": "MARK",
+     "p": 98907091,
+     "cards": [
+      "A557_VietnamesePotbelliedPig"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 229,
+   "t": 1768442697,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Build1",
+     "strength": 4,
+     "level": 2
+    }
+   ]
+  },
+  {
+   "move": 230,
+   "t": 1768442702,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 94892221,
+     "building": "pavilion",
+     "size": 1,
+     "at": [
+      6,
+      7
+     ],
+     "rot": 0,
+     "pay": 2
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "building a pavilion",
+     "get": {
+      "appeal": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 231,
+   "t": 1768442708,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 94892221,
+     "building": "size-1",
+     "size": 1,
+     "at": [
+      5,
+      6
+     ],
+     "rot": 0,
+     "pay": 2
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "Map 13 quarter bonus",
+     "get": {
+      "appeal": 2
+     }
+    }
+   ]
+  },
+  {
+   "move": 238,
+   "t": 1768442739,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 94892221,
+     "building": "size-2",
+     "size": 2,
+     "at": [
+      5,
+      2
+     ],
+     "rot": 1,
+     "pay": 4
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "placement bonus",
+     "get": {
+      "money": 2
+     }
+    }
+   ]
+  },
+  {
+   "move": 239,
+   "t": 1768442744,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 94892221,
+     "building": "pavilion",
+     "size": 1,
+     "at": [
+      3,
+      2
+     ],
+     "rot": 0,
+     "pay": 2
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "building a pavilion",
+     "get": {
+      "appeal": 1
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "placement bonus",
+     "get": {
+      "money": 2
+     }
+    }
+   ]
+  },
+  {
+   "move": 242,
+   "t": 1768442752,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Animals",
+     "strength": 5,
+     "level": 2
+    }
+   ]
+  },
+  {
+   "move": 243,
+   "t": 1768442759,
+   "actions": [
+    {
+     "v": "ANIMAL",
+     "p": 98907091,
+     "card": "A418_EurasianLynx",
+     "pay": 11,
+     "fromDisplay": false,
+     "into": [
+      15
+     ]
+    }
+   ]
+  },
+  {
+   "move": 244,
+   "t": 1768442762,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "get": {
+      "appeal": 2
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "Iconic animal",
+     "get": {
+      "appeal": 3
+     }
+    }
+   ]
+  },
+  {
+   "move": 247,
+   "t": 1768442770,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Sponsors",
+     "strength": 4,
+     "level": 2
+    }
+   ]
+  },
+  {
+   "move": 248,
+   "t": 1768442773,
+   "actions": [
+    {
+     "v": "SPONSOR",
+     "p": 94892221,
+     "card": "S251_PolarBearExhibit",
+     "fromDisplay": true
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "playing sponsor from reputation range",
+     "get": {
+      "money": -4
+     }
+    }
+   ]
+  },
+  {
+   "move": 250,
+   "t": 1768442778,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 94892221,
+     "building": "polar-bear",
+     "size": 4,
+     "at": [
+      5,
+      0
+     ],
+     "rot": 0,
+     "pay": 0
+    }
+   ]
+  },
+  {
+   "move": 251,
+   "t": 1768442780,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "money": 2
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "appeal": 1
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "appeal": 2
+     }
+    }
+   ]
+  },
+  {
+   "move": 253,
+   "t": 1768442788,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Association",
+     "strength": 5,
+     "level": 1
+    }
+   ]
+  },
+  {
+   "move": 254,
+   "t": 1768442794,
+   "actions": [
+    {
+     "v": "WORKER",
+     "p": 98907091,
+     "strength": 5,
+     "meeples": [
+      {
+       "kind": "worker",
+       "at": "association_5"
+      }
+     ]
+    },
+    {
+     "v": "WORKER",
+     "meeples": [
+      {
+       "kind": "token",
+       "at": "P113_ReleaseBavarian_1"
+      }
+     ]
+    },
+    {
+     "v": "RELEASE",
+     "p": 98907091,
+     "card": "A418_EurasianLynx",
+     "gain": {
+      "appeal": 2
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "map bonus space",
+     "get": {
+      "money": 5
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "Bavarian Forest national park",
+     "get": {
+      "conservation": 4
+     }
+    }
+   ]
+  },
+  {
+   "move": 255,
+   "t": 1768442810,
+   "actions": [
+    {
+     "v": "ASSOC",
+     "p": 98907091,
+     "bonus": "1 x bonus-increased-hand"
+    }
+   ]
+  },
+  {
+   "move": 256,
+   "t": 1768442817,
+   "actions": [
+    {
+     "v": "SNAP",
+     "p": 98907091,
+     "cards": [
+      "S231_SponsorshipPrimates"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 258,
+   "t": 1768442829,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Association",
+     "strength": 4,
+     "level": 1
+    }
+   ]
+  },
+  {
+   "move": 259,
+   "t": 1768442831,
+   "actions": [
+    {
+     "v": "WORKER",
+     "p": 94892221,
+     "strength": "3",
+     "meeples": [
+      {
+       "kind": "worker",
+       "at": "association_3"
+      }
+     ]
+    },
+    {
+     "v": "WORKER",
+     "p": 94892221,
+     "meeples": [
+      {
+       "kind": "partner-Americas",
+       "at": "partner_1"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "move": 261,
+   "t": 1768442837,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Cards",
+     "strength": 5,
+     "level": 1
+    },
+    {
+     "v": "BREAK",
+     "p": 98907091,
+     "n": 2,
+     "at": 2,
+     "max": 9
+    }
+   ]
+  },
+  {
+   "move": 262,
+   "t": 1768442844,
+   "actions": [
+    {
+     "v": "DRAW",
+     "p": 98907091,
+     "cards": [
+      "S238_Ornithologist",
+      "A476_KomodoDragon",
+      "S237_Herpetologist"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 263,
+   "t": 1768442850,
+   "actions": [
+    {
+     "v": "DISCARD",
+     "p": 98907091,
+     "cards": [
+      "A476_KomodoDragon"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 265,
+   "t": 1768442856,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Animals3",
+     "strength": 5,
+     "level": 2
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "max strength Animals",
+     "get": {
+      "reputation": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 266,
+   "t": 1768442861,
+   "actions": [
+    {
+     "v": "ANIMAL",
+     "p": 94892221,
+     "card": "A483_BoaConstrictor",
+     "pay": 13,
+     "fromDisplay": false,
+     "into": [
+      28
+     ]
+    }
+   ]
+  },
+  {
+   "move": 268,
+   "t": 1768442866,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "money": 2
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "appeal": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 269,
+   "t": 1768442869,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "appeal": 7
+     }
+    }
+   ]
+  },
+  {
+   "move": 270,
+   "t": 1768442871,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "Animals3 ability",
+     "get": {
+      "money": -2,
+      "appeal": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 271,
+   "t": 1768442874,
+   "actions": [
+    {
+     "v": "ANIMAL",
+     "p": 94892221,
+     "card": "A488_SlowWorm",
+     "pay": 4,
+     "fromDisplay": false,
+     "into": [
+      25
+     ]
+    }
+   ]
+  },
+  {
+   "move": 272,
+   "t": 1768442877,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "money": 2
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "appeal": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 273,
+   "t": 1768442880,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "appeal": 2
+     }
+    }
+   ]
+  },
+  {
+   "move": 274,
+   "t": 1768442882,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "Animals3 ability",
+     "get": {
+      "money": -2,
+      "appeal": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 276,
+   "t": 1768442887,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "increasing card strength",
+     "get": {
+      "xtoken": -1
+     }
+    },
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Sponsors2",
+     "strength": 6,
+     "level": 2
+    }
+   ]
+  },
+  {
+   "move": 277,
+   "t": 1768442892,
+   "actions": [
+    {
+     "v": "SPONSOR",
+     "p": 98907091,
+     "card": "S225_QuarantineLab",
+     "fromDisplay": true
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "playing sponsor from reputation range",
+     "get": {
+      "money": -1
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "get": {
+      "xtoken": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 281,
+   "t": 1768442910,
+   "actions": [
+    {
+     "v": "SPONSOR",
+     "p": 98907091,
+     "card": "S237_Herpetologist",
+     "fromDisplay": false
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "get": {
+      "money": 3
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "Sponsors2 effect",
+     "get": {
+      "money": 5
+     }
+    }
+   ]
+  },
+  {
+   "move": 283,
+   "t": 1768442935,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Cards",
+     "strength": 4,
+     "level": 1
+    },
+    {
+     "v": "BREAK",
+     "p": 94892221,
+     "n": 2,
+     "at": 4,
+     "max": 9
+    }
+   ]
+  },
+  {
+   "move": 284,
+   "t": 1768442938,
+   "actions": [
+    {
+     "v": "DRAW",
+     "p": 94892221,
+     "cards": [
+      "A445_CrestedPorcupine",
+      "S216_TalentedCommunicator"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 285,
+   "t": 1768442943,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Association",
+     "strength": 3,
+     "level": 1
+    }
+   ]
+  },
+  {
+   "move": 286,
+   "t": 1768442946,
+   "actions": [
+    {
+     "v": "WORKER",
+     "p": 98907091,
+     "strength": "3",
+     "meeples": [
+      {
+       "kind": "worker",
+       "at": "association_3"
+      }
+     ]
+    },
+    {
+     "v": "WORKER",
+     "p": 98907091,
+     "meeples": [
+      {
+       "kind": "partner-Asia",
+       "at": "partner_2"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "move": 287,
+   "t": 1768442949,
+   "actions": [
+    {
+     "v": "UPGRADE",
+     "p": 98907091,
+     "card": "Cards"
+    }
+   ]
+  },
+  {
+   "move": 289,
+   "t": 1768442955,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Sponsors",
+     "strength": 4,
+     "level": 2
+    }
+   ]
+  },
+  {
+   "move": 290,
+   "t": 1768442957,
+   "actions": [
+    {
+     "v": "SPONSOR",
+     "p": 94892221,
+     "card": "S216_TalentedCommunicator",
+     "fromDisplay": false
+    },
+    {
+     "v": "WORKER",
+     "p": 94892221,
+     "meeples": [
+      {
+       "kind": "worker",
+       "at": "reserve"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "move": 292,
+   "t": 1768442968,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Build3",
+     "strength": 5,
+     "level": 2
+    }
+   ]
+  },
+  {
+   "move": 293,
+   "t": 1768442978,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 98907091,
+     "building": "pavilion",
+     "size": 1,
+     "at": [
+      4,
+      11
+     ],
+     "rot": 0,
+     "pay": 2
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "building a pavilion",
+     "get": {
+      "appeal": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 294,
+   "t": 1768442996,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 98907091,
+     "building": "size-1",
+     "size": 1,
+     "at": [
+      0,
+      9
+     ],
+     "rot": 0,
+     "pay": 2
+    }
+   ]
+  },
+  {
+   "move": 295,
+   "t": 1768443001,
+   "actions": [
+    {
+     "v": "DRAW",
+     "p": 98907091,
+     "cards": [
+      "A461_HorsfieldsTarsier",
+      "A495_SecretaryBird",
+      "P126_HerbivoreBreeding",
+      "A522_Donkey"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 296,
+   "t": 1768443008,
+   "actions": [
+    {
+     "v": "DISCARD",
+     "p": 98907091,
+     "cards": [
+      "A495_SecretaryBird",
+      "P126_HerbivoreBreeding",
+      "A522_Donkey"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 299,
+   "t": 1768443017,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Association",
+     "strength": 4,
+     "level": 1
+    }
+   ]
+  },
+  {
+   "move": 300,
+   "t": 1768443019,
+   "actions": [
+    {
+     "v": "WORKER",
+     "p": 94892221,
+     "strength": "4",
+     "meeples": [
+      {
+       "kind": "worker",
+       "at": "association_4"
+      }
+     ]
+    },
+    {
+     "v": "WORKER",
+     "p": 94892221,
+     "meeples": [
+      {
+       "kind": "fac-science-science",
+       "at": "university_3"
+      }
+     ]
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "university",
+     "get": {
+      "conservation": 2
+     }
+    }
+   ]
+  },
+  {
+   "move": 301,
+   "t": 1768443023,
+   "actions": [
+    {
+     "v": "ASSOC",
+     "p": 94892221,
+     "bonus": "0 x DISCARD_SCORING"
+    }
+   ]
+  },
+  {
+   "move": 302,
+   "t": 1768443026,
+   "actions": [
+    {
+     "v": "DISCARD",
+     "p": 94892221,
+     "cards": [
+      "F016_AccessibleZoo"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 303,
+   "t": 1768443032,
+   "actions": [
+    {
+     "v": "DISCARD",
+     "p": 98907091,
+     "cards": [
+      "F002_SmallAnimalZoo"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 304,
+   "t": 1768443036,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Sponsors2",
+     "strength": 3,
+     "level": 2
+    }
+   ]
+  },
+  {
+   "move": 305,
+   "t": 1768443045,
+   "actions": [
+    {
+     "v": "SPONSOR",
+     "p": 98907091,
+     "card": "S240_ExpertInHerbivores",
+     "fromDisplay": false
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "get": {
+      "money": 3
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "Sponsors2 effect",
+     "get": {
+      "money": 5
+     }
+    }
+   ]
+  },
+  {
+   "move": 307,
+   "t": 1768443053,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Build1",
+     "strength": 5,
+     "level": 2
+    }
+   ]
+  },
+  {
+   "move": 308,
+   "t": 1768443058,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 94892221,
+     "building": "size-2",
+     "size": 2,
+     "at": [
+      2,
+      7
+     ],
+     "rot": 1,
+     "pay": 4
+    }
+   ]
+  },
+  {
+   "move": 309,
+   "t": 1768443063,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 94892221,
+     "building": "kiosk",
+     "size": 1,
+     "at": [
+      3,
+      0
+     ],
+     "rot": 0,
+     "pay": 2
+    }
+   ]
+  },
+  {
+   "move": 310,
+   "t": 1768443067,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 94892221,
+     "building": "pavilion",
+     "size": 1,
+     "at": [
+      2,
+      1
+     ],
+     "rot": 0,
+     "pay": 2
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "building a pavilion",
+     "get": {
+      "appeal": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 311,
+   "t": 1768443071,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 94892221,
+     "building": "pavilion",
+     "size": 1,
+     "at": [
+      1,
+      0
+     ],
+     "rot": 0,
+     "pay": 2
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "building a pavilion",
+     "get": {
+      "appeal": 1
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "Map 13 quarter bonus",
+     "get": {
+      "money": 3
+     }
+    }
+   ]
+  },
+  {
+   "move": 313,
+   "t": 1768443080,
+   "actions": [
+    {
+     "v": "MARK",
+     "p": 94892221,
+     "cards": [
+      "A482_Anaconda"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 315,
+   "t": 1768443085,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Animals",
+     "strength": 5,
+     "level": 2
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "max strength Animals",
+     "get": {
+      "reputation": 1
+     }
+    },
+    {
+     "v": "ASSOC",
+     "p": 98907091,
+     "bonus": "1 x take-in-range-or-deck"
+    }
+   ]
+  },
+  {
+   "move": 316,
+   "t": 1768443107,
+   "actions": [
+    {
+     "v": "SNAP",
+     "p": 98907091,
+     "cards": [
+      "A482_Anaconda"
+     ]
+    },
+    {
+     "v": "GAINMARK",
+     "p": 94892221,
+     "card": "A482_Anaconda",
+     "gain": {
+      "money": 2
+     }
+    }
+   ]
+  },
+  {
+   "move": 317,
+   "t": 1768443116,
+   "actions": [
+    {
+     "v": "ANIMAL",
+     "p": 98907091,
+     "card": "A461_HorsfieldsTarsier",
+     "pay": 11,
+     "fromDisplay": false,
+     "into": [
+      32
+     ]
+    }
+   ]
+  },
+  {
+   "move": 318,
+   "t": 1768443121,
+   "actions": [
+    {
+     "v": "BREAK",
+     "p": 98907091,
+     "n": 4,
+     "at": 8,
+     "max": 9
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "Jumping action",
+     "get": {
+      "money": 4
+     }
+    }
+   ]
+  },
+  {
+   "move": 319,
+   "t": 1768443125,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "get": {
+      "reputation": 2
+     }
+    },
+    {
+     "v": "ASSOC",
+     "p": 98907091,
+     "bonus": "1 x xtoken"
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "reputation track bonus",
+     "get": {
+      "xtoken": 1
+     }
+    },
+    {
+     "v": "ASSOC",
+     "p": 98907091,
+     "bonus": "1 x conservation"
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "reputation track bonus",
+     "get": {
+      "conservation": 1
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "get": {
+      "appeal": 3
+     }
+    }
+   ]
+  },
+  {
+   "move": 320,
+   "t": 1768443137,
+   "actions": [
+    {
+     "v": "ANIMAL",
+     "p": 98907091,
+     "card": "A559_CoquerelsSifaka",
+     "pay": 14,
+     "fromDisplay": false,
+     "into": [
+      15
+     ]
+    }
+   ]
+  },
+  {
+   "move": 321,
+   "t": 1768443141,
+   "actions": [
+    {
+     "v": "BREAK",
+     "p": 98907091,
+     "n": 2,
+     "at": 9,
+     "max": 9
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "triggering break",
+     "get": {
+      "xtoken": 1
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "Jumping action",
+     "get": {
+      "money": 2
+     }
+    }
+   ]
+  },
+  {
+   "move": 322,
+   "t": 1768443147,
+   "actions": [
+    {
+     "v": "DRAW",
+     "p": 98907091,
+     "cards": [
+      "A455_MantledGuereza"
+     ]
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "get": {
+      "appeal": 7
+     }
+    }
+   ]
+  },
+  {
+   "move": 323,
+   "t": 1768443159,
+   "actions": [
+    {
+     "v": "BREAK_DISCARD",
+     "p": 98907091,
+     "keep": [
+      "S253_OkapiStable"
+     ],
+     "n": 1
+    },
+    {
+     "v": "DISCARD",
+     "p": 98907091,
+     "cards": [
+      "S253_OkapiStable"
+     ]
+    },
+    {
+     "v": "WORKER",
+     "meeples": [
+      {
+       "kind": "worker",
+       "at": "reserve"
+      },
+      {
+       "kind": "worker",
+       "at": "reserve"
+      },
+      {
+       "kind": "worker",
+       "at": "reserve"
+      },
+      {
+       "kind": "worker",
+       "at": "reserve"
+      },
+      {
+       "kind": "worker",
+       "at": "reserve"
+      }
+     ]
+    },
+    {
+     "v": "ASSOC",
+     "p": 98907091,
+     "bonus": "5 x money"
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "map bonus space",
+     "get": {
+      "money": 5
+     }
+    }
+   ]
+  },
+  {
+   "move": 324,
+   "t": 1768443171,
+   "actions": [
+    {
+     "v": "ASSOC",
+     "p": 98907091,
+     "bonus": "1 x Snapping"
+    }
+   ]
+  },
+  {
+   "move": 325,
+   "t": 1768443185,
+   "actions": [
+    {
+     "v": "SNAP",
+     "p": 98907091,
+     "cards": [
+      "S201_ScienceLab"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 326,
+   "t": 1768443188,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "appeal income",
+     "get": {
+      "money": 18
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "kiosk income",
+     "get": {
+      "money": 5
+     }
+    }
+   ]
+  },
+  {
+   "move": 327,
+   "t": 1768443192,
+   "actions": [
+    {
+     "v": "DRAW",
+     "p": 98907091,
+     "cards": [
+      "A435_MalayanTapir",
+      "A512_EurasianEagleowl",
+      "S273_Publications",
+      "A517_LaughingKookaburra"
+     ]
+    },
+    {
+     "v": "ASSOC",
+     "p": 98907091,
+     "bonus": "0 x MAP_13_INCOME"
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "Map 13 quarter bonus",
+     "get": {
+      "money": 3
+     }
+    },
+    {
+     "v": "ASSOC",
+     "p": 98907091,
+     "bonus": "3 x MAP_13_INCOME"
+    }
+   ]
+  },
+  {
+   "move": 328,
+   "t": 1768443205,
+   "actions": [
+    {
+     "v": "DISCARD",
+     "p": 98907091,
+     "cards": [
+      "A512_EurasianEagleowl",
+      "S273_Publications",
+      "A517_LaughingKookaburra"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 329,
+   "t": 1768443208,
+   "actions": [
+    {
+     "v": "ASSOC",
+     "p": 94892221,
+     "bonus": "5 x money"
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "map bonus space",
+     "get": {
+      "money": 5
+     }
+    }
+   ]
+  },
+  {
+   "move": 330,
+   "t": 1768443212,
+   "actions": [
+    {
+     "v": "ASSOC",
+     "p": 94892221,
+     "bonus": "1 x Snapping"
+    }
+   ]
+  },
+  {
+   "move": 331,
+   "t": 1768443215,
+   "actions": [
+    {
+     "v": "SNAP",
+     "p": 94892221,
+     "cards": [
+      "S254_ZooSchool"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 332,
+   "t": 1768443218,
+   "actions": [
+    {
+     "v": "ASSOC",
+     "p": 94892221,
+     "bonus": "1 x MAP_13_INCOME"
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "Map 13 quarter bonus",
+     "get": {
+      "appeal": 2
+     }
+    }
+   ]
+  },
+  {
+   "move": 333,
+   "t": 1768443220,
+   "actions": [
+    {
+     "v": "ASSOC",
+     "p": 94892221,
+     "bonus": "0 x MAP_13_INCOME"
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "Map 13 quarter bonus",
+     "get": {
+      "money": 3
+     }
+    }
+   ]
+  },
+  {
+   "move": 334,
+   "t": 1768443223,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "appeal income",
+     "get": {
+      "money": 25
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "kiosk income",
+     "get": {
+      "money": 7
+     }
+    }
+   ]
+  },
+  {
+   "move": 335,
+   "t": 1768443225,
+   "actions": [
+    {
+     "v": "ASSOC",
+     "p": 94892221,
+     "bonus": "1 x CutDown"
+    }
+   ]
+  },
+  {
+   "move": 336,
+   "t": 1768443228,
+   "actions": [
+    {
+     "v": "CUT",
+     "p": 94892221,
+     "size": 4,
+     "building": "10",
+     "gain": {
+      "money": 8
+     }
+    }
+   ]
+  },
+  {
+   "move": 343,
+   "t": 1768443253,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Animals3",
+     "strength": 5,
+     "level": 2
+    }
+   ]
+  },
+  {
+   "move": 344,
+   "t": 1768443257,
+   "actions": [
+    {
+     "v": "ANIMAL",
+     "p": 94892221,
+     "card": "A445_CrestedPorcupine",
+     "pay": 8,
+     "fromDisplay": false,
+     "into": [
+      33
+     ]
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "get": {
+      "money": 3
+     }
+    }
+   ]
+  },
+  {
+   "move": 345,
+   "t": 1768443260,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "money": 2
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "appeal": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 346,
+   "t": 1768443263,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "appeal": 3
+     }
+    }
+   ]
+  },
+  {
+   "move": 350,
+   "t": 1768443276,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "Animals3 ability",
+     "get": {
+      "money": -2,
+      "appeal": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 351,
+   "t": 1768443281,
+   "actions": [
+    {
+     "v": "ANIMAL",
+     "p": 94892221,
+     "card": "A552_GreenSeaTurtle",
+     "pay": 18,
+     "fromDisplay": true,
+     "into": [
+      3
+     ]
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "get": {
+      "money": 3
+     }
+    }
+   ]
+  },
+  {
+   "move": 352,
+   "t": 1768443286,
+   "actions": [
+    {
+     "v": "DRAW",
+     "p": 94892221,
+     "cards": [
+      "S250_SeaTurtleTank_MW",
+      "P114_ReleaseYosemite",
+      "S267_FarmCat",
+      "A526_Alpaca",
+      "A523_DomesticRabbit"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 353,
+   "t": 1768443291,
+   "actions": [
+    {
+     "v": "DISCARD",
+     "p": 94892221,
+     "cards": [
+      "S250_SeaTurtleTank_MW",
+      "P114_ReleaseYosemite",
+      "A526_Alpaca",
+      "A523_DomesticRabbit"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 354,
+   "t": 1768443293,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "appeal": 6
+     }
+    }
+   ]
+  },
+  {
+   "move": 355,
+   "t": 1768443295,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "Animals3 ability",
+     "get": {
+      "money": -2,
+      "appeal": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 357,
+   "t": 1768443305,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Cards",
+     "strength": 5,
+     "level": 2
+    },
+    {
+     "v": "BREAK",
+     "p": 98907091,
+     "n": 2,
+     "at": 2,
+     "max": 9
+    }
+   ]
+  },
+  {
+   "move": 358,
+   "t": 1768443309,
+   "actions": [
+    {
+     "v": "SNAP",
+     "p": 98907091,
+     "cards": [
+      "S204_ScienceMuseum"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 360,
+   "t": 1768443317,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Association",
+     "strength": 3,
+     "level": 1
+    }
+   ]
+  },
+  {
+   "move": 361,
+   "t": 1768443323,
+   "actions": [
+    {
+     "v": "WORKER",
+     "p": 94892221,
+     "strength": "3",
+     "meeples": [
+      {
+       "kind": "worker",
+       "at": "association_3"
+      }
+     ]
+    },
+    {
+     "v": "WORKER",
+     "p": 94892221,
+     "meeples": [
+      {
+       "kind": "partner-Asia",
+       "at": "partner_2"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "move": 362,
+   "t": 1768443325,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "money": 2
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "appeal": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 363,
+   "t": 1768443327,
+   "actions": [
+    {
+     "v": "UPGRADE",
+     "p": 94892221,
+     "card": "Cards"
+    }
+   ]
+  },
+  {
+   "move": 365,
+   "t": 1768443335,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Sponsors2",
+     "strength": 3,
+     "level": 2
+    }
+   ]
+  },
+  {
+   "move": 366,
+   "t": 1768443339,
+   "actions": [
+    {
+     "v": "SPONSOR",
+     "p": 98907091,
+     "card": "S204_ScienceMuseum",
+     "fromDisplay": false
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "get": {
+      "money": 10
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "Sponsors2 effect",
+     "get": {
+      "money": 5
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "get": {
+      "conservation": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 368,
+   "t": 1768443348,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Sponsors",
+     "strength": 4,
+     "level": 2
+    }
+   ]
+  },
+  {
+   "move": 369,
+   "t": 1768443351,
+   "actions": [
+    {
+     "v": "SPONSOR",
+     "p": 94892221,
+     "card": "S254_ZooSchool",
+     "fromDisplay": false
+    }
+   ]
+  },
+  {
+   "move": 370,
+   "t": 1768443353,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "reputation": 1
+     }
+    },
+    {
+     "v": "ASSOC",
+     "p": 94892221,
+     "bonus": "1 x take-in-range-or-deck"
+    }
+   ]
+  },
+  {
+   "move": 371,
+   "t": 1768443356,
+   "actions": [
+    {
+     "v": "SNAP",
+     "p": 94892221,
+     "cards": [
+      "A537_BlackbarTriggerfish"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 373,
+   "t": 1768443361,
+   "actions": [
+    {
+     "v": "SNAP",
+     "p": 94892221,
+     "cards": [
+      "A541_BluespottedRibbontailRay"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 375,
+   "t": 1768443367,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 94892221,
+     "building": "zoo-school",
+     "size": 3,
+     "at": [
+      5,
+      12
+     ],
+     "rot": 3,
+     "pay": 0
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "conservation": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 380,
+   "t": 1768443390,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "increasing card strength",
+     "get": {
+      "xtoken": -1
+     }
+    },
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Build3",
+     "strength": 5,
+     "level": 2
+    }
+   ]
+  },
+  {
+   "move": 381,
+   "t": 1768443399,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 98907091,
+     "building": "size-3",
+     "size": 3,
+     "at": [
+      3,
+      10
+     ],
+     "rot": 1,
+     "pay": 6
+    }
+   ]
+  },
+  {
+   "move": 382,
+   "t": 1768443404,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 98907091,
+     "building": "pavilion",
+     "size": 1,
+     "at": [
+      1,
+      12
+     ],
+     "rot": 0,
+     "pay": 2
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "building a pavilion",
+     "get": {
+      "appeal": 1
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "placement bonus",
+     "get": {
+      "xtoken": 1
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "Map 13 quarter bonus",
+     "get": {
+      "reputation": 1
+     }
+    },
+    {
+     "v": "ASSOC",
+     "p": 98907091,
+     "bonus": "1 x take-in-range-or-deck"
+    }
+   ]
+  },
+  {
+   "move": 383,
+   "t": 1768443416,
+   "actions": [
+    {
+     "v": "SNAP",
+     "p": 98907091,
+     "cards": [
+      "S217_Engineer"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 384,
+   "t": 1768443424,
+   "actions": [
+    {
+     "v": "BUILD",
+     "p": 98907091,
+     "building": "size-2",
+     "size": 2,
+     "at": [
+      6,
+      7
+     ],
+     "rot": 2,
+     "pay": 4
+    }
+   ]
+  },
+  {
+   "move": 387,
+   "t": 1768443436,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Cards",
+     "strength": 5,
+     "level": 2
+    },
+    {
+     "v": "BREAK",
+     "p": 94892221,
+     "n": 2,
+     "at": 4,
+     "max": 9
+    }
+   ]
+  },
+  {
+   "move": 388,
+   "t": 1768443439,
+   "actions": [
+    {
+     "v": "SNAP",
+     "p": 94892221,
+     "cards": [
+      "A472_RockMonitor"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 389,
+   "t": 1768443442,
+   "actions": [
+    {
+     "v": "DRAW",
+     "p": 94892221,
+     "cards": [
+      "S275_HorseWhisperer"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 390,
+   "t": 1768443445,
+   "actions": [
+    {
+     "v": "DRAW",
+     "p": 94892221,
+     "cards": [
+      "A411_GrizzlyBear"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 391,
+   "t": 1768443448,
+   "actions": [
+    {
+     "v": "DRAW",
+     "p": 94892221,
+     "cards": [
+      "P128_Aquatic"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 392,
+   "t": 1768443452,
+   "actions": [
+    {
+     "v": "DISCARD",
+     "p": 94892221,
+     "cards": [
+      "S267_FarmCat"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 394,
+   "t": 1768443459,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "increasing card strength",
+     "get": {
+      "xtoken": -1
+     }
+    },
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Animals",
+     "strength": 5,
+     "level": 2
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "max strength Animals",
+     "get": {
+      "reputation": 1
+     }
+    },
+    {
+     "v": "ASSOC",
+     "p": 98907091,
+     "bonus": "1 x conservation"
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "reputation track bonus",
+     "get": {
+      "conservation": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 395,
+   "t": 1768443470,
+   "actions": [
+    {
+     "v": "ANIMAL",
+     "p": 98907091,
+     "card": "A455_MantledGuereza",
+     "pay": 10,
+     "fromDisplay": false,
+     "into": [
+      38
+     ]
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "get": {
+      "appeal": 6
+     }
+    }
+   ]
+  },
+  {
+   "move": 396,
+   "t": 1768443480,
+   "actions": [
+    {
+     "v": "ANIMAL",
+     "p": 98907091,
+     "card": "A457_Mandrill",
+     "pay": 25,
+     "fromDisplay": false,
+     "into": [
+      22
+     ]
+    }
+   ]
+  },
+  {
+   "move": 398,
+   "t": 1768443486,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "get": {
+      "conservation": 2
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "get": {
+      "appeal": 9
+     }
+    }
+   ]
+  },
+  {
+   "move": 401,
+   "t": 1768443504,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Animals3",
+     "strength": 4,
+     "level": 2
+    }
+   ]
+  },
+  {
+   "move": 402,
+   "t": 1768443508,
+   "actions": [
+    {
+     "v": "ANIMAL",
+     "p": 94892221,
+     "card": "A537_BlackbarTriggerfish",
+     "pay": 14,
+     "fromDisplay": false,
+     "into": [
+      18
+     ]
+    }
+   ]
+  },
+  {
+   "move": 405,
+   "t": 1768443519,
+   "actions": [
+    {
+     "v": "SNAP",
+     "p": 94892221,
+     "cards": [
+      "A460_DuskyleafMonkey"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 407,
+   "t": 1768443524,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "Shark Attack",
+     "get": {
+      "appeal": 3
+     }
+    }
+   ]
+  },
+  {
+   "move": 408,
+   "t": 1768443526,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "appeal": 5
+     }
+    }
+   ]
+  },
+  {
+   "move": 409,
+   "t": 1768443528,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "money": 2
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "appeal": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 410,
+   "t": 1768443531,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "Animals3 ability",
+     "get": {
+      "money": -2,
+      "appeal": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 414,
+   "t": 1768443545,
+   "actions": [
+    {
+     "v": "ANIMAL",
+     "p": 94892221,
+     "card": "A472_RockMonitor",
+     "pay": 12,
+     "fromDisplay": false,
+     "into": [
+      1
+     ]
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "get": {
+      "money": 3
+     }
+    }
+   ]
+  },
+  {
+   "move": 415,
+   "t": 1768443548,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "appeal": 5
+     }
+    }
+   ]
+  },
+  {
+   "move": 416,
+   "t": 1768443550,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "Animals3 ability",
+     "get": {
+      "money": -2,
+      "appeal": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 417,
+   "t": 1768443557,
+   "actions": [
+    {
+     "v": "DISCARD",
+     "p": 94892221,
+     "cards": [
+      "A411_GrizzlyBear",
+      "S242_Geologist",
+      "S275_HorseWhisperer"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 419,
+   "t": 1768443563,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Association",
+     "strength": 5,
+     "level": 1
+    }
+   ]
+  },
+  {
+   "move": 420,
+   "t": 1768443571,
+   "actions": [
+    {
+     "v": "WORKER",
+     "p": 98907091,
+     "strength": 5,
+     "meeples": [
+      {
+       "kind": "worker",
+       "at": "association_5"
+      }
+     ]
+    },
+    {
+     "v": "WORKER",
+     "meeples": [
+      {
+       "kind": "token",
+       "at": "P108_Primates_0"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "move": 421,
+   "t": 1768443575,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "Primates",
+     "get": {
+      "conservation": 5
+     }
+    },
+    {
+     "v": "WORKER",
+     "p": 98907091,
+     "meeples": [
+      {
+       "kind": "worker",
+       "at": "reserve"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "move": 423,
+   "t": 1768443585,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Animals3",
+     "strength": 1,
+     "level": 2
+    }
+   ]
+  },
+  {
+   "move": 424,
+   "t": 1768443587,
+   "actions": [
+    {
+     "v": "ANIMAL",
+     "p": 94892221,
+     "card": "A460_DuskyleafMonkey",
+     "pay": 9,
+     "fromDisplay": false,
+     "into": [
+      21
+     ]
+    }
+   ]
+  },
+  {
+   "move": 425,
+   "t": 1768443590,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "appeal": 5
+     }
+    }
+   ]
+  },
+  {
+   "move": 426,
+   "t": 1768443592,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "Animals3 ability",
+     "get": {
+      "money": -2,
+      "appeal": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 436,
+   "t": 1768443654,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "increasing card strength",
+     "get": {
+      "xtoken": -2
+     }
+    },
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Sponsors2",
+     "strength": 7,
+     "level": 2
+    }
+   ]
+  },
+  {
+   "move": 437,
+   "t": 1768443660,
+   "actions": [
+    {
+     "v": "SPONSOR",
+     "p": 98907091,
+     "card": "S201_ScienceLab",
+     "fromDisplay": false
+    }
+   ]
+  },
+  {
+   "move": 439,
+   "t": 1768443665,
+   "actions": [
+    {
+     "v": "SNAP",
+     "p": 98907091,
+     "cards": [
+      "A406_SiberianTiger"
+     ]
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "get": {
+      "conservation": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 440,
+   "t": 1768443671,
+   "actions": [
+    {
+     "v": "SPONSOR",
+     "p": 98907091,
+     "card": "S231_SponsorshipPrimates",
+     "fromDisplay": false
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "get": {
+      "appeal": 5
+     }
+    }
+   ]
+  },
+  {
+   "move": 442,
+   "t": 1768443688,
+   "actions": [
+    {
+     "v": "ACT",
+     "p": 94892221,
+     "card": "Association",
+     "strength": 5,
+     "level": 1
+    }
+   ]
+  },
+  {
+   "move": 443,
+   "t": 1768443695,
+   "actions": [
+    {
+     "v": "WORKER",
+     "p": 94892221,
+     "strength": 5,
+     "meeples": [
+      {
+       "kind": "worker",
+       "at": "association_5"
+      }
+     ]
+    },
+    {
+     "v": "PROJECT",
+     "p": 94892221,
+     "cards": [
+      "P128_Aquatic"
+     ],
+     "fromDisplay": false
+    },
+    {
+     "v": "WORKER",
+     "meeples": [
+      {
+       "kind": "token",
+       "at": "P128_Aquatic_1"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "move": 444,
+   "t": 1768443699,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "src": "Aquatic",
+     "get": {
+      "conservation": 3
+     }
+    }
+   ]
+  },
+  {
+   "move": 445,
+   "t": 1768443702,
+   "actions": [
+    {
+     "v": "DRAW",
+     "p": 94892221,
+     "cards": [
+      "F009_DiverseSpeciesZoo",
+      "F003_ResearchZoo_MW",
+      "F015_CateredPicnicAreas"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 446,
+   "t": 1768443707,
+   "actions": [
+    {
+     "v": "DISCARD",
+     "p": 94892221,
+     "cards": [
+      "F008_SponsoredZoo_MW",
+      "F003_ResearchZoo_MW",
+      "F015_CateredPicnicAreas"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 458,
+   "t": 1768443786,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "increasing card strength",
+     "get": {
+      "xtoken": -2
+     }
+    },
+    {
+     "v": "ACT",
+     "p": 98907091,
+     "card": "Association",
+     "strength": 4,
+     "level": 1
+    }
+   ]
+  },
+  {
+   "move": 459,
+   "t": 1768443802,
+   "actions": [
+    {
+     "v": "WORKER",
+     "p": 98907091,
+     "strength": "4",
+     "meeples": [
+      {
+       "kind": "worker",
+       "at": "association_4"
+      }
+     ]
+    },
+    {
+     "v": "WORKER",
+     "p": 98907091,
+     "meeples": [
+      {
+       "kind": "fac-science-marine",
+       "at": "university_3"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "move": 460,
+   "t": 1768443808,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "src": "university",
+     "get": {
+      "conservation": 2
+     }
+    }
+   ]
+  },
+  {
+   "move": 461,
+   "t": 1768443811,
+   "actions": [
+    {
+     "v": "DRAW",
+     "p": 98907091,
+     "cards": [
+      "A550_CompassJellyfish"
+     ]
+    }
+   ]
+  },
+  {
+   "move": 462,
+   "t": 1768443813,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "get": {
+      "conservation": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 465,
+   "t": 1768443824,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "get": {
+      "conservation": 1
+     }
+    }
+   ]
+  },
+  {
+   "move": 466,
+   "t": 1768443832,
+   "actions": [
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "conservation": 1
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 94892221,
+     "get": {
+      "conservation": 3
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "get": {
+      "conservation": 2
+     }
+    },
+    {
+     "v": "GAIN",
+     "p": 98907091,
+     "get": {
+      "conservation": 3
+     }
+    }
+   ]
+  }
+ ]
+}
