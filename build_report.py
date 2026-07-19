@@ -2,7 +2,7 @@ import json, glob, os, html
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 
-FILES = [f for f in glob.glob(r"C:\Users\chentony\Git\arklogs\*.json") if "tobiko" not in os.path.basename(f).lower()]
+FILES = [f for f in glob.glob(r"C:\Users\TonyC\Documents\GitHub\arklogs\*.json") if "tobiko" not in os.path.basename(f).lower()]
 START = datetime(2026, 4, 14, tzinfo=timezone.utc).timestamp() * 1000
 END = datetime(2026, 7, 15, 12, 0, tzinfo=timezone.utc).timestamp() * 1000
 
@@ -313,7 +313,7 @@ out.append("</table>")
 
 out.append("</body></html>")
 
-open(r"C:\Users\chentony\Git\arklogs\arena_report.html", "w", encoding="utf-8").write("\n".join(out))
+open(r"C:\Users\TonyC\Documents\GitHub\arklogs\arena_report.html", "w", encoding="utf-8").write("\n".join(out))
 print("Wrote arena_report.html")
 for p in players:
     print(f"{p['name']:22s} games={p['n']:4d} wr={pct(p['wins'],p['n']):>6s} maxArena={p['max_arena']} perf={p['perf']:.0f}")

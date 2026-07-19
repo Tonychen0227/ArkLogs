@@ -70,8 +70,24 @@ if ($chromeFound) {
     }
 }
 
-# --- 3. Install pip dependencies ---
-Write-Host "`n[3/5] Installing pip dependencies..." -ForegroundColor Yellow
+# --- 3. Install Visual C++ Redistributable (required by greenlet/Playwright) ---
+Write-Host "`n[3/7] Checking Visual C++ Redistributable..." -ForegroundColor Yellow
+
+$vcInstalled = Test-Path "HKLM:\SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\x64"
+if ($vcInstalled) {
+    Write-Host "  Visual C++ Redistributable already installed." -ForegroundColor Green
+} else {
+    Write-Host "  Installing Visual C++ Redistributable..." -ForegroundColor Yellow
+    $vcUrl = "https://aka.ms/vs/17/release/vc_redist.x64.exe"
+    $vcInstaller = "$env:TEMP\vc_redist.x64.exe"
+    Invoke-WebRequest -Uri $vcUrl -OutFile $vcInstaller -UseBasicParsing
+    Start-Process -FilePath $vcInstaller -ArgumentList "/install /quiet /norestart" -Wait
+    Remove-Item $vcInstaller -Force -ErrorAction SilentlyContinue
+    Write-Host "  Visual C++ Redistributable installed." -ForegroundColor Green
+}
+
+# --- 4. Install pip dependencies ---
+Write-Host "`n[4/7] Installing pip dependencies..." -ForegroundColor Yellow
 
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $requirementsFile = Join-Path $scriptDir "requirements.txt"
@@ -89,13 +105,13 @@ if (-not (Test-Path $requirementsFile)) {
 
 Write-Host "  pip dependencies installed." -ForegroundColor Green
 
-# --- 4. Install Playwright browsers ---
-Write-Host "`n[4/5] Installing Playwright Chromium browser..." -ForegroundColor Yellow
+# --- 5. Install Playwright browsers ---
+Write-Host "`n[5/7] Installing Playwright Chromium browser..." -ForegroundColor Yellow
 & python -m playwright install chromium
 Write-Host "  Playwright Chromium installed." -ForegroundColor Green
 
-# --- 5. Download GCP service account key from Azure Blob Storage ---
-Write-Host "`n[5/6] Downloading GCP service account key..." -ForegroundColor Yellow
+# --- 6. Download GCP service account key from Azure Blob Storage ---
+Write-Host "`n[6/7] Downloading GCP service account key..." -ForegroundColor Yellow
 
 $gcpKeyPath = Join-Path $scriptDir "gcp-sa-key.json"
 $storageAccount = "arknovastorage"
@@ -136,8 +152,8 @@ try {
     Write-Host "  BigQuery upload will not work without manual credential setup." -ForegroundColor Yellow
 }
 
-# --- 6. Verify installation ---
-Write-Host "`n[6/6] Verifying installation..." -ForegroundColor Yellow
+# --- 7. Verify installation ---
+Write-Host "`n[7/7] Verifying installation..." -ForegroundColor Yellow
 
 $checks = @(
     @{ Name = "Python";                Cmd = @("python", "--version") },
