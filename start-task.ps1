@@ -46,38 +46,8 @@ if ($python) {
     Write-Host "  Installed: $pyVersion" -ForegroundColor Green
 }
 
-# --- 2. Install Google Chrome (needed by Playwright channel="chrome") ---
-Write-Host "`n[2/7] Checking Google Chrome installation..." -ForegroundColor Yellow
-
-$chromePaths = @(
-    "C:\Program Files\Google\Chrome\Application\chrome.exe",
-    "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
-    "$env:LOCALAPPDATA\Google\Chrome\Application\chrome.exe"
-)
-$chromeFound = $chromePaths | Where-Object { Test-Path $_ } | Select-Object -First 1
-
-if ($chromeFound) {
-    Write-Host "  Google Chrome already installed at $chromeFound" -ForegroundColor Green
-} else {
-    Write-Host "  Installing Google Chrome (enterprise MSI)..." -ForegroundColor Yellow
-    $chromeUrl = "https://dl.google.com/dl/chrome/install/googlechromestandaloneenterprise64.msi"
-    $chromeMsi = "$env:TEMP\chrome_enterprise.msi"
-    Invoke-WebRequest -Uri $chromeUrl -OutFile $chromeMsi -UseBasicParsing
-    $msi = Start-Process msiexec.exe -ArgumentList "/i `"$chromeMsi`" /qn /norestart" -Wait -PassThru
-    if ($msi.ExitCode -ne 0) {
-        Write-Host "  WARNING: Chrome MSI exited with code $($msi.ExitCode)" -ForegroundColor Yellow
-    }
-    Remove-Item $chromeMsi -Force -ErrorAction SilentlyContinue
-    $chromeFound = $chromePaths | Where-Object { Test-Path $_ } | Select-Object -First 1
-    if ($chromeFound) {
-        Write-Host "  Google Chrome installed at $chromeFound" -ForegroundColor Green
-    } else {
-        Write-Host "  WARNING: Chrome MSI installed but binary not found in expected paths." -ForegroundColor Yellow
-    }
-}
-
-# --- 3. Install Visual C++ Redistributable (required by greenlet/Playwright) ---
-Write-Host "`n[3/7] Checking Visual C++ Redistributable..." -ForegroundColor Yellow
+# --- 2. Install Visual C++ Redistributable (required by greenlet/Playwright) ---
+Write-Host "`n[2/6] Checking Visual C++ Redistributable..." -ForegroundColor Yellow
 
 $vcInstalled = Test-Path "HKLM:\SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\x64"
 if ($vcInstalled) {
@@ -92,8 +62,8 @@ if ($vcInstalled) {
     Write-Host "  Visual C++ Redistributable installed." -ForegroundColor Green
 }
 
-# --- 4. Install pip dependencies ---
-Write-Host "`n[4/7] Installing pip dependencies..." -ForegroundColor Yellow
+# --- 3. Install pip dependencies ---
+Write-Host "`n[3/6] Installing pip dependencies..." -ForegroundColor Yellow
 
 $requirementsFile = Join-Path $repoDir "requirements.txt"
 
@@ -107,13 +77,13 @@ if (-not (Test-Path $requirementsFile)) {
 
 Write-Host "  pip dependencies installed." -ForegroundColor Green
 
-# --- 5. Install Playwright browsers ---
-Write-Host "`n[5/7] Installing Playwright Chromium browser..." -ForegroundColor Yellow
+# --- 4. Install Playwright browsers ---
+Write-Host "`n[4/6] Installing Playwright Chromium browser..." -ForegroundColor Yellow
 & python -m playwright install chromium
 Write-Host "  Playwright Chromium installed." -ForegroundColor Green
 
-# --- 6. Download GCP service account key from Azure Blob Storage ---
-Write-Host "`n[6/7] Downloading GCP service account key..." -ForegroundColor Yellow
+# --- 5. Download GCP service account key from Azure Blob Storage ---
+Write-Host "`n[5/6] Downloading GCP service account key..." -ForegroundColor Yellow
 
 $gcpKeyPath = Join-Path $repoDir "gcp-sa-key.json"
 $storageAccount = "arknovastorage"
@@ -150,8 +120,8 @@ try {
     Write-Host "  BigQuery upload will not work without manual credential setup." -ForegroundColor Yellow
 }
 
-# --- 7. Verify installation ---
-Write-Host "`n[7/7] Verifying installation..." -ForegroundColor Yellow
+# --- 6. Verify installation ---
+Write-Host "`n[6/6] Verifying installation..." -ForegroundColor Yellow
 
 $checks = @(
     @{ Name = "Python";                Cmd = @("python", "--version") },
@@ -172,14 +142,6 @@ foreach ($check in $checks) {
         Write-Host "  [FAIL] $($check.Name): $_" -ForegroundColor Red
         $allOk = $false
     }
-}
-
-$chromeCheck = $chromePaths | Where-Object { Test-Path $_ } | Select-Object -First 1
-if ($chromeCheck) {
-    Write-Host "  [OK] Google Chrome: $chromeCheck" -ForegroundColor Green
-} else {
-    Write-Host "  [FAIL] Google Chrome not found in expected paths" -ForegroundColor Red
-    $allOk = $false
 }
 
 Write-Host ""

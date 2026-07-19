@@ -91,7 +91,7 @@ async def main():
     print(f"Scraping {len(games)} table(s)")
 
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True, channel="chrome")
+        browser = await p.chromium.launch(headless=True)
         context = await browser.new_context()
         page = await context.new_page()
 
