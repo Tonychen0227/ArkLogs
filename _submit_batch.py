@@ -1,9 +1,12 @@
 """Create an Azure Batch job + task to scrape 100 tables starting with 5XX."""
 from azure.batch import BatchClient
 from azure.batch.models import (
+    AutoUserSpecification,
     BatchJobCreateOptions,
     BatchPoolInfo,
     BatchTaskCreateOptions,
+    ElevationLevel,
+    UserIdentity,
 )
 from azure.identity import DefaultAzureCredential
 import os
@@ -29,14 +32,14 @@ TABLE_IDS = (
 
 BATCH_URL = "https://arknovastats.eastus.batch.azure.com"
 POOL_ID = "arknovalogspool"
-JOB_ID = "backfill-5xx-003"
+JOB_ID = "backfill-5xx-005"
 WORK_DIR = r"C:\arklogs\arklogs-main"
 
 cred = DefaultAzureCredential()
 client = BatchClient(endpoint=BATCH_URL, credential=cred)
 
 # Delete old jobs if they exist
-for old_id in ["backfill-5xx-001", "backfill-5xx-002"]:
+for old_id in ["backfill-5xx-001", "backfill-5xx-002", "backfill-5xx-003", "backfill-5xx-004"]:
     try:
         client.delete_job(old_id)
         print(f"Deleted old job {old_id}")
@@ -75,6 +78,11 @@ cmd = (
 task = BatchTaskCreateOptions(
     id="scrape-5xx",
     command_line=cmd,
+    user_identity=UserIdentity(
+        auto_user=AutoUserSpecification(
+            elevation_level=ElevationLevel.ADMIN,
+        )
+    ),
 )
 client.create_task(JOB_ID, task)
 print(f"Created task: scrape-5xx ({len(TABLE_IDS.split(','))} tables)")
