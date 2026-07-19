@@ -4,17 +4,20 @@
     Setup script for Windows Server 2022 to run BGA scraper and publish to Google BigQuery.
 
 .DESCRIPTION
-    Installs Python 3.12, pip dependencies (Playwright, BigQuery client, etc.),
+    Installs Python 3.12, VC++ Redistributable, pip dependencies (Playwright, BigQuery client, etc.),
     Playwright Chromium browser, and Google Chrome.
     Run this once as Administrator before using main.py or run.py.
 #>
 
 $ErrorActionPreference = "Stop"
 
+# Repo code lives here (downloaded by Azure Batch resource files)
+$repoDir = "C:\arklogs\arklogs-main"
+
 Write-Host "=== BGA Scraper Setup for Windows Server 2022 ===" -ForegroundColor Cyan
 
-# --- 1. Install Python via winget (or check if already installed) ---
-Write-Host "`n[1/5] Checking Python installation..." -ForegroundColor Yellow
+# --- 1. Install Python ---
+Write-Host "`n[1/7] Checking Python installation..." -ForegroundColor Yellow
 
 $python = Get-Command python -ErrorAction SilentlyContinue
 if ($python) {
@@ -44,7 +47,7 @@ if ($python) {
 }
 
 # --- 2. Install Google Chrome (needed by Playwright channel="chrome") ---
-Write-Host "`n[2/5] Checking Google Chrome installation..." -ForegroundColor Yellow
+Write-Host "`n[2/7] Checking Google Chrome installation..." -ForegroundColor Yellow
 
 $chromePaths = @(
     "C:\Program Files\Google\Chrome\Application\chrome.exe",
@@ -89,8 +92,7 @@ if ($vcInstalled) {
 # --- 4. Install pip dependencies ---
 Write-Host "`n[4/7] Installing pip dependencies..." -ForegroundColor Yellow
 
-$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
-$requirementsFile = Join-Path $scriptDir "requirements.txt"
+$requirementsFile = Join-Path $repoDir "requirements.txt"
 
 if (-not (Test-Path $requirementsFile)) {
     Write-Host "  ERROR: requirements.txt not found at $requirementsFile" -ForegroundColor Red
@@ -99,9 +101,6 @@ if (-not (Test-Path $requirementsFile)) {
 
 & python -m pip install --upgrade pip
 & python -m pip install -r $requirementsFile
-
-# Install Google BigQuery dependencies
-& python -m pip install google-cloud-bigquery google-auth
 
 Write-Host "  pip dependencies installed." -ForegroundColor Green
 
@@ -113,14 +112,10 @@ Write-Host "  Playwright Chromium installed." -ForegroundColor Green
 # --- 6. Download GCP service account key from Azure Blob Storage ---
 Write-Host "`n[6/7] Downloading GCP service account key..." -ForegroundColor Yellow
 
-$gcpKeyPath = Join-Path $scriptDir "gcp-sa-key.json"
+$gcpKeyPath = Join-Path $repoDir "gcp-sa-key.json"
 $storageAccount = "arknovastorage"
 $container = "data"
 $blobName = "gcp-sa-key.json"
-$uamiClientId = "$(
-    # Resolve client ID from the user-assigned managed identity resource
-    # The UAMI is attached to the VM; we use IMDS to get a token with it
-)"
 
 # Get access token from Azure IMDS using the user-assigned managed identity
 $imdsUrl = "http://169.254.169.254/metadata/identity/oauth2/token"
@@ -158,6 +153,7 @@ Write-Host "`n[7/7] Verifying installation..." -ForegroundColor Yellow
 $checks = @(
     @{ Name = "Python";                Cmd = @("python", "--version") },
     @{ Name = "pip";                   Cmd = @("python", "-m", "pip", "--version") },
+    @{ Name = "greenlet";              Cmd = @("python", "-c", "import greenlet; print('greenlet OK')") },
     @{ Name = "playwright";            Cmd = @("python", "-c", "from playwright._impl._driver import compute_driver_executable; print('playwright OK')") },
     @{ Name = "python-dotenv";         Cmd = @("python", "-c", "import dotenv; print('python-dotenv OK')") },
     @{ Name = "google-cloud-bigquery"; Cmd = @("python", "-c", "from google.cloud import bigquery; print('google-cloud-bigquery OK')") }
