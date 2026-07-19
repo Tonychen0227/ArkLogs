@@ -35,12 +35,13 @@ WORK_DIR = r"C:\arklogs\arklogs-main"
 cred = DefaultAzureCredential()
 client = BatchClient(endpoint=BATCH_URL, credential=cred)
 
-# Delete old job if exists
-try:
-    client.delete_job("backfill-5xx-001")
-    print("Deleted old job backfill-5xx-001")
-except Exception:
-    pass
+# Delete old jobs if they exist
+for old_id in ["backfill-5xx-001", "backfill-5xx-002"]:
+    try:
+        client.delete_job(old_id)
+        print(f"Deleted old job {old_id}")
+    except Exception:
+        pass
 
 # Create job
 job = BatchJobCreateOptions(
@@ -50,12 +51,22 @@ job = BatchJobCreateOptions(
 client.create_job(job)
 print(f"Created job: {JOB_ID}")
 
-# Build command — set up env vars, cd to repo, run scraper
+# Build command — re-download latest code, set env vars, run scraper
 bga_email = os.environ["BGA_EMAIL"]
 bga_password = os.environ["BGA_PASSWORD"]
 
+# Re-download repo zip to get latest code before running
+REFRESH_CMD = (
+    "powershell -Command \""
+    "Invoke-WebRequest -Uri 'https://github.com/Tonychen0227/arklogs/archive/refs/heads/main.zip' "
+    "-OutFile '%TEMP%\\arklogs.zip' -UseBasicParsing; "
+    "Expand-Archive -Path '%TEMP%\\arklogs.zip' -DestinationPath 'C:\\arklogs' -Force"
+    "\""
+)
+
 cmd = (
-    f'cmd /c "cd /d {WORK_DIR} && '
+    f'cmd /c "{REFRESH_CMD} && '
+    f'cd /d {WORK_DIR} && '
     f'set BGA_EMAIL={bga_email} && '
     f'set BGA_PASSWORD={bga_password} && '
     f'python run_batch.py {TABLE_IDS}"'
