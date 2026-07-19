@@ -46,17 +46,28 @@ if ($python) {
 # --- 2. Install Google Chrome (needed by Playwright channel="chrome") ---
 Write-Host "`n[2/5] Checking Google Chrome installation..." -ForegroundColor Yellow
 
-$chromePath = "C:\Program Files\Google\Chrome\Application\chrome.exe"
-if (Test-Path $chromePath) {
-    Write-Host "  Google Chrome already installed." -ForegroundColor Green
+$chromePaths = @(
+    "C:\Program Files\Google\Chrome\Application\chrome.exe",
+    "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
+    "$env:LOCALAPPDATA\Google\Chrome\Application\chrome.exe"
+)
+$chromeFound = $chromePaths | Where-Object { Test-Path $_ } | Select-Object -First 1
+
+if ($chromeFound) {
+    Write-Host "  Google Chrome already installed at $chromeFound" -ForegroundColor Green
 } else {
-    Write-Host "  Installing Google Chrome..." -ForegroundColor Yellow
-    $chromeUrl = "https://dl.google.com/chrome/install/latest/chrome_installer.exe"
-    $chromeInstaller = "$env:TEMP\chrome_installer.exe"
-    Invoke-WebRequest -Uri $chromeUrl -OutFile $chromeInstaller -UseBasicParsing
-    Start-Process -FilePath $chromeInstaller -Args "/silent /install" -Wait
-    Remove-Item $chromeInstaller -Force -ErrorAction SilentlyContinue
-    Write-Host "  Google Chrome installed." -ForegroundColor Green
+    Write-Host "  Installing Google Chrome (enterprise MSI)..." -ForegroundColor Yellow
+    $chromeUrl = "https://dl.google.com/dl/chrome/install/googlechromestandaloneenterprise64.msi"
+    $chromeMsi = "$env:TEMP\chrome_enterprise.msi"
+    Invoke-WebRequest -Uri $chromeUrl -OutFile $chromeMsi -UseBasicParsing
+    Start-Process msiexec.exe -ArgumentList "/i `"$chromeMsi`" /quiet /norestart" -Wait
+    Remove-Item $chromeMsi -Force -ErrorAction SilentlyContinue
+    $chromeFound = $chromePaths | Where-Object { Test-Path $_ } | Select-Object -First 1
+    if ($chromeFound) {
+        Write-Host "  Google Chrome installed at $chromeFound" -ForegroundColor Green
+    } else {
+        Write-Host "  WARNING: Chrome MSI installed but binary not found in expected paths." -ForegroundColor Yellow
+    }
 }
 
 # --- 3. Install pip dependencies ---
@@ -87,28 +98,30 @@ Write-Host "  Playwright Chromium installed." -ForegroundColor Green
 Write-Host "`n[5/5] Verifying installation..." -ForegroundColor Yellow
 
 $checks = @(
-    @{ Name = "Python";              Cmd = "python --version" },
-    @{ Name = "pip";                 Cmd = "python -m pip --version" },
-    @{ Name = "playwright";          Cmd = "python -c `"import playwright; print('playwright', playwright.__version__)`"" },
-    @{ Name = "python-dotenv";       Cmd = "python -c `"import dotenv; print('python-dotenv OK')`"" },
-    @{ Name = "google-cloud-bigquery"; Cmd = "python -c `"from google.cloud import bigquery; print('google-cloud-bigquery OK')`"" }
+    @{ Name = "Python";                Cmd = @("python", "--version") },
+    @{ Name = "pip";                   Cmd = @("python", "-m", "pip", "--version") },
+    @{ Name = "playwright";            Cmd = @("python", "-c", "from playwright._impl._driver import compute_driver_executable; print('playwright OK')") },
+    @{ Name = "python-dotenv";         Cmd = @("python", "-c", "import dotenv; print('python-dotenv OK')") },
+    @{ Name = "google-cloud-bigquery"; Cmd = @("python", "-c", "from google.cloud import bigquery; print('google-cloud-bigquery OK')") }
 )
 
 $allOk = $true
 foreach ($check in $checks) {
     try {
-        $result = Invoke-Expression $check.Cmd 2>&1
+        $result = & $check.Cmd[0] $check.Cmd[1..($check.Cmd.Length-1)] 2>&1
+        if ($LASTEXITCODE -ne 0) { throw "exit code $LASTEXITCODE" }
         Write-Host "  [OK] $($check.Name): $result" -ForegroundColor Green
     } catch {
-        Write-Host "  [FAIL] $($check.Name)" -ForegroundColor Red
+        Write-Host "  [FAIL] $($check.Name): $_" -ForegroundColor Red
         $allOk = $false
     }
 }
 
-if (Test-Path $chromePath) {
-    Write-Host "  [OK] Google Chrome" -ForegroundColor Green
+$chromeCheck = $chromePaths | Where-Object { Test-Path $_ } | Select-Object -First 1
+if ($chromeCheck) {
+    Write-Host "  [OK] Google Chrome: $chromeCheck" -ForegroundColor Green
 } else {
-    Write-Host "  [FAIL] Google Chrome not found" -ForegroundColor Red
+    Write-Host "  [FAIL] Google Chrome not found in expected paths" -ForegroundColor Red
     $allOk = $false
 }
 
