@@ -63,7 +63,10 @@ if ($chromeFound) {
     $chromeUrl = "https://dl.google.com/dl/chrome/install/googlechromestandaloneenterprise64.msi"
     $chromeMsi = "$env:TEMP\chrome_enterprise.msi"
     Invoke-WebRequest -Uri $chromeUrl -OutFile $chromeMsi -UseBasicParsing
-    Start-Process msiexec.exe -ArgumentList "/i `"$chromeMsi`" /quiet /norestart" -Wait
+    $msi = Start-Process msiexec.exe -ArgumentList "/i `"$chromeMsi`" /qn /norestart" -Wait -PassThru
+    if ($msi.ExitCode -ne 0) {
+        Write-Host "  WARNING: Chrome MSI exited with code $($msi.ExitCode)" -ForegroundColor Yellow
+    }
     Remove-Item $chromeMsi -Force -ErrorAction SilentlyContinue
     $chromeFound = $chromePaths | Where-Object { Test-Path $_ } | Select-Object -First 1
     if ($chromeFound) {
