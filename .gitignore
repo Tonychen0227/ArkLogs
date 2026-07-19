@@ -3,3 +3,4 @@ user_data/
 extension/
 __pycache__/
 *.pyc
+gcp-sa-key.json

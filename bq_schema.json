@@ -1,0 +1,502 @@
+[
+  {
+    "name": "Africa_icons",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Americas_icons",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Animals_actions",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Appeal",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Asia_icons",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Association_actions",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Association_workers",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Australia_icons",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Bear_icons",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Bird_icons",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Build_actions",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Built_enclosures",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Built_kiosks",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Built_pavilions",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Built_unique_buildings",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Cards_actions",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Cards_drawn_from_deck",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Cards_taken_from_reputation_range",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Conservation",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Conservation_project_association_tasks",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Covered_hexes",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Discarded_cards",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Donation_association_tasks",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Empty_hexes",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Europe_icons",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Game_result",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Herbivore_icons",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Map",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Money_gained",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Money_gained_through_income",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Money_spent_for_playing_cards_from_reputation_range",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Money_spent_on_animals",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Money_spent_on_donations",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Money_spent_on_enclosures",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Number_of_breaks_triggered",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Number_of_turns",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Partner_zoo_association_tasks",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Petting_Zoo_icons",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Played_animals",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Played_sponsors",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Predator_icons",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Primate_icons",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Released_animals",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Reptile_icons",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Reputation",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Reputation_association_tasks",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Rock_icons",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Science_icons",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Score",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Sea_Animal_icons",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Snapped_cards",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Sponsors_actions",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Starting_position_in_first_round",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Thinking_time",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Triggered_end_of_game",
+    "type": "BOOL",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "University_association_tasks",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Upgraded_Animals_action_card",
+    "type": "BOOL",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Upgraded_Association_action_card",
+    "type": "BOOL",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Upgraded_Build_action_card",
+    "type": "BOOL",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Upgraded_Cards_action_card",
+    "type": "BOOL",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Upgraded_Sponsors_action_card",
+    "type": "BOOL",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Upgraded_action_cards",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "Water_icons",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "X_Tokens_gained",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "X_Tokens_gained_instead_of_action",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "X_Tokens_used",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "arena_rating_delta",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "concede",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "determinations",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "elo",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "elo_delta",
+    "type": "FLOAT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "end_game_triggered",
+    "type": "BOOL",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "game_ended_at",
+    "type": "TIMESTAMP",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "is_alt_map",
+    "type": "BOOL",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "is_beginner_map",
+    "type": "BOOL",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "is_map_pack_1",
+    "type": "BOOL",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "is_map_pack_2",
+    "type": "BOOL",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "is_mw",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "last_x_games",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "opponent_elo",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "player",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "player_id",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "opponent_id",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "points_per_money",
+    "type": "FLOAT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "points_per_turn",
+    "type": "FLOAT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "post_match_arena_rating",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "post_match_elo",
+    "type": "FLOAT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "pre_match_arena_rating",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "pre_match_elo",
+    "type": "FLOAT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "table_id",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "total_breaks",
+    "type": "INT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "url",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "action_1",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "action_2",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "action_3",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "animals_action",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "sponsors_action",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "assoc_action",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "build_action",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "cards_action",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  }
+]

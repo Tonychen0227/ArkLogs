@@ -94,8 +94,50 @@ Write-Host "`n[4/5] Installing Playwright Chromium browser..." -ForegroundColor 
 & python -m playwright install chromium
 Write-Host "  Playwright Chromium installed." -ForegroundColor Green
 
-# --- 5. Verify installation ---
-Write-Host "`n[5/5] Verifying installation..." -ForegroundColor Yellow
+# --- 5. Download GCP service account key from Azure Blob Storage ---
+Write-Host "`n[5/6] Downloading GCP service account key..." -ForegroundColor Yellow
+
+$gcpKeyPath = Join-Path $scriptDir "gcp-sa-key.json"
+$storageAccount = "arknovastorage"
+$container = "data"
+$blobName = "gcp-sa-key.json"
+$uamiClientId = "$(
+    # Resolve client ID from the user-assigned managed identity resource
+    # The UAMI is attached to the VM; we use IMDS to get a token with it
+)"
+
+# Get access token from Azure IMDS using the user-assigned managed identity
+$imdsUrl = "http://169.254.169.254/metadata/identity/oauth2/token"
+$imdsUrl += "?api-version=2018-02-01"
+$imdsUrl += "&resource=https://storage.azure.com/"
+# Use the specific UAMI resource ID
+$uamiResourceId = "/subscriptions/6dec0042-21fa-419c-9be1-7b94eb1a58ed/resourceGroups/ArkNovaStats/providers/Microsoft.ManagedIdentity/userAssignedIdentities/arknovauami"
+$imdsUrl += "&mi_res_id=$([uri]::EscapeDataString($uamiResourceId))"
+
+try {
+    $tokenResponse = Invoke-RestMethod -Uri $imdsUrl -Headers @{ Metadata = "true" } -Method Get -UseBasicParsing
+    $accessToken = $tokenResponse.access_token
+
+    # Download blob from Azure Blob Storage
+    $blobUrl = "https://$storageAccount.blob.core.windows.net/$container/$blobName"
+    Invoke-RestMethod -Uri $blobUrl -Headers @{
+        Authorization  = "Bearer $accessToken"
+        "x-ms-version" = "2020-10-02"
+    } -OutFile $gcpKeyPath -UseBasicParsing
+
+    # Set the env var so google-cloud-bigquery auto-discovers it
+    $env:GOOGLE_APPLICATION_CREDENTIALS = $gcpKeyPath
+    [Environment]::SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", $gcpKeyPath, "Machine")
+
+    Write-Host "  GCP SA key downloaded to $gcpKeyPath" -ForegroundColor Green
+    Write-Host "  GOOGLE_APPLICATION_CREDENTIALS set." -ForegroundColor Green
+} catch {
+    Write-Host "  WARNING: Failed to download GCP SA key: $_" -ForegroundColor Yellow
+    Write-Host "  BigQuery upload will not work without manual credential setup." -ForegroundColor Yellow
+}
+
+# --- 6. Verify installation ---
+Write-Host "`n[6/6] Verifying installation..." -ForegroundColor Yellow
 
 $checks = @(
     @{ Name = "Python";                Cmd = @("python", "--version") },
@@ -131,7 +173,7 @@ if ($allOk) {
     Write-Host ""
     Write-Host "Next steps:" -ForegroundColor Cyan
     Write-Host "  1. Copy .env.example to .env and fill in BGA_EMAIL and BGA_PASSWORD"
-    Write-Host "  2. For BigQuery: set GOOGLE_APPLICATION_CREDENTIALS env var to your service account JSON key"
+    Write-Host "  2. GCP credentials are auto-provisioned from Azure Blob Storage"
     Write-Host "  3. Run:  python main.py <player_id>"
     Write-Host "     Or:   python run.py <table_id1,table_id2,...>"
 } else {
