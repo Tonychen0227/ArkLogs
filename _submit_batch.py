@@ -72,7 +72,8 @@ cmd = (
     f'cd /d {WORK_DIR} && '
     f'set BGA_EMAIL={bga_email} && '
     f'set BGA_PASSWORD={bga_password} && '
-    f'python run_batch.py {TABLE_IDS}"'
+    f'set PYTHONUNBUFFERED=1 && '
+    f'python -u run_batch.py {TABLE_IDS}"'
 )
 
 task = BatchTaskCreateOptions(
