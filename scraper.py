@@ -1,6 +1,10 @@
 import asyncio
 import json
+import os
 from datetime import datetime
+
+# Screenshots go to Batch task working dir (visible in portal), or cwd locally
+_SCREENSHOT_DIR = os.environ.get("AZ_BATCH_TASK_WORKING_DIR", ".")
 
 
 async def login_to_bga(page, email: str, password: str):
@@ -19,7 +23,7 @@ async def login_to_bga(page, email: str, password: str):
         print("Already logged in!")
         return
 
-    await page.screenshot(path="debug_login_1_before_email.png")
+    await page.screenshot(path=os.path.join(_SCREENSHOT_DIR, "debug_login_1_before_email.png"))
 
     # The login form (form[name='login']) may be behind the signup form.
     # Target it specifically and use force=True to bypass overlay issues.
@@ -36,7 +40,7 @@ async def login_to_bga(page, email: str, password: str):
     print("Clicked Next, waiting for password step...")
     await page.wait_for_timeout(3000)
 
-    await page.screenshot(path="debug_login_2_before_password.png")
+    await page.screenshot(path=os.path.join(_SCREENSHOT_DIR, "debug_login_2_before_password.png"))
 
     # Step 2: Enter password and click Login
     print("Entering password...")
@@ -62,7 +66,7 @@ async def login_to_bga(page, email: str, password: str):
     print("Login submitted. Waiting for redirect...")
     await page.wait_for_timeout(3000)
 
-    await page.screenshot(path="debug_login_3_after_login.png")
+    await page.screenshot(path=os.path.join(_SCREENSHOT_DIR, "debug_login_3_after_login.png"))
 
 
 async def navigate_to_history(page, player_id: str):
