@@ -10,6 +10,7 @@ from azure.batch.models import (
 )
 from azure.identity import DefaultAzureCredential
 import os
+import time
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -32,7 +33,7 @@ TABLE_IDS = (
 
 BATCH_URL = "https://arknovastats.eastus.batch.azure.com"
 POOL_ID = "arknovalogspool"
-JOB_ID = "backfill-5xx-008"
+JOB_ID = f"backfill-5xx-{int(time.time())}"
 WORK_DIR = r"C:\arklogs\arklogs-main"
 
 cred = DefaultAzureCredential()
