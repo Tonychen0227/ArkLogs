@@ -39,7 +39,7 @@ cred = DefaultAzureCredential()
 client = BatchClient(endpoint=BATCH_URL, credential=cred)
 
 # Delete old jobs if they exist
-for old_id in ["backfill-5xx-001", "backfill-5xx-002", "backfill-5xx-003", "backfill-5xx-004", "backfill-5xx-005"]:
+for old_id in ["backfill-5xx-001", "backfill-5xx-002", "backfill-5xx-003", "backfill-5xx-004", "backfill-5xx-005", "backfill-5xx-006"]:
     try:
         client.delete_job(old_id)
         print(f"Deleted old job {old_id}")
@@ -72,6 +72,7 @@ cmd = (
     f'cd /d {WORK_DIR} && '
     f'set BGA_EMAIL={bga_email} && '
     f'set BGA_PASSWORD={bga_password} && '
+    f'set GOOGLE_APPLICATION_CREDENTIALS={WORK_DIR}\\gcp-sa-key.json && '
     f'set PYTHONUNBUFFERED=1 && '
     f'python -u run_batch.py {TABLE_IDS}"'
 )
