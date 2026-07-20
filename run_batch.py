@@ -97,6 +97,11 @@ async def main():
 
         await login_to_bga(page, bga_email, bga_password)
 
+        # Warmup: load first game sequentially to prime the connection
+        print("Warming up connection...")
+        await page.goto(games[0]["href"], wait_until="domcontentloaded", timeout=30000)
+        await page.close()
+
         print(f"Scraping game details ({len(games)} tables, 5 concurrent tabs)...")
         all_details = await scrape_details_concurrent(context, games)
         raw_rows = build_rows(all_details)

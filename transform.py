@@ -36,7 +36,9 @@ def _stat_val(player_stats, stat_key, player_id):
     """Get a stat value for a player from result.stats.player."""
     stat = player_stats.get(stat_key, {})
     values = stat.get("values", {})
-    return values.get(str(player_id))
+    if isinstance(values, dict):
+        return values.get(str(player_id))
+    return None
 
 
 def _stat_label(player_stats, stat_key, player_id):

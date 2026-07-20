@@ -19,6 +19,8 @@ async def login_to_bga(page, email: str, password: str):
         print("Already logged in!")
         return
 
+    await page.screenshot(path="debug_login_1_before_email.png")
+
     # The login form (form[name='login']) may be behind the signup form.
     # Target it specifically and use force=True to bypass overlay issues.
     login_form = page.locator('form[name="login"]').first
@@ -33,6 +35,8 @@ async def login_to_bga(page, email: str, password: str):
     await next_btn.click(force=True)
     print("Clicked Next, waiting for password step...")
     await page.wait_for_timeout(3000)
+
+    await page.screenshot(path="debug_login_2_before_password.png")
 
     # Step 2: Enter password and click Login
     print("Entering password...")
@@ -57,6 +61,8 @@ async def login_to_bga(page, email: str, password: str):
     await page.wait_for_load_state("networkidle")
     print("Login submitted. Waiting for redirect...")
     await page.wait_for_timeout(3000)
+
+    await page.screenshot(path="debug_login_3_after_login.png")
 
 
 async def navigate_to_history(page, player_id: str):
@@ -301,7 +307,7 @@ async def scrape_details_concurrent(context, games, concurrency=5):
 
     async def scrape_one(i, game):
         async with sem:
-            for attempt in range(3):
+            for attempt in range(5):
                 tab = await context.new_page()
                 try:
                     details = await scrape_game_details(tab, game["href"])
@@ -313,8 +319,9 @@ async def scrape_details_concurrent(context, games, concurrency=5):
                     print(f"  Game {i+1}/{len(games)}: done")
                     return
                 except Exception as e:
-                    if attempt < 2:
+                    if attempt < 4:
                         print(f"  Game {i+1}/{len(games)}: retry {attempt+1} ({type(e).__name__})")
+                        await asyncio.sleep(2 ** attempt)  # 1s, 2s, 4s, 8s backoff
                     else:
                         print(f"  Game {i+1}/{len(games)}: FAILED ({type(e).__name__})")
                 finally:
