@@ -390,11 +390,6 @@
     "mode": "NULLABLE"
   },
   {
-    "name": "last_x_games",
-    "type": "INT64",
-    "mode": "NULLABLE"
-  },
-  {
     "name": "opponent_elo",
     "type": "INT64",
     "mode": "NULLABLE"
@@ -412,16 +407,6 @@
   {
     "name": "opponent_id",
     "type": "INT64",
-    "mode": "NULLABLE"
-  },
-  {
-    "name": "points_per_money",
-    "type": "FLOAT64",
-    "mode": "NULLABLE"
-  },
-  {
-    "name": "points_per_turn",
-    "type": "FLOAT64",
     "mode": "NULLABLE"
   },
   {

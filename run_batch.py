@@ -29,17 +29,38 @@ from transform import transform_row
 BGA_TABLE_URL = "https://boardgamearena.com/table?table={table_id}"
 BQ_PROJECT = "fut-macro"
 BQ_TABLE = "fut-macro.ark_nova.games"
-BQ_STAGING = "fut-macro.ark_nova._staging"
 
 
 def upload_to_bigquery(rows):
-    """Upload transformed rows to BigQuery, deduplicating on (table_id, player_id)."""
+    """Upload transformed rows to BigQuery, skipping rows that already exist (dedup on table_id + player_id)."""
     client = bigquery.Client(project=BQ_PROJECT)
+
+    # Check which (table_id, player_id) pairs already exist
+    table_ids = list(set(str(r["table_id"]) for r in rows))
+    existing = set()
+    try:
+        query = f"""
+        SELECT DISTINCT CONCAT(CAST(table_id AS STRING), '_', player_id) as key
+        FROM `{BQ_TABLE}`
+        WHERE table_id IN ({','.join(table_ids)})
+        """
+        result = client.query(query).result()
+        existing = {row["key"] for row in result}
+    except Exception:
+        # Table might not exist yet
+        pass
+
+    # Filter out existing rows
+    new_rows = [r for r in rows if f"{r['table_id']}_{r['player_id']}" not in existing]
+
+    if not new_rows:
+        print("All rows already exist, skipping upload.")
+        return 0
 
     # Write NDJSON
     tmp_path = f"_upload_{os.getpid()}.jsonl"
     with open(tmp_path, "w") as f:
-        for r in rows:
+        for r in new_rows:
             clean = {}
             for k, v in r.items():
                 if isinstance(v, float) and (v != v):  # NaN
@@ -48,39 +69,18 @@ def upload_to_bigquery(rows):
                     clean[k] = v
             f.write(json.dumps(clean, default=str) + "\n")
 
-    # Load into staging table (overwrite each time)
     job_config = bigquery.LoadJobConfig(
         source_format=bigquery.SourceFormat.NEWLINE_DELIMITED_JSON,
-        write_disposition=bigquery.WriteDisposition.WRITE_TRUNCATE,
+        write_disposition=bigquery.WriteDisposition.WRITE_APPEND,
         autodetect=True,
     )
 
     with open(tmp_path, "rb") as f:
-        job = client.load_table_from_file(f, BQ_STAGING, job_config=job_config)
+        job = client.load_table_from_file(f, BQ_TABLE, job_config=job_config)
+
     job.result()
     os.remove(tmp_path)
-
-    # MERGE into main table — upsert on (table_id, player_id)
-    merge_sql = f"""
-    MERGE `{BQ_TABLE}` T
-    USING `{BQ_STAGING}` S
-    ON T.table_id = S.table_id AND T.player_id = S.player_id
-    WHEN MATCHED THEN
-      UPDATE SET {', '.join(f'T.{col} = S.{col}' for col in _get_columns(client))}
-    WHEN NOT MATCHED THEN
-      INSERT ROW
-    """
-    job = client.query(merge_sql)
-    job.result()
-
-    # Return rows merged
-    return len(rows)
-
-
-def _get_columns(client):
-    """Get column names from the staging table for the MERGE UPDATE clause."""
-    table = client.get_table(BQ_STAGING)
-    return [field.name for field in table.schema if field.name not in ("table_id", "player_id")]
+    return job.output_rows
 
 
 async def main():
