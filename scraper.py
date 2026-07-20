@@ -10,8 +10,8 @@ _SCREENSHOT_DIR = os.environ.get("AZ_BATCH_TASK_WORKING_DIR", ".")
 async def login_to_bga(page, email: str, password: str):
     """Log in to Board Game Arena with email and password."""
     print("Navigating to BGA...")
-    await page.goto("https://en.boardgamearena.com/account")
-    await page.wait_for_load_state("networkidle")
+    await page.goto("https://en.boardgamearena.com/account", timeout=60000, wait_until="domcontentloaded")
+    await page.wait_for_load_state("networkidle", timeout=60000)
 
     # Dismiss cookie banner via Didomi API (clicking the button is unreliable)
     await page.evaluate("() => { try { Didomi.setUserAgreeToAll() } catch(e) {} }")
