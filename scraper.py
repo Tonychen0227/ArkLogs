@@ -65,6 +65,10 @@ async def login_to_bga(page, email: str, password: str):
     await password_input.fill(password, force=True)
     await page.wait_for_timeout(500)
 
+    # Verify password was filled (check value length for security)
+    filled_val = await password_input.input_value()
+    _log(f"  Password filled: {len(filled_val)} chars (expected {len(password)})")
+
     # Check "Stay connected" to maintain login status
     stay_connected = password_form.locator('text=Stay connected')
     try:
@@ -74,23 +78,30 @@ async def login_to_bga(page, email: str, password: str):
         _log("  'Stay connected' checkbox not found, skipping.")
     await page.wait_for_timeout(1000)
 
-    # Submit login via button click — wait for navigation
+    # Screenshot before clicking login
+    await page.screenshot(path=os.path.join(_SCREENSHOT_DIR, "debug_login_2b_before_click.png"))
+
+    # Submit login via button click
     login_btn = password_form.locator('a:has-text("Login")')
     login_count = await login_btn.count()
     _log(f"  Login buttons found: {login_count}")
+    await login_btn.click()
 
-    # Try clicking and wait for URL to change from step=2
-    async with page.expect_navigation(timeout=30000, wait_until="networkidle"):
-        await login_btn.click()
-
-    _log(f"Login submitted. Current URL: {page.url}")
+    # Wait for response
     await page.wait_for_timeout(5000)
+    await page.wait_for_load_state("networkidle", timeout=15000)
+    _log(f"Login submitted. Current URL: {page.url}")
 
-    # Verify login succeeded by checking page content
+    # Screenshot and check page content
+    await page.screenshot(path=os.path.join(_SCREENSHOT_DIR, "debug_login_3_after_login.png"))
     body_text = await page.inner_text("body")
     if "let's play" in body_text.lower() or "/welcome" in page.url:
         _log("Login verified OK.")
     else:
+        # Log any error messages visible on page
+        error_lines = [l.strip() for l in body_text.split('\n') if any(w in l.lower() for w in ['wrong', 'incorrect', 'invalid', 'locked', 'blocked', 'error']) and l.strip()]
+        for line in error_lines[:5]:
+            _log(f"  ERROR TEXT: {line[:150]}")
         _log(f"WARNING: Login may have failed. URL: {page.url}")
 
     await page.screenshot(path=os.path.join(_SCREENSHOT_DIR, "debug_login_3_after_login.png"))
