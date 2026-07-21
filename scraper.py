@@ -79,31 +79,44 @@ async def login_to_bga(page, email: str, password: str):
         _log("  'Stay connected' checkbox not found, skipping.")
     await page.wait_for_timeout(1000)
 
-    # Screenshot before clicking login
-    await page.screenshot(path=os.path.join(_SCREENSHOT_DIR, "debug_login_2b_before_click.png"))
+    # Submit login with retries (BGA may temporarily block fetch from Azure IPs)
+    for attempt in range(1, 6):
+        login_btn = password_form.locator('a:has-text("Login")')
+        login_count = await login_btn.count()
+        _log(f"  Login attempt {attempt}/5 — buttons found: {login_count}")
 
-    # Submit login via button click
-    login_btn = password_form.locator('a:has-text("Login")')
-    login_count = await login_btn.count()
-    _log(f"  Login buttons found: {login_count}")
-    await login_btn.click()
+        if login_count == 0:
+            # Page may have navigated (login succeeded on prior attempt)
+            break
 
-    # Wait for response
-    await page.wait_for_timeout(5000)
-    await page.wait_for_load_state("networkidle", timeout=15000)
-    _log(f"Login submitted. Current URL: {page.url}")
+        await login_btn.click()
+        await page.wait_for_timeout(5000)
+        await page.wait_for_load_state("networkidle", timeout=15000)
+        _log(f"  Post-click URL: {page.url}")
 
-    # Screenshot and check page content
-    await page.screenshot(path=os.path.join(_SCREENSHOT_DIR, "debug_login_3_after_login.png"))
-    body_text = await page.inner_text("body")
-    if "let's play" in body_text.lower() or "/welcome" in page.url:
-        _log("Login verified OK.")
-    else:
-        # Log any error messages visible on page
-        error_lines = [l.strip() for l in body_text.split('\n') if any(w in l.lower() for w in ['wrong', 'incorrect', 'invalid', 'locked', 'blocked', 'error']) and l.strip()]
+        body_text = await page.inner_text("body")
+        if "let's play" in body_text.lower() or "/welcome" in page.url:
+            _log("Login verified OK.")
+            break
+
+        if "failed to fetch" in body_text.lower():
+            _log(f"  Network error on attempt {attempt}, waiting 30s...")
+            # Dismiss error banner if present
+            try:
+                close_btn = page.locator('.bga-error-close, .pma-error-close, .bgabutton_red')
+                if await close_btn.count() > 0:
+                    await close_btn.first.click()
+            except Exception:
+                pass
+            await page.wait_for_timeout(30000)
+            continue
+
+        # Other error (wrong password, locked, etc.)
+        error_lines = [l.strip() for l in body_text.split('\n') if any(w in l.lower() for w in ['wrong', 'incorrect', 'invalid', 'locked', 'blocked', 'error', 'wait']) and l.strip()]
         for line in error_lines[:5]:
             _log(f"  ERROR TEXT: {line[:150]}")
         _log(f"WARNING: Login may have failed. URL: {page.url}")
+        break
 
     await page.screenshot(path=os.path.join(_SCREENSHOT_DIR, "debug_login_3_after_login.png"))
     _log(f"Post-login URL: {page.url}")
