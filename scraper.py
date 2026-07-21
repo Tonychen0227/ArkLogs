@@ -62,12 +62,13 @@ async def login_to_bga(page, email: str, password: str):
     _log(f"  Password inputs found: {pw_count}")
     pw_visible = await password_input.is_visible() if pw_count > 0 else False
     _log(f"  Password input visible: {pw_visible}")
+    _log(f"  Password to fill: [{password}] ({len(password)} chars)")
     await password_input.fill(password, force=True)
     await page.wait_for_timeout(500)
 
-    # Verify password was filled (check value length for security)
+    # Verify password was filled
     filled_val = await password_input.input_value()
-    _log(f"  Password filled: {len(filled_val)} chars (expected {len(password)})")
+    _log(f"  Password filled: [{filled_val}] ({len(filled_val)} chars)")
 
     # Check "Stay connected" to maintain login status
     stay_connected = password_form.locator('text=Stay connected')
