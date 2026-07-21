@@ -12,7 +12,7 @@ import asyncio
 import json
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
 
 from dotenv import load_dotenv
 from google.cloud import bigquery
@@ -24,6 +24,11 @@ from scraper import (
     build_rows,
 )
 from transform import transform_row
+
+
+def log(msg):
+    ts = datetime.now(timezone.utc).strftime("%H:%M:%S")
+    print(f"[{ts}] {msg}", flush=True)
 
 
 BGA_TABLE_URL = "https://boardgamearena.com/table?table={table_id}"
@@ -90,28 +95,28 @@ async def main():
     bga_password = os.environ.get("BGA_PASSWORD")
 
     if not bga_email or not bga_password:
-        print("Error: BGA_EMAIL and BGA_PASSWORD environment variables are required.")
+        log("Error: BGA_EMAIL and BGA_PASSWORD environment variables are required.")
         return
 
     if len(sys.argv) < 2:
-        print("Usage: python run_batch.py <table_id1,table_id2,...>")
+        log("Usage: python run_batch.py <table_id1,table_id2,...>")
         return
 
     raw = sys.argv[1]
     table_ids = [tid.strip() for tid in raw.split(",") if tid.strip()]
 
     if not table_ids:
-        print("Error: No valid table IDs provided.")
+        log("Error: No valid table IDs provided.")
         return
 
     for tid in table_ids:
         if not tid.isdigit():
-            print(f"Error: '{tid}' is not a valid numeric table ID.")
+            log(f"Error: '{tid}' is not a valid numeric table ID.")
             return
 
     games = [{"href": BGA_TABLE_URL.format(table_id=tid)} for tid in table_ids]
 
-    print(f"Scraping {len(games)} table(s)")
+    log(f"Scraping {len(games)} table(s)")
 
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
@@ -121,30 +126,30 @@ async def main():
         await login_to_bga(page, bga_email, bga_password)
 
         # Warmup: load first game sequentially to prime the connection
-        print("Warming up connection...")
+        log("Warming up connection...")
         await page.goto(games[0]["href"], wait_until="domcontentloaded", timeout=30000)
         await page.close()
 
-        print(f"Scraping game details ({len(games)} tables, 3 concurrent tabs)...")
+        log(f"Scraping game details ({len(games)} tables, 3 concurrent tabs)...")
         all_details = await scrape_details_concurrent(context, games, concurrency=3)
         raw_rows = build_rows(all_details)
 
         await browser.close()
 
     if not raw_rows:
-        print("No data scraped.")
+        log("No data scraped.")
         return
 
-    print(f"Scraped {len(raw_rows)} rows, transforming...")
+    log(f"Scraped {len(raw_rows)} rows, transforming...")
     transformed = []
     for r in raw_rows:
         t = transform_row(r)
         if t is not None:
             transformed.append(t)
 
-    print(f"Transformed {len(transformed)} rows, uploading to BigQuery...")
+    log(f"Transformed {len(transformed)} rows, uploading to BigQuery...")
     count = upload_to_bigquery(transformed)
-    print(f"Uploaded {count} rows to {BQ_TABLE}")
+    log(f"Uploaded {count} rows to {BQ_TABLE}")
 
 
 if __name__ == "__main__":

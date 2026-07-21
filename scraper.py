@@ -1,26 +1,31 @@
 import asyncio
 import json
 import os
-from datetime import datetime
+from datetime import datetime, timezone
 
 # Screenshots go to Batch task working dir (visible in portal), or cwd locally
 _SCREENSHOT_DIR = os.environ.get("AZ_BATCH_TASK_WORKING_DIR", ".")
 
 
+def _log(msg):
+    ts = datetime.now(timezone.utc).strftime("%H:%M:%S")
+    print(f"[{ts}] {msg}", flush=True)
+
+
 async def login_to_bga(page, email: str, password: str):
     """Log in to Board Game Arena with email and password."""
-    print("Navigating to BGA...")
+    _log("Navigating to BGA...")
     await page.goto("https://en.boardgamearena.com/account", timeout=60000, wait_until="domcontentloaded")
     await page.wait_for_load_state("networkidle", timeout=60000)
 
     # Dismiss cookie banner via Didomi API (clicking the button is unreliable)
     await page.evaluate("() => { try { Didomi.setUserAgreeToAll() } catch(e) {} }")
     await page.wait_for_timeout(500)
-    print("Dismissed cookie banner.")
+    _log("Dismissed cookie banner.")
 
     # If already logged in, we get redirected to /welcome — skip login
     if "/welcome" in page.url:
-        print("Already logged in!")
+        _log("Already logged in!")
         return
 
     await page.screenshot(path=os.path.join(_SCREENSHOT_DIR, "debug_login_1_before_email.png"))
@@ -30,20 +35,20 @@ async def login_to_bga(page, email: str, password: str):
     login_form = page.locator('form[name="login"]').first
 
     # Step 1: Enter email and click Next
-    print("Entering email...")
+    _log("Entering email...")
     email_input = login_form.locator('input[placeholder="Email or username"]')
     await email_input.fill(email, force=True)
     await page.wait_for_timeout(500)
 
     next_btn = login_form.locator('a:has-text("Next")')
     await next_btn.click(force=True)
-    print("Clicked Next, waiting for password step...")
+    _log("Clicked Next, waiting for password step...")
     await page.wait_for_timeout(3000)
 
     await page.screenshot(path=os.path.join(_SCREENSHOT_DIR, "debug_login_2_before_password.png"))
 
     # Step 2: Enter password and click Login
-    print("Entering password...")
+    _log("Entering password...")
     password_form = page.locator('form[name="login"]').filter(has=page.locator('a:has-text("Login")'))
     password_input = password_form.locator('input[type="password"]')
     await password_input.fill(password, force=True)
@@ -53,7 +58,7 @@ async def login_to_bga(page, email: str, password: str):
     stay_connected = password_form.locator('text=Stay connected')
     try:
         await stay_connected.click(force=True)
-        print("Checked 'Stay connected'.")
+        _log("Checked 'Stay connected'.")
     except Exception:
         pass
     await page.wait_for_timeout(500)
@@ -63,7 +68,7 @@ async def login_to_bga(page, email: str, password: str):
 
     # Wait for navigation after login
     await page.wait_for_load_state("networkidle")
-    print("Login submitted. Waiting for redirect...")
+    _log("Login submitted. Waiting for redirect...")
     await page.wait_for_timeout(3000)
 
     await page.screenshot(path=os.path.join(_SCREENSHOT_DIR, "debug_login_3_after_login.png"))
@@ -71,7 +76,7 @@ async def login_to_bga(page, email: str, password: str):
 
 async def navigate_to_history(page, player_id: str):
     """Navigate to a player's Ark Nova game history page."""
-    print("Navigating to game history...")
+    _log("Navigating to game history...")
     await page.goto(
         f"https://boardgamearena.com/gamestats?player={player_id}&opponent_id=0&finished=0&updateStats=1&game_id=1741"
     )
@@ -320,14 +325,14 @@ async def scrape_details_concurrent(context, games, concurrency=5):
                     details["conceded"] = game.get("conceded", False)
                     details["is_arena"] = game.get("isArena", game.get("is_arena", False))
                     all_details[i] = details
-                    print(f"  Game {i+1}/{len(games)}: done")
+                    _log(f"  Game {i+1}/{len(games)}: done")
                     return
                 except Exception as e:
                     if attempt < 4:
-                        print(f"  Game {i+1}/{len(games)}: retry {attempt+1} ({type(e).__name__})")
+                        _log(f"  Game {i+1}/{len(games)}: retry {attempt+1} ({type(e).__name__})")
                         await asyncio.sleep(2 ** attempt)  # 1s, 2s, 4s, 8s backoff
                     else:
-                        print(f"  Game {i+1}/{len(games)}: FAILED ({type(e).__name__})")
+                        _log(f"  Game {i+1}/{len(games)}: FAILED ({type(e).__name__})")
                 finally:
                     await tab.close()
 
@@ -384,4 +389,4 @@ def save_rows(rows, output_path):
     """Write rows to a JSON file."""
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(rows, f, indent=2)
-    print(f"\n{len(rows)} rows saved to {output_path}")
+    _log(f"\n{len(rows)} rows saved to {output_path}")
