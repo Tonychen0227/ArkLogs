@@ -125,8 +125,8 @@ async def main():
         await page.goto(games[0]["href"], wait_until="domcontentloaded", timeout=30000)
         await page.close()
 
-        print(f"Scraping game details ({len(games)} tables, 5 concurrent tabs)...")
-        all_details = await scrape_details_concurrent(context, games)
+        print(f"Scraping game details ({len(games)} tables, 3 concurrent tabs)...")
+        all_details = await scrape_details_concurrent(context, games, concurrency=3)
         raw_rows = build_rows(all_details)
 
         await browser.close()
