@@ -72,16 +72,17 @@ async def login_to_bga(page, email: str, password: str):
         _log("Checked 'Stay connected'.")
     except Exception:
         _log("  'Stay connected' checkbox not found, skipping.")
-    await page.wait_for_timeout(500)
+    await page.wait_for_timeout(1000)
 
-    # Submit login via button click
+    # Submit login via button click — wait for navigation
     login_btn = password_form.locator('a:has-text("Login")')
     login_count = await login_btn.count()
     _log(f"  Login buttons found: {login_count}")
-    await login_btn.click(force=True)
 
-    # Wait for login to complete
-    await page.wait_for_load_state("networkidle", timeout=30000)
+    # Try clicking and wait for URL to change from step=2
+    async with page.expect_navigation(timeout=30000, wait_until="networkidle"):
+        await login_btn.click()
+
     _log(f"Login submitted. Current URL: {page.url}")
     await page.wait_for_timeout(5000)
 
