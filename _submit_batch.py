@@ -71,10 +71,10 @@ REFRESH_CMD = (
 cmd = (
     f'cmd /c "{REFRESH_CMD} && '
     f'cd /d {WORK_DIR} && '
-    f'set BGA_EMAIL={bga_email} && '
-    f'set BGA_PASSWORD={bga_password} && '
-    f'set GOOGLE_APPLICATION_CREDENTIALS={WORK_DIR}\\gcp-sa-key.json && '
-    f'set PYTHONUNBUFFERED=1 && '
+    f'set BGA_EMAIL={bga_email}&& '
+    f'set BGA_PASSWORD={bga_password}&& '
+    f'set GOOGLE_APPLICATION_CREDENTIALS={WORK_DIR}\\gcp-sa-key.json&& '
+    f'set PYTHONUNBUFFERED=1&& '
     f'python -u run_batch.py {TABLE_IDS}"'
 )
 
