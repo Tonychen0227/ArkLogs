@@ -79,10 +79,17 @@ async def login_to_bga(page, email: str, password: str):
     _log(f"  Login buttons found: {login_count}")
     await login_btn.click(force=True)
 
-    # Wait for navigation after login
+    # Wait for login to complete
     await page.wait_for_load_state("networkidle")
     _log(f"Login submitted. Current URL: {page.url}")
-    await page.wait_for_timeout(3000)
+    await page.wait_for_timeout(5000)
+
+    # Verify login succeeded by checking page content
+    body_text = await page.inner_text("body")
+    if "let's play" in body_text.lower() or "/welcome" in page.url:
+        _log("Login verified OK.")
+    else:
+        _log(f"WARNING: Login may have failed. URL: {page.url}")
 
     await page.screenshot(path=os.path.join(_SCREENSHOT_DIR, "debug_login_3_after_login.png"))
     _log(f"Post-login URL: {page.url}")
