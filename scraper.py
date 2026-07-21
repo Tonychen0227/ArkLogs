@@ -17,6 +17,7 @@ async def login_to_bga(page, email: str, password: str):
     _log("Navigating to BGA...")
     await page.goto("https://en.boardgamearena.com/account", timeout=60000, wait_until="domcontentloaded")
     await page.wait_for_load_state("networkidle", timeout=60000)
+    _log(f"Page loaded: {page.url}")
 
     # Dismiss cookie banner via Didomi API (clicking the button is unreliable)
     await page.evaluate("() => { try { Didomi.setUserAgreeToAll() } catch(e) {} }")
@@ -37,10 +38,14 @@ async def login_to_bga(page, email: str, password: str):
     # Step 1: Enter email and click Next
     _log("Entering email...")
     email_input = login_form.locator('input[placeholder="Email or username"]')
+    email_count = await email_input.count()
+    _log(f"  Email inputs found: {email_count}")
     await email_input.fill(email, force=True)
     await page.wait_for_timeout(500)
 
     next_btn = login_form.locator('a:has-text("Next")')
+    next_count = await next_btn.count()
+    _log(f"  Next buttons found: {next_count}")
     await next_btn.click(force=True)
     _log("Clicked Next, waiting for password step...")
     await page.wait_for_timeout(3000)
@@ -50,7 +55,13 @@ async def login_to_bga(page, email: str, password: str):
     # Step 2: Enter password and click Login
     _log("Entering password...")
     password_form = page.locator('form[name="login"]').filter(has=page.locator('a:has-text("Login")'))
+    pw_form_count = await password_form.count()
+    _log(f"  Password forms found: {pw_form_count}")
     password_input = password_form.locator('input[type="password"]')
+    pw_count = await password_input.count()
+    _log(f"  Password inputs found: {pw_count}")
+    pw_visible = await password_input.is_visible() if pw_count > 0 else False
+    _log(f"  Password input visible: {pw_visible}")
     await password_input.fill(password, force=True)
     await page.wait_for_timeout(500)
 
@@ -60,18 +71,21 @@ async def login_to_bga(page, email: str, password: str):
         await stay_connected.click(force=True)
         _log("Checked 'Stay connected'.")
     except Exception:
-        pass
+        _log("  'Stay connected' checkbox not found, skipping.")
     await page.wait_for_timeout(500)
 
     login_btn = password_form.locator('a:has-text("Login")')
+    login_count = await login_btn.count()
+    _log(f"  Login buttons found: {login_count}")
     await login_btn.click(force=True)
 
     # Wait for navigation after login
     await page.wait_for_load_state("networkidle")
-    _log("Login submitted. Waiting for redirect...")
+    _log(f"Login submitted. Current URL: {page.url}")
     await page.wait_for_timeout(3000)
 
     await page.screenshot(path=os.path.join(_SCREENSHOT_DIR, "debug_login_3_after_login.png"))
+    _log(f"Post-login URL: {page.url}")
 
 
 async def navigate_to_history(page, player_id: str):
