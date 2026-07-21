@@ -82,8 +82,34 @@ Write-Host "`n[4/6] Installing Playwright Chromium browser..." -ForegroundColor 
 & python -m playwright install chromium
 Write-Host "  Playwright Chromium installed." -ForegroundColor Green
 
-# --- 5. Download GCP service account key from Azure Blob Storage ---
-Write-Host "`n[5/6] Downloading GCP service account key..." -ForegroundColor Yellow
+# --- 5. Install Cloudflare WARP VPN ---
+Write-Host "`n[5/7] Installing Cloudflare WARP VPN..." -ForegroundColor Yellow
+
+$warpExe = "C:\Program Files\Cloudflare\Cloudflare WARP\warp-cli.exe"
+if (Test-Path $warpExe) {
+    Write-Host "  Cloudflare WARP already installed." -ForegroundColor Green
+} else {
+    $warpUrl = "https://1111-releases.cloudflareclient.com/windows/Cloudflare_WARP_Release-x64.msi"
+    $warpInstaller = "$env:TEMP\cloudflare-warp.msi"
+    Invoke-WebRequest -Uri $warpUrl -OutFile $warpInstaller -UseBasicParsing
+    Start-Process msiexec.exe -ArgumentList "/i `"$warpInstaller`" /quiet /norestart" -Wait
+    Remove-Item $warpInstaller -Force -ErrorAction SilentlyContinue
+    Write-Host "  Cloudflare WARP installed." -ForegroundColor Green
+}
+
+# Register and connect WARP
+try {
+    & $warpExe registration new 2>&1 | Out-Null
+    & $warpExe connect 2>&1 | Out-Null
+    Start-Sleep -Seconds 5
+    $warpStatus = & $warpExe status 2>&1
+    Write-Host "  WARP status: $warpStatus" -ForegroundColor Green
+} catch {
+    Write-Host "  WARNING: WARP connect failed: $_" -ForegroundColor Yellow
+}
+
+# --- 6. Download GCP service account key from Azure Blob Storage ---
+Write-Host "`n[6/7] Downloading GCP service account key..." -ForegroundColor Yellow
 
 $gcpKeyPath = Join-Path $repoDir "gcp-sa-key.json"
 $storageAccount = "arknovastorage"
@@ -120,8 +146,8 @@ try {
     Write-Host "  BigQuery upload will not work without manual credential setup." -ForegroundColor Yellow
 }
 
-# --- 6. Verify installation ---
-Write-Host "`n[6/6] Verifying installation..." -ForegroundColor Yellow
+# --- 7. Verify installation ---
+Write-Host "`n[7/7] Verifying installation..." -ForegroundColor Yellow
 
 $checks = @(
     @{ Name = "Python";                Cmd = @("python", "--version") },
