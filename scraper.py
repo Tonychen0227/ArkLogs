@@ -74,13 +74,9 @@ async def login_to_bga(page, email: str, password: str):
         _log("  'Stay connected' checkbox not found, skipping.")
     await page.wait_for_timeout(500)
 
-    # Submit login — click button AND press Enter for reliability
-    login_btn = password_form.locator('a:has-text("Login")')
-    login_count = await login_btn.count()
-    _log(f"  Login buttons found: {login_count}")
+    # Submit login via Enter key
+    _log("  Submitting login via Enter key...")
     await password_input.press("Enter")
-    await page.wait_for_timeout(1000)
-    await login_btn.click(force=True)
 
     # Wait for login to complete
     await page.wait_for_load_state("networkidle", timeout=30000)
