@@ -47,7 +47,7 @@ if ($python) {
 }
 
 # --- 2. Install Visual C++ Redistributable (required by greenlet/Playwright) ---
-Write-Host "`n[2/6] Checking Visual C++ Redistributable..." -ForegroundColor Yellow
+Write-Host "`n[2/7] Checking Visual C++ Redistributable..." -ForegroundColor Yellow
 
 $vcInstalled = Test-Path "HKLM:\SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\x64"
 if ($vcInstalled) {
@@ -63,7 +63,7 @@ if ($vcInstalled) {
 }
 
 # --- 3. Install pip dependencies ---
-Write-Host "`n[3/6] Installing pip dependencies..." -ForegroundColor Yellow
+Write-Host "`n[3/7] Installing pip dependencies..." -ForegroundColor Yellow
 
 $requirementsFile = Join-Path $repoDir "requirements.txt"
 
@@ -78,7 +78,7 @@ if (-not (Test-Path $requirementsFile)) {
 Write-Host "  pip dependencies installed." -ForegroundColor Green
 
 # --- 4. Install Playwright browsers ---
-Write-Host "`n[4/6] Installing Playwright Chromium browser..." -ForegroundColor Yellow
+Write-Host "`n[4/7] Installing Playwright Chromium browser..." -ForegroundColor Yellow
 & python -m playwright install chromium
 Write-Host "  Playwright Chromium installed." -ForegroundColor Green
 
@@ -119,7 +119,7 @@ if ($warpExe) {
         Write-Host "  WARNING: WARP connect failed: $_" -ForegroundColor Yellow
     }
 } else {
-    Write-Host "  WARNING: Skipping WARP connect — warp-cli.exe not found." -ForegroundColor Yellow
+    Write-Host "  WARNING: Skipping WARP connect - warp-cli.exe not found." -ForegroundColor Yellow
 }
 
 # --- 6. Download GCP service account key from Azure Blob Storage ---
@@ -191,8 +191,8 @@ if ($allOk) {
     Write-Host "Next steps:" -ForegroundColor Cyan
     Write-Host "  1. Copy .env.example to .env and fill in BGA_EMAIL and BGA_PASSWORD"
     Write-Host "  2. GCP credentials are auto-provisioned from Azure Blob Storage"
-    Write-Host "  3. Run:  python main.py <player_id>"
-    Write-Host "     Or:   python run.py <table_id1,table_id2,...>"
+    Write-Host '  3. Run:  python main.py <player_id>'
+    Write-Host '     Or:   python run.py <table_id1,table_id2,...>'
 } else {
     Write-Host "=== Setup completed with errors. Review above. ===" -ForegroundColor Red
 }
