@@ -85,27 +85,41 @@ Write-Host "  Playwright Chromium installed." -ForegroundColor Green
 # --- 5. Install Cloudflare WARP VPN ---
 Write-Host "`n[5/7] Installing Cloudflare WARP VPN..." -ForegroundColor Yellow
 
-$warpExe = "C:\Program Files\Cloudflare\Cloudflare WARP\warp-cli.exe"
-if (Test-Path $warpExe) {
-    Write-Host "  Cloudflare WARP already installed." -ForegroundColor Green
+# Find warp-cli if already installed
+$warpExe = Get-ChildItem -Path "C:\Program Files*\Cloudflare\*" -Filter "warp-cli.exe" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty FullName
+
+if ($warpExe) {
+    Write-Host "  Cloudflare WARP already installed at: $warpExe" -ForegroundColor Green
 } else {
     $warpUrl = "https://1111-releases.cloudflareclient.com/windows/Cloudflare_WARP_Release-x64.msi"
     $warpInstaller = "$env:TEMP\cloudflare-warp.msi"
     Invoke-WebRequest -Uri $warpUrl -OutFile $warpInstaller -UseBasicParsing
     Start-Process msiexec.exe -ArgumentList "/i `"$warpInstaller`" /quiet /norestart" -Wait
     Remove-Item $warpInstaller -Force -ErrorAction SilentlyContinue
-    Write-Host "  Cloudflare WARP installed." -ForegroundColor Green
+
+    # Find where it actually installed
+    $warpExe = Get-ChildItem -Path "C:\Program Files*" -Filter "warp-cli.exe" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty FullName
+    if ($warpExe) {
+        Write-Host "  Cloudflare WARP installed at: $warpExe" -ForegroundColor Green
+    } else {
+        Write-Host "  WARNING: warp-cli.exe not found after install. Listing Cloudflare dirs:" -ForegroundColor Yellow
+        Get-ChildItem -Path "C:\Program Files*\Cloudflare*" -Recurse -ErrorAction SilentlyContinue | ForEach-Object { Write-Host "    $($_.FullName)" }
+    }
 }
 
 # Register and connect WARP
-try {
-    & $warpExe registration new 2>&1 | Out-Null
-    & $warpExe connect 2>&1 | Out-Null
-    Start-Sleep -Seconds 5
-    $warpStatus = & $warpExe status 2>&1
-    Write-Host "  WARP status: $warpStatus" -ForegroundColor Green
-} catch {
-    Write-Host "  WARNING: WARP connect failed: $_" -ForegroundColor Yellow
+if ($warpExe) {
+    try {
+        & $warpExe registration new 2>&1 | Out-Null
+        & $warpExe connect 2>&1 | Out-Null
+        Start-Sleep -Seconds 5
+        $warpStatus = & $warpExe status 2>&1
+        Write-Host "  WARP status: $warpStatus" -ForegroundColor Green
+    } catch {
+        Write-Host "  WARNING: WARP connect failed: $_" -ForegroundColor Yellow
+    }
+} else {
+    Write-Host "  WARNING: Skipping WARP connect — warp-cli.exe not found." -ForegroundColor Yellow
 }
 
 # --- 6. Download GCP service account key from Azure Blob Storage ---
