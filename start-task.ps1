@@ -85,30 +85,37 @@ Write-Host "  Playwright Chromium installed." -ForegroundColor Green
 # --- 5. Install Cloudflare WARP VPN ---
 Write-Host "`n[5/7] Installing Cloudflare WARP VPN..." -ForegroundColor Yellow
 
-# Find warp-cli if already installed
-$warpExe = Get-ChildItem -Path "C:\Program Files*\Cloudflare\*" -Filter "warp-cli.exe" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty FullName
+$warpUrl = "https://1111-releases.cloudflareclient.com/windows/Cloudflare_WARP_Release-x64.msi"
+$warpInstaller = "$env:TEMP\cloudflare-warp.msi"
 
-if ($warpExe) {
-    Write-Host "  Cloudflare WARP already installed at: $warpExe" -ForegroundColor Green
+# Check if WARP service already exists
+$warpSvc = Get-Service -Name "CloudflareWARP" -ErrorAction SilentlyContinue
+if ($warpSvc) {
+    Write-Host "  Cloudflare WARP service already installed (Status: $($warpSvc.Status))." -ForegroundColor Green
 } else {
-    $warpUrl = "https://1111-releases.cloudflareclient.com/windows/Cloudflare_WARP_Release-x64.msi"
-    $warpInstaller = "$env:TEMP\cloudflare-warp.msi"
+    Write-Host "  Downloading WARP installer..." -ForegroundColor Yellow
     Invoke-WebRequest -Uri $warpUrl -OutFile $warpInstaller -UseBasicParsing
-    Start-Process msiexec.exe -ArgumentList "/i `"$warpInstaller`" /quiet /norestart" -Wait
+    Write-Host "  Installing WARP (this may take a minute)..." -ForegroundColor Yellow
+    Start-Process msiexec.exe -ArgumentList "/i `"$warpInstaller`" /quiet /norestart INSTALL_DIR=`"C:\Program Files\Cloudflare`"" -Wait
     Remove-Item $warpInstaller -Force -ErrorAction SilentlyContinue
+}
 
-    # Find where it actually installed
-    $warpExe = Get-ChildItem -Path "C:\Program Files*" -Filter "warp-cli.exe" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty FullName
-    if ($warpExe) {
-        Write-Host "  Cloudflare WARP installed at: $warpExe" -ForegroundColor Green
-    } else {
-        Write-Host "  WARNING: warp-cli.exe not found after install. Listing Cloudflare dirs:" -ForegroundColor Yellow
-        Get-ChildItem -Path "C:\Program Files*\Cloudflare*" -Recurse -ErrorAction SilentlyContinue | ForEach-Object { Write-Host "    $($_.FullName)" }
+# Find warp-cli.exe anywhere on the system
+$warpExe = Get-ChildItem -Path "C:\" -Filter "warp-cli.exe" -Recurse -ErrorAction SilentlyContinue -Depth 4 | Select-Object -First 1 -ExpandProperty FullName
+if (-not $warpExe) {
+    # Also check common locations
+    $candidates = @(
+        "C:\Program Files\Cloudflare\Cloudflare WARP\warp-cli.exe",
+        "C:\Program Files (x86)\Cloudflare\Cloudflare WARP\warp-cli.exe",
+        "${env:ProgramFiles}\Cloudflare\Cloudflare WARP\warp-cli.exe"
+    )
+    foreach ($c in $candidates) {
+        if (Test-Path $c) { $warpExe = $c; break }
     }
 }
 
-# Register and connect WARP
 if ($warpExe) {
+    Write-Host "  warp-cli found at: $warpExe" -ForegroundColor Green
     try {
         & $warpExe registration new 2>&1 | Out-Null
         & $warpExe connect 2>&1 | Out-Null
@@ -119,7 +126,15 @@ if ($warpExe) {
         Write-Host "  WARNING: WARP connect failed: $_" -ForegroundColor Yellow
     }
 } else {
-    Write-Host "  WARNING: Skipping WARP connect - warp-cli.exe not found." -ForegroundColor Yellow
+    Write-Host "  WARNING: warp-cli.exe not found. Checking service status..." -ForegroundColor Yellow
+    $warpSvc = Get-Service -Name "CloudflareWARP" -ErrorAction SilentlyContinue
+    if ($warpSvc -and $warpSvc.Status -eq "Running") {
+        Write-Host "  WARP service is running (VPN should be active)." -ForegroundColor Green
+    } else {
+        Write-Host "  WARP not operational. Listing installed Cloudflare files:" -ForegroundColor Yellow
+        Get-ChildItem -Path "C:\Program Files*" -Filter "*cloudflare*" -Recurse -Depth 3 -ErrorAction SilentlyContinue | ForEach-Object { Write-Host "    $($_.FullName)" }
+        Get-ChildItem -Path "C:\ProgramData" -Filter "*cloudflare*" -Recurse -Depth 3 -ErrorAction SilentlyContinue | ForEach-Object { Write-Host "    $($_.FullName)" }
+    }
 }
 
 # --- 6. Download GCP service account key from Azure Blob Storage ---
