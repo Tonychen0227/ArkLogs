@@ -119,7 +119,14 @@ async def main():
     log(f"Scraping {len(games)} table(s)")
 
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True)
+        browser = await p.chromium.launch(
+            headless=True,
+            args=[
+                "--no-sandbox",
+                "--disable-gpu",
+                "--disable-features=DnsOverHttps",
+            ],
+        )
         context = await browser.new_context()
         page = await context.new_page()
 
