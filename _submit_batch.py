@@ -1,12 +1,9 @@
 """Create an Azure Batch job + task to scrape 100 tables starting with 5XX."""
 from azure.batch import BatchClient
 from azure.batch.models import (
-    AutoUserSpecification,
     BatchJobCreateOptions,
     BatchPoolInfo,
     BatchTaskCreateOptions,
-    ElevationLevel,
-    UserIdentity,
 )
 from azure.identity import DefaultAzureCredential
 import os
@@ -34,7 +31,7 @@ TABLE_IDS = (
 BATCH_URL = "https://arknovastats.eastus.batch.azure.com"
 POOL_ID = "arknovalogspool"
 JOB_ID = f"backfill-5xx-{int(time.time())}"
-WORK_DIR = r"C:\arklogs\arklogs-main"
+WORK_DIR = "/arklogs/arklogs-main"
 
 cred = DefaultAzureCredential()
 client = BatchClient(endpoint=BATCH_URL, credential=cred)
@@ -61,31 +58,25 @@ bga_password = os.environ["BGA_PASSWORD"]
 
 # Re-download repo zip to get latest code before running
 REFRESH_CMD = (
-    "powershell -Command \""
-    "Invoke-WebRequest -Uri 'https://github.com/Tonychen0227/arklogs/archive/refs/heads/main.zip' "
-    "-OutFile '%TEMP%\\arklogs.zip' -UseBasicParsing; "
-    "Expand-Archive -Path '%TEMP%\\arklogs.zip' -DestinationPath 'C:\\arklogs' -Force"
-    "\""
+    "curl -sL https://github.com/Tonychen0227/arklogs/archive/refs/heads/main.zip -o /tmp/arklogs.zip && "
+    "unzip -oq /tmp/arklogs.zip -d /arklogs && "
+    "rm /tmp/arklogs.zip"
 )
 
 cmd = (
-    f'cmd /c "{REFRESH_CMD} && '
-    f'cd /d {WORK_DIR} && '
-    f'set BGA_EMAIL={bga_email}&& '
-    f'set BGA_PASSWORD={bga_password}&& '
-    f'set GOOGLE_APPLICATION_CREDENTIALS={WORK_DIR}\\gcp-sa-key.json&& '
-    f'set PYTHONUNBUFFERED=1&& '
-    f'python -u run_batch.py {TABLE_IDS}"'
+    f'/bin/bash -c "'
+    f'{REFRESH_CMD} && '
+    f'cd {WORK_DIR} && '
+    f'export BGA_EMAIL={bga_email} && '
+    f'export BGA_PASSWORD={bga_password} && '
+    f'export GOOGLE_APPLICATION_CREDENTIALS={WORK_DIR}/gcp-sa-key.json && '
+    f'export PYTHONUNBUFFERED=1 && '
+    f'python3 -u run_batch.py {TABLE_IDS}"'
 )
 
 task = BatchTaskCreateOptions(
     id="scrape-5xx",
     command_line=cmd,
-    user_identity=UserIdentity(
-        auto_user=AutoUserSpecification(
-            elevation_level=ElevationLevel.ADMIN,
-        )
-    ),
 )
 client.create_task(JOB_ID, task)
 print(f"Created task: scrape-5xx ({len(TABLE_IDS.split(','))} tables)")
