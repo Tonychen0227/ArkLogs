@@ -278,9 +278,8 @@ async def scrape_game_details(page, game_url):
 
     page.on("response", capture_tableinfos)
 
-    await page.goto(game_url)
-    await page.wait_for_load_state("networkidle")
-    await page.wait_for_selector("#player_stats_table", timeout=15000)
+    await page.goto(game_url, wait_until="domcontentloaded", timeout=120000)
+    await page.wait_for_selector("#player_stats_table", timeout=60000)
     await page.wait_for_timeout(1000)
 
     page.remove_listener("response", capture_tableinfos)
