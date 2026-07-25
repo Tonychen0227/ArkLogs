@@ -82,59 +82,69 @@ Write-Host "`n[4/7] Installing Playwright Chromium browser..." -ForegroundColor 
 & python -m playwright install chromium
 Write-Host "  Playwright Chromium installed." -ForegroundColor Green
 
-# --- 5. Install Cloudflare WARP VPN ---
-Write-Host "`n[5/7] Installing Cloudflare WARP VPN..." -ForegroundColor Yellow
+# --- 5. Install Tailscale VPN ---
+Write-Host "`n[5/7] Installing Tailscale VPN..." -ForegroundColor Yellow
 
-$warpUrl = "https://1111-releases.cloudflareclient.com/windows/Cloudflare_WARP_Release-x64.msi"
-$warpInstaller = "$env:TEMP\cloudflare-warp.msi"
+# Uninstall Cloudflare WARP if present (leftover from previous setup)
+$warpMsi = Get-ChildItem -Path "C:\ProgramData\Package Cache" -Filter "*Cloudflare*" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
+if ($warpMsi -or (Test-Path "C:\ProgramData\Cloudflare")) {
+    Write-Host "  Removing leftover Cloudflare WARP..." -ForegroundColor Yellow
+    $warpProduct = Get-WmiObject -Class Win32_Product -Filter "Name LIKE '%Cloudflare%'" -ErrorAction SilentlyContinue
+    if ($warpProduct) { $warpProduct.Uninstall() | Out-Null }
+    Remove-Item -Path "C:\ProgramData\Cloudflare" -Recurse -Force -ErrorAction SilentlyContinue
+}
 
-# Check if WARP service already exists
-$warpSvc = Get-Service -Name "CloudflareWARP" -ErrorAction SilentlyContinue
-if ($warpSvc) {
-    Write-Host "  Cloudflare WARP service already installed (Status: $($warpSvc.Status))." -ForegroundColor Green
+# Check if Tailscale is already installed
+$tailscaleExe = "C:\Program Files\Tailscale\tailscale.exe"
+if (Test-Path $tailscaleExe) {
+    Write-Host "  Tailscale already installed." -ForegroundColor Green
 } else {
-    Write-Host "  Downloading WARP installer..." -ForegroundColor Yellow
-    Invoke-WebRequest -Uri $warpUrl -OutFile $warpInstaller -UseBasicParsing
-    Write-Host "  Installing WARP (this may take a minute)..." -ForegroundColor Yellow
-    Start-Process msiexec.exe -ArgumentList "/i `"$warpInstaller`" /quiet /norestart INSTALL_DIR=`"C:\Program Files\Cloudflare`"" -Wait
-    Remove-Item $warpInstaller -Force -ErrorAction SilentlyContinue
+    Write-Host "  Downloading Tailscale installer..." -ForegroundColor Yellow
+    $tsUrl = "https://pkgs.tailscale.com/stable/tailscale-setup-latest-amd64.msi"
+    $tsInstaller = "$env:TEMP\tailscale.msi"
+    Invoke-WebRequest -Uri $tsUrl -OutFile $tsInstaller -UseBasicParsing
+    Write-Host "  Installing Tailscale..." -ForegroundColor Yellow
+    Start-Process msiexec.exe -ArgumentList "/i `"$tsInstaller`" /quiet /norestart TS_UNATTENDED=1" -Wait
+    Remove-Item $tsInstaller -Force -ErrorAction SilentlyContinue
+    Write-Host "  Tailscale installed." -ForegroundColor Green
 }
 
-# Find warp-cli.exe anywhere on the system
-$warpExe = Get-ChildItem -Path "C:\" -Filter "warp-cli.exe" -Recurse -ErrorAction SilentlyContinue -Depth 4 | Select-Object -First 1 -ExpandProperty FullName
-if (-not $warpExe) {
-    # Also check common locations
-    $candidates = @(
-        "C:\Program Files\Cloudflare\Cloudflare WARP\warp-cli.exe",
-        "C:\Program Files (x86)\Cloudflare\Cloudflare WARP\warp-cli.exe",
-        "${env:ProgramFiles}\Cloudflare\Cloudflare WARP\warp-cli.exe"
-    )
-    foreach ($c in $candidates) {
-        if (Test-Path $c) { $warpExe = $c; break }
+# Connect Tailscale headless with auth key
+$tsSvc = Get-Service -Name "Tailscale" -ErrorAction SilentlyContinue
+if ($tsSvc) {
+    if ($tsSvc.Status -ne "Running") {
+        Start-Service -Name "Tailscale"
+        Start-Sleep -Seconds 3
     }
-}
+    Write-Host "  Tailscale service running. Fetching auth key from Azure..." -ForegroundColor Yellow
 
-if ($warpExe) {
-    Write-Host "  warp-cli found at: $warpExe" -ForegroundColor Green
+    # Get Azure IMDS token to download auth key from blob storage
+    $storageAccount = "arknovastorage"
+    $container = "data"
+    $uamiResourceId = "/subscriptions/6dec0042-21fa-419c-9be1-7b94eb1a58ed/resourceGroups/ArkNovaStats/providers/Microsoft.ManagedIdentity/userAssignedIdentities/arknovauami"
+    $imdsUrl = "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01"
+    $imdsUrl += "&resource=https://storage.azure.com/"
+    $imdsUrl += "&mi_res_id=$([uri]::EscapeDataString($uamiResourceId))"
+
     try {
-        & $warpExe registration new 2>&1 | Out-Null
-        & $warpExe connect 2>&1 | Out-Null
+        $tokenResponse = Invoke-RestMethod -Uri $imdsUrl -Headers @{ Metadata = "true" } -Method Get -UseBasicParsing
+        $script:azToken = $tokenResponse.access_token
+
+        $blobUrl = "https://$storageAccount.blob.core.windows.net/$container/tailscale-authkey.txt"
+        $authKey = Invoke-RestMethod -Uri $blobUrl -Headers @{
+            Authorization  = "Bearer $script:azToken"
+            "x-ms-version" = "2020-10-02"
+        } -UseBasicParsing
+
+        & $tailscaleExe up --authkey="$authKey" --accept-routes 2>&1 | Out-Null
         Start-Sleep -Seconds 5
-        $warpStatus = & $warpExe status 2>&1
-        Write-Host "  WARP status: $warpStatus" -ForegroundColor Green
+        $tsStatus = & $tailscaleExe status 2>&1
+        Write-Host "  Tailscale connected: $tsStatus" -ForegroundColor Green
     } catch {
-        Write-Host "  WARNING: WARP connect failed: $_" -ForegroundColor Yellow
+        Write-Host "  WARNING: Tailscale connect failed: $_" -ForegroundColor Yellow
     }
 } else {
-    Write-Host "  WARNING: warp-cli.exe not found. Checking service status..." -ForegroundColor Yellow
-    $warpSvc = Get-Service -Name "CloudflareWARP" -ErrorAction SilentlyContinue
-    if ($warpSvc -and $warpSvc.Status -eq "Running") {
-        Write-Host "  WARP service is running (VPN should be active)." -ForegroundColor Green
-    } else {
-        Write-Host "  WARP not operational. Listing installed Cloudflare files:" -ForegroundColor Yellow
-        Get-ChildItem -Path "C:\Program Files*" -Filter "*cloudflare*" -Recurse -Depth 3 -ErrorAction SilentlyContinue | ForEach-Object { Write-Host "    $($_.FullName)" }
-        Get-ChildItem -Path "C:\ProgramData" -Filter "*cloudflare*" -Recurse -Depth 3 -ErrorAction SilentlyContinue | ForEach-Object { Write-Host "    $($_.FullName)" }
-    }
+    Write-Host "  WARNING: Tailscale service not found after install." -ForegroundColor Yellow
 }
 
 # --- 6. Download GCP service account key from Azure Blob Storage ---
@@ -145,26 +155,23 @@ $storageAccount = "arknovastorage"
 $container = "data"
 $blobName = "gcp-sa-key.json"
 
-# Get access token from Azure IMDS using the user-assigned managed identity
-$imdsUrl = "http://169.254.169.254/metadata/identity/oauth2/token"
-$imdsUrl += "?api-version=2018-02-01"
-$imdsUrl += "&resource=https://storage.azure.com/"
-# Use the specific UAMI resource ID
-$uamiResourceId = "/subscriptions/6dec0042-21fa-419c-9be1-7b94eb1a58ed/resourceGroups/ArkNovaStats/providers/Microsoft.ManagedIdentity/userAssignedIdentities/arknovauami"
-$imdsUrl += "&mi_res_id=$([uri]::EscapeDataString($uamiResourceId))"
+# Reuse token from Tailscale step or get a new one
+if (-not $script:azToken) {
+    $uamiResourceId = "/subscriptions/6dec0042-21fa-419c-9be1-7b94eb1a58ed/resourceGroups/ArkNovaStats/providers/Microsoft.ManagedIdentity/userAssignedIdentities/arknovauami"
+    $imdsUrl = "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01"
+    $imdsUrl += "&resource=https://storage.azure.com/"
+    $imdsUrl += "&mi_res_id=$([uri]::EscapeDataString($uamiResourceId))"
+    $tokenResponse = Invoke-RestMethod -Uri $imdsUrl -Headers @{ Metadata = "true" } -Method Get -UseBasicParsing
+    $script:azToken = $tokenResponse.access_token
+}
 
 try {
-    $tokenResponse = Invoke-RestMethod -Uri $imdsUrl -Headers @{ Metadata = "true" } -Method Get -UseBasicParsing
-    $accessToken = $tokenResponse.access_token
-
-    # Download blob from Azure Blob Storage
     $blobUrl = "https://$storageAccount.blob.core.windows.net/$container/$blobName"
     Invoke-RestMethod -Uri $blobUrl -Headers @{
-        Authorization  = "Bearer $accessToken"
+        Authorization  = "Bearer $script:azToken"
         "x-ms-version" = "2020-10-02"
     } -OutFile $gcpKeyPath -UseBasicParsing
 
-    # Set the env var so google-cloud-bigquery auto-discovers it
     $env:GOOGLE_APPLICATION_CREDENTIALS = $gcpKeyPath
     [Environment]::SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", $gcpKeyPath, "Machine")
 
