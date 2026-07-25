@@ -26,7 +26,7 @@ Write-Host "Pool deleted." -ForegroundColor Green
 # --- 2. Create Linux pool with UAMI via ARM API ---
 Write-Host "`nCreating Linux pool '$poolId' with UAMI..." -ForegroundColor Yellow
 
-$startTaskCmd = '/bin/bash -c "apt-get update -qq && apt-get install -y -qq curl unzip python3 python3-pip && curl -sL https://github.com/Tonychen0227/arklogs/archive/refs/heads/main.zip -o /tmp/arklogs.zip && unzip -oq /tmp/arklogs.zip -d /arklogs && bash /arklogs/arklogs-main/start-task.sh"'
+$startTaskCmd = '/bin/bash -c "apt-get update -qq && apt-get install -y -qq curl unzip python3 python3-pip && curl -sL https://github.com/Tonychen0227/arklogs/archive/refs/heads/main.zip -o /tmp/arklogs.zip && unzip -oq /tmp/arklogs.zip -d /arklogs && bash /arklogs/ArkLogs-main/start-task.sh"'
 
 $uamiResourceId = "/subscriptions/6dec0042-21fa-419c-9be1-7b94eb1a58ed/resourceGroups/ArkNovaStats/providers/Microsoft.ManagedIdentity/userAssignedIdentities/arknovauami"
 
@@ -76,9 +76,14 @@ $poolBody = @{
     }
 } | ConvertTo-Json -Depth 10
 
+# Write JSON to temp file (az rest --body from string has quoting issues on Windows)
+$tmpFile = "$env:TEMP\pool-body.json"
+$poolBody | Out-File -FilePath $tmpFile -Encoding utf8NoBOM
+
 $armUrl = "https://management.azure.com/subscriptions/6dec0042-21fa-419c-9be1-7b94eb1a58ed/resourceGroups/$resourceGroup/providers/Microsoft.Batch/batchAccounts/$batchAccount/pools/${poolId}?api-version=2024-07-01"
 
-az rest --method PUT --url $armUrl --body $poolBody
+az rest --method PUT --url $armUrl --body "@$tmpFile" --headers "Content-Type=application/json"
+Remove-Item $tmpFile -Force -ErrorAction SilentlyContinue
 
 Write-Host "`nPool created. Waiting for node to become idle..." -ForegroundColor Yellow
 

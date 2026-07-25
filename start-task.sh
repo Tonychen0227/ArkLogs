@@ -3,7 +3,7 @@ set -e
 
 # === BGA Scraper Setup for Ubuntu (Azure Batch) ===
 
-REPO_DIR="/arklogs/arklogs-main"
+REPO_DIR="/arklogs/ArkLogs-main"
 
 echo "=== BGA Scraper Setup for Linux ==="
 

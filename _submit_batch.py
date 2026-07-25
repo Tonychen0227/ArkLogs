@@ -31,7 +31,7 @@ TABLE_IDS = (
 BATCH_URL = "https://arknovastats.eastus.batch.azure.com"
 POOL_ID = "arknovalogspool"
 JOB_ID = f"backfill-5xx-{int(time.time())}"
-WORK_DIR = "/arklogs/arklogs-main"
+WORK_DIR = "/arklogs/ArkLogs-main"
 
 cred = DefaultAzureCredential()
 client = BatchClient(endpoint=BATCH_URL, credential=cred)
