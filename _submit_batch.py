@@ -1,9 +1,12 @@
 """Create an Azure Batch job + task to scrape 100 tables starting with 5XX."""
 from azure.batch import BatchClient
 from azure.batch.models import (
+    AutoUserSpecification,
     BatchJobCreateOptions,
     BatchPoolInfo,
     BatchTaskCreateOptions,
+    ElevationLevel,
+    UserIdentity,
 )
 from azure.identity import DefaultAzureCredential
 import os
@@ -52,20 +55,25 @@ job = BatchJobCreateOptions(
 client.create_job(job)
 print(f"Created job: {JOB_ID}")
 
-# Build command — re-download latest code, set env vars, run scraper
+# Build command — set env vars and run scraper
+# Running as admin so we can refresh code from GitHub
 bga_email = os.environ["BGA_EMAIL"]
 bga_password = os.environ["BGA_PASSWORD"]
 
-# Re-download repo zip to get latest code before running
 REFRESH_CMD = (
-    "curl -sL https://github.com/Tonychen0227/arklogs/archive/refs/heads/main.zip -o /tmp/arklogs.zip && "
+    "curl -fsSL https://github.com/Tonychen0227/arklogs/archive/refs/heads/main.zip -o /tmp/arklogs.zip && "
     "unzip -oq /tmp/arklogs.zip -d /arklogs && "
     "rm /tmp/arklogs.zip"
 )
 
+PLAYWRIGHT_INSTALL = "python3 -m playwright install --with-deps chromium"
+VPN_CONNECT = f"bash {WORK_DIR}/vpn-connect.sh"
+
 cmd = (
     f'/bin/bash -c "'
     f'{REFRESH_CMD} && '
+    f'{PLAYWRIGHT_INSTALL} && '
+    f'{VPN_CONNECT} && '
     f'cd {WORK_DIR} && '
     f'export BGA_EMAIL={bga_email} && '
     f'export BGA_PASSWORD={bga_password} && '
@@ -77,6 +85,9 @@ cmd = (
 task = BatchTaskCreateOptions(
     id="scrape-5xx",
     command_line=cmd,
+    user_identity=UserIdentity(
+        auto_user=AutoUserSpecification(elevation_level=ElevationLevel.ADMIN)
+    ),
 )
 client.create_task(JOB_ID, task)
 print(f"Created task: scrape-5xx ({len(TABLE_IDS.split(','))} tables)")
