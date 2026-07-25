@@ -41,9 +41,9 @@ echo "  creds lines: $(wc -l < /tmp/proton-creds.txt)"
 
 chmod 600 /tmp/proton-creds.txt
 
-# Install OpenVPN
+# Install OpenVPN + resolvconf (needed for DNS through VPN)
 echo "Installing OpenVPN..."
-apt-get install -y -qq openvpn
+apt-get install -y -qq openvpn resolvconf
 
 # Connect to VPN in background
 echo "Starting OpenVPN..."
@@ -64,7 +64,18 @@ echo "Waiting for VPN connection..."
 for i in $(seq 1 30); do
     if ip addr show tun0 &>/dev/null; then
         echo "VPN connected! (attempt $i)"
-        echo "Public IP: $(curl -s ifconfig.me)"
+        echo "Public IP: $(curl -s --max-time 10 ifconfig.me)"
+        echo "Testing BGA connectivity..."
+        BGA_STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 https://en.boardgamearena.com/account)
+        echo "  BGA HTTP status: $BGA_STATUS"
+        if [ "$BGA_STATUS" = "000" ]; then
+            echo "  WARNING: BGA not reachable, checking DNS..."
+            echo "  resolv.conf: $(cat /etc/resolv.conf)"
+            echo "  Forcing DNS to 1.1.1.1..."
+            echo "nameserver 1.1.1.1" > /etc/resolv.conf
+            BGA_STATUS2=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 https://en.boardgamearena.com/account)
+            echo "  BGA HTTP status after DNS fix: $BGA_STATUS2"
+        fi
         exit 0
     fi
     sleep 2
