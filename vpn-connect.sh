@@ -27,7 +27,7 @@ echo "Downloading .ovpn config..."
 curl -s -o /tmp/proton.ovpn \
     -H "Authorization: Bearer $ACCESS_TOKEN" \
     -H "x-ms-version: 2020-10-02" \
-    "https://$STORAGE_ACCOUNT.blob.core.windows.net/$CONTAINER/us-free-12.protonvpn.udp.ovpn"
+    "https://$STORAGE_ACCOUNT.blob.core.windows.net/$CONTAINER/us-co-426.protonvpn.udp.ovpn"
 echo "  .ovpn size: $(wc -c < /tmp/proton.ovpn) bytes"
 
 # Download credentials
