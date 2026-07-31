@@ -39,6 +39,7 @@ echo "  pip dependencies installed."
 echo ""
 echo "[3/5] Installing Playwright Chromium browser..."
 python3 -m playwright install --with-deps chromium
+apt-get clean && rm -rf /var/lib/apt/lists/*
 echo "  Playwright Chromium installed."
 
 # --- 4. Download GCP service account key from Azure Blob Storage ---

@@ -66,13 +66,11 @@ REFRESH_CMD = (
     "rm /tmp/arklogs.zip"
 )
 
-PLAYWRIGHT_INSTALL = "python3 -m playwright install --with-deps chromium"
 VPN_CONNECT = f"bash {WORK_DIR}/vpn-connect.sh"
 
 cmd = (
     f'/bin/bash -c "'
     f'{REFRESH_CMD} && '
-    f'{PLAYWRIGHT_INSTALL} && '
     f'{VPN_CONNECT} && '
     f'cd {WORK_DIR} && '
     f'export BGA_EMAIL={bga_email} && '
