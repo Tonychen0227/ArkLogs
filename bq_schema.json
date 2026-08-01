@@ -266,7 +266,7 @@
   },
   {
     "name": "Thinking_time",
-    "type": "STRING",
+    "type": "INT64",
     "mode": "NULLABLE"
   },
   {
@@ -331,7 +331,7 @@
   },
   {
     "name": "arena_rating_delta",
-    "type": "INT64",
+    "type": "FLOAT64",
     "mode": "NULLABLE"
   },
   {
@@ -346,7 +346,7 @@
   },
   {
     "name": "elo",
-    "type": "INT64",
+    "type": "FLOAT64",
     "mode": "NULLABLE"
   },
   {
@@ -391,7 +391,7 @@
   },
   {
     "name": "opponent_elo",
-    "type": "INT64",
+    "type": "FLOAT64",
     "mode": "NULLABLE"
   },
   {
@@ -411,7 +411,7 @@
   },
   {
     "name": "post_match_arena_rating",
-    "type": "INT64",
+    "type": "FLOAT64",
     "mode": "NULLABLE"
   },
   {
@@ -421,7 +421,7 @@
   },
   {
     "name": "pre_match_arena_rating",
-    "type": "INT64",
+    "type": "FLOAT64",
     "mode": "NULLABLE"
   },
   {

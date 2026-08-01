@@ -137,7 +137,7 @@ def transform_row(raw):
     pre_match_arena = None
     if arena_after is not None and arena_win is not None:
         try:
-            pre_match_arena = str(float(arena_after) - float(arena_win))
+            pre_match_arena = float(arena_after) - float(arena_win)
         except (ValueError, TypeError):
             pass
 
@@ -189,8 +189,8 @@ def transform_row(raw):
         "post_match_elo": post_match_elo,
         "opponent_elo": opponent_elo,
         "pre_match_arena_rating": pre_match_arena,
-        "post_match_arena_rating": str(arena_after) if arena_after is not None else None,
-        "arena_rating_delta": str(arena_win) if arena_win is not None else None,
+        "post_match_arena_rating": _float(arena_after),
+        "arena_rating_delta": _float(arena_win),
         "game_ended_at": game_ended_at,
         "concede": concede,
         "Map": map_label,
