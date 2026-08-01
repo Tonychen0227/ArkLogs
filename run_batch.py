@@ -74,10 +74,11 @@ def upload_to_bigquery(rows):
                     clean[k] = v
             f.write(json.dumps(clean, default=str) + "\n")
 
+    table_schema = client.get_table(BQ_TABLE).schema
     job_config = bigquery.LoadJobConfig(
         source_format=bigquery.SourceFormat.NEWLINE_DELIMITED_JSON,
         write_disposition=bigquery.WriteDisposition.WRITE_APPEND,
-        autodetect=True,
+        schema=table_schema,
     )
 
     with open(tmp_path, "rb") as f:
