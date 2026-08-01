@@ -15,6 +15,7 @@ import sys
 from datetime import datetime, timezone
 
 from dotenv import load_dotenv
+from google.api_core.exceptions import NotFound
 from google.cloud import bigquery
 from playwright.async_api import async_playwright
 
@@ -34,6 +35,16 @@ def log(msg):
 BGA_TABLE_URL = "https://boardgamearena.com/table?table={table_id}"
 BQ_PROJECT = "fut-macro"
 BQ_TABLE = "fut-macro.ark_nova.games"
+
+
+def get_bigquery_schema():
+    schema_path = os.path.join(os.path.dirname(__file__), "bq_schema.json")
+    with open(schema_path, encoding="utf-8") as schema_file:
+        fields = json.load(schema_file)
+    return [
+        bigquery.SchemaField(field["name"], field["type"], mode=field["mode"])
+        for field in fields
+    ]
 
 
 def upload_to_bigquery(rows):
@@ -74,7 +85,12 @@ def upload_to_bigquery(rows):
                     clean[k] = v
             f.write(json.dumps(clean, default=str) + "\n")
 
-    table_schema = client.get_table(BQ_TABLE).schema
+    try:
+        table_schema = client.get_table(BQ_TABLE).schema
+    except NotFound:
+        table_schema = get_bigquery_schema()
+        client.create_table(bigquery.Table(BQ_TABLE, schema=table_schema))
+
     job_config = bigquery.LoadJobConfig(
         source_format=bigquery.SourceFormat.NEWLINE_DELIMITED_JSON,
         write_disposition=bigquery.WriteDisposition.WRITE_APPEND,
