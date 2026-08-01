@@ -331,7 +331,7 @@
   },
   {
     "name": "arena_rating_delta",
-    "type": "FLOAT64",
+    "type": "INT64",
     "mode": "NULLABLE"
   },
   {
@@ -411,7 +411,7 @@
   },
   {
     "name": "post_match_arena_rating",
-    "type": "FLOAT64",
+    "type": "INT64",
     "mode": "NULLABLE"
   },
   {
@@ -421,11 +421,31 @@
   },
   {
     "name": "pre_match_arena_rating",
-    "type": "FLOAT64",
+    "type": "INT64",
     "mode": "NULLABLE"
   },
   {
     "name": "pre_match_elo",
+    "type": "FLOAT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "raw_arena_after_game",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "raw_arena_points_win",
+    "type": "STRING",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "raw_point_win",
+    "type": "FLOAT64",
+    "mode": "NULLABLE"
+  },
+  {
+    "name": "raw_rank_after_game",
     "type": "FLOAT64",
     "mode": "NULLABLE"
   },

@@ -32,6 +32,24 @@ def _float(v):
         return None
 
 
+def _display_elo(v):
+    rank = _float(v)
+    return round(rank - 1300, 2) if rank is not None else None
+
+
+def _arena_points(v):
+    if v is None:
+        return None
+    value = str(v).strip()
+    if not value:
+        return None
+    sign = -1 if value.startswith("-") else 1
+    fraction = value.lstrip("+-").partition(".")[2]
+    if not fraction:
+        return 0
+    return sign * int(fraction.ljust(4, "0")[:4])
+
+
 def _stat_val(player_stats, stat_key, player_id):
     """Get a stat value for a player from result.stats.player."""
     stat = player_stats.get(stat_key, {})
@@ -120,26 +138,24 @@ def transform_row(raw):
     opponent_id = _int(opp_rp.get("player_id"))
     pid = str(player_id) if player_id else ""
 
-    # --- ELO (full decimals) ---
-    rank_after = _float(rp.get("rank_after_game"))
+    # --- ELO (BGA rank is displayed relative to the 1300 baseline) ---
+    rank_after = rp.get("rank_after_game")
     point_win = _float(rp.get("point_win"))
-    pre_match_elo = (rank_after - point_win) if rank_after is not None and point_win is not None else None
-    post_match_elo = rank_after
+    post_match_elo = _display_elo(rank_after)
+    pre_match_elo = round(post_match_elo - point_win, 2) if post_match_elo is not None and point_win is not None else None
     elo_delta = point_win
 
-    opp_rank_after = _float(opp_rp.get("rank_after_game"))
+    opp_rank_after = opp_rp.get("rank_after_game")
     opp_point_win = _float(opp_rp.get("point_win"))
-    opponent_elo = (opp_rank_after - opp_point_win) if opp_rank_after is not None and opp_point_win is not None else None
+    opponent_post_elo = _display_elo(opp_rank_after)
+    opponent_elo = round(opponent_post_elo - opp_point_win, 2) if opponent_post_elo is not None and opp_point_win is not None else None
 
-    # --- Arena rating (full string precision) ---
+    # --- Arena rating (BGA encodes points in the four fractional digits) ---
     arena_after = rp.get("arena_after_game")
     arena_win = rp.get("arena_points_win")
-    pre_match_arena = None
-    if arena_after is not None and arena_win is not None:
-        try:
-            pre_match_arena = float(arena_after) - float(arena_win)
-        except (ValueError, TypeError):
-            pass
+    post_match_arena = _arena_points(arena_after)
+    arena_delta = _arena_points(arena_win)
+    pre_match_arena = post_match_arena - arena_delta if post_match_arena is not None and arena_delta is not None else None
 
     # --- Timestamp (precise from result.time_end) ---
     time_end_str = result.get("time_end")
@@ -188,9 +204,13 @@ def transform_row(raw):
         "pre_match_elo": pre_match_elo,
         "post_match_elo": post_match_elo,
         "opponent_elo": opponent_elo,
+        "raw_rank_after_game": _float(rank_after),
+        "raw_point_win": point_win,
         "pre_match_arena_rating": pre_match_arena,
-        "post_match_arena_rating": _float(arena_after),
-        "arena_rating_delta": _float(arena_win),
+        "post_match_arena_rating": post_match_arena,
+        "arena_rating_delta": arena_delta,
+        "raw_arena_after_game": arena_after,
+        "raw_arena_points_win": arena_win,
         "game_ended_at": game_ended_at,
         "concede": concede,
         "Map": map_label,

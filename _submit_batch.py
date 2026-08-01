@@ -1,4 +1,4 @@
-"""Create an Azure Batch job + task to scrape 100 tables starting with 5XX."""
+"""Submit 100 Azure Batch tasks containing 100 backfill table IDs each."""
 from azure.batch import BatchClient
 from azure.batch.models import (
     AutoUserSpecification,
@@ -11,6 +11,7 @@ from azure.batch.models import (
 from azure.identity import DefaultAzureCredential
 import os
 import time
+import json
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -33,19 +34,36 @@ TABLE_IDS = (
 
 BATCH_URL = "https://arknovastats.eastus.batch.azure.com"
 POOL_ID = "arknovalogspool"
-JOB_ID = f"backfill-5xx-{int(time.time())}"
+JOB_ID = f"backfill-10k-{int(time.time())}"
 WORK_DIR = "/arklogs/ArkLogs-main"
+SOURCE_FILE = "tobiko-backfill.json"
+TASK_COUNT = 100
+TABLES_PER_TASK = 100
+
+
+def load_table_batches():
+    table_ids = []
+    with open(SOURCE_FILE, encoding="utf-8") as source:
+        for line in source:
+            if not line.strip():
+                continue
+            table_id = str(json.loads(line)["table_id"])
+            if not table_id.isdigit():
+                raise ValueError(f"Invalid table ID: {table_id!r}")
+            table_ids.append(table_id)
+            if len(table_ids) == TASK_COUNT * TABLES_PER_TASK:
+                break
+
+    expected_count = TASK_COUNT * TABLES_PER_TASK
+    if len(table_ids) != expected_count:
+        raise ValueError(f"Expected {expected_count} table IDs, found {len(table_ids)}")
+
+    return [table_ids[start:start + TABLES_PER_TASK] for start in range(0, expected_count, TABLES_PER_TASK)]
 
 cred = DefaultAzureCredential()
 client = BatchClient(endpoint=BATCH_URL, credential=cred)
 
-# Delete old jobs if they exist
-for old_id in ["backfill-5xx-001", "backfill-5xx-002", "backfill-5xx-003", "backfill-5xx-004", "backfill-5xx-005", "backfill-5xx-006"]:
-    try:
-        client.delete_job(old_id)
-        print(f"Deleted old job {old_id}")
-    except Exception:
-        pass
+table_batches = load_table_batches()
 
 # Create job
 job = BatchJobCreateOptions(
@@ -68,25 +86,29 @@ REFRESH_CMD = (
 
 VPN_CONNECT = f"bash {WORK_DIR}/vpn-connect.sh"
 
-cmd = (
-    f'/bin/bash -c "'
-    f'{REFRESH_CMD} && '
-    f'{VPN_CONNECT} && '
-    f'cd {WORK_DIR} && '
-    f'export BGA_EMAIL={bga_email} && '
-    f'export BGA_PASSWORD={bga_password} && '
-    f'export GOOGLE_APPLICATION_CREDENTIALS={WORK_DIR}/gcp-sa-key.json && '
-    f'export PYTHONUNBUFFERED=1 && '
-    f'python3 -u run_batch.py {TABLE_IDS}"'
-)
+def build_command(table_ids):
+    return (
+        f'/bin/bash -c "'
+        f'{REFRESH_CMD} && '
+        f'{VPN_CONNECT} && '
+        f'cd {WORK_DIR} && '
+        f'export BGA_EMAIL={bga_email} && '
+        f'export BGA_PASSWORD={bga_password} && '
+        f'export GOOGLE_APPLICATION_CREDENTIALS={WORK_DIR}/gcp-sa-key.json && '
+        f'export PYTHONUNBUFFERED=1 && '
+        f'python3 -u run_batch.py {",".join(table_ids)}"'
+    )
 
-task = BatchTaskCreateOptions(
-    id="scrape-5xx",
-    command_line=cmd,
-    user_identity=UserIdentity(
-        auto_user=AutoUserSpecification(elevation_level=ElevationLevel.ADMIN)
-    ),
-)
-client.create_task(JOB_ID, task)
-print(f"Created task: scrape-5xx ({len(TABLE_IDS.split(','))} tables)")
-print(f"Monitor: az batch task show --job-id {JOB_ID} --task-id scrape-5xx --account-name arknovastats --account-endpoint {BATCH_URL}")
+
+for index, table_ids in enumerate(table_batches, start=1):
+    task = BatchTaskCreateOptions(
+        id=f"scrape-{index:03d}",
+        command_line=build_command(table_ids),
+        user_identity=UserIdentity(
+            auto_user=AutoUserSpecification(elevation_level=ElevationLevel.ADMIN)
+        ),
+    )
+    client.create_task(JOB_ID, task)
+
+print(f"Created {len(table_batches)} tasks with {TABLES_PER_TASK} tables each")
+print(f"Monitor: az batch task list --job-id {JOB_ID} --account-name arknovastats --account-endpoint {BATCH_URL}")
