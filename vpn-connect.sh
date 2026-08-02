@@ -43,6 +43,7 @@ chmod 600 /tmp/proton-creds.txt
 
 # Install OpenVPN
 echo "Installing OpenVPN..."
+apt-get update -qq
 apt-get install -y -qq openvpn
 
 # Connect to VPN in background
