@@ -94,7 +94,7 @@ for check in \
     "pip:python3 -m pip --version" \
     "greenlet:python3 -c 'import greenlet; print(\"greenlet OK\")'" \
     "playwright:python3 -c 'from playwright._impl._driver import compute_driver_executable; print(\"playwright OK\")'" \
-    "protonvpn:protonvpn --version" \
+    "protonvpn:protonvpn --help" \
     "python-dotenv:python3 -c 'import dotenv; print(\"python-dotenv OK\")'" \
     "google-cloud-bigquery:python3 -c 'from google.cloud import bigquery; print(\"google-cloud-bigquery OK\")'"
 do
