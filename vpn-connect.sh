@@ -41,9 +41,9 @@ echo "  creds lines: $(wc -l < /tmp/proton-creds.txt)"
 
 chmod 600 /tmp/proton-creds.txt
 
-# Install OpenVPN + resolvconf (needed for DNS through VPN)
+# Install OpenVPN
 echo "Installing OpenVPN..."
-apt-get install -y -qq openvpn resolvconf
+apt-get install -y -qq openvpn
 
 # Connect to VPN in background
 echo "Starting OpenVPN..."
