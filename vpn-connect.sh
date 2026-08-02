@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e
 
-echo "=== Proton VPN CLI Connect Script ==="
+echo "=== VPN Connect Script ==="
 
-# Download Proton VPN CLI credentials from Azure Blob using IMDS
+# Download ProtonVPN config and credentials from Azure Blob using IMDS
 STORAGE_ACCOUNT="arknovastorage"
 CONTAINER="data"
 UAMI_RESOURCE_ID="/subscriptions/6dec0042-21fa-419c-9be1-7b94eb1a58ed/resourceGroups/ArkNovaStats/providers/Microsoft.ManagedIdentity/userAssignedIdentities/arknovauami"
@@ -22,48 +22,66 @@ if [ -z "$ACCESS_TOKEN" ] || [ "$ACCESS_TOKEN" = "null" ]; then
 fi
 echo "Got access token."
 
-# Download credentials
-echo "Downloading Proton CLI credentials..."
-curl -fsS -o /tmp/proton-cli-credentials.txt \
+# Download .ovpn config
+echo "Downloading .ovpn config..."
+curl -s -o /tmp/proton.ovpn \
     -H "Authorization: Bearer $ACCESS_TOKEN" \
     -H "x-ms-version: 2020-10-02" \
-    "https://$STORAGE_ACCOUNT.blob.core.windows.net/$CONTAINER/proton-cli-credentials.txt"
-echo "  credentials downloaded."
+    "https://$STORAGE_ACCOUNT.blob.core.windows.net/$CONTAINER/us-co-426.protonvpn.udp.ovpn"
+echo "  .ovpn size: $(wc -c < /tmp/proton.ovpn) bytes"
 
-chmod 600 /tmp/proton-cli-credentials.txt
-mapfile -t PROTON_CREDENTIALS < /tmp/proton-cli-credentials.txt
-PROTON_USERNAME="${PROTON_CREDENTIALS[0]:-}"
-PROTON_PASSWORD="${PROTON_CREDENTIALS[1]:-}"
-if [ -z "$PROTON_USERNAME" ] || [ -z "$PROTON_PASSWORD" ]; then
-    echo "ERROR: Proton CLI credentials must contain username and password lines"
+# Download credentials
+echo "Downloading credentials..."
+curl -s -o /tmp/proton-creds.txt \
+    -H "Authorization: Bearer $ACCESS_TOKEN" \
+    -H "x-ms-version: 2020-10-02" \
+    "https://$STORAGE_ACCOUNT.blob.core.windows.net/$CONTAINER/proton-creds.txt"
+echo "  creds size: $(wc -c < /tmp/proton-creds.txt) bytes"
+echo "  creds lines: $(wc -l < /tmp/proton-creds.txt)"
+
+chmod 600 /tmp/proton-creds.txt
+
+# Install OpenVPN + resolvconf (needed for DNS through VPN)
+echo "Installing OpenVPN..."
+apt-get install -y -qq openvpn resolvconf
+
+# Connect to VPN in background
+echo "Starting OpenVPN..."
+set +e  # Don't exit on openvpn failure - we'll check manually
+openvpn --config /tmp/proton.ovpn --auth-user-pass /tmp/proton-creds.txt --daemon --log /tmp/openvpn.log
+OPENVPN_EXIT=$?
+set -e
+
+if [ $OPENVPN_EXIT -ne 0 ]; then
+    echo "ERROR: OpenVPN failed to start (exit code $OPENVPN_EXIT)"
+    echo "First 20 lines of .ovpn:"
+    head -20 /tmp/proton.ovpn
     exit 1
 fi
 
-if ! command -v protonvpn &>/dev/null; then
-    echo "ERROR: Proton VPN CLI is not installed by the pool start task"
-    exit 1
-fi
+# Wait for VPN to establish (check for TUN device)
+echo "Waiting for VPN connection..."
+for i in $(seq 1 30); do
+    if ip addr show tun0 &>/dev/null; then
+        echo "VPN connected! (attempt $i)"
+        echo "Public IP: $(curl -s --max-time 10 ifconfig.me)"
+        echo "Testing BGA connectivity..."
+        BGA_STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 https://en.boardgamearena.com/account)
+        echo "  BGA HTTP status: $BGA_STATUS"
+        if [ "$BGA_STATUS" = "000" ]; then
+            echo "  WARNING: BGA not reachable, checking DNS..."
+            echo "  resolv.conf: $(cat /etc/resolv.conf)"
+            echo "  Forcing DNS to 1.1.1.1..."
+            echo "nameserver 1.1.1.1" > /etc/resolv.conf
+            BGA_STATUS2=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 https://en.boardgamearena.com/account)
+            echo "  BGA HTTP status after DNS fix: $BGA_STATUS2"
+        fi
+        exit 0
+    fi
+    sleep 2
+done
 
-echo "Resetting any previous Proton VPN session..."
-protonvpn disconnect || true
-protonvpn signout || true
-
-echo "Signing in to Proton VPN CLI..."
-if ! printf '%s\n' "$PROTON_PASSWORD" | script -qefc "protonvpn signin '$PROTON_USERNAME'" /dev/null; then
-    echo "ERROR: Proton VPN CLI sign-in failed"
-    exit 1
-fi
-
-protonvpn config set kill-switch off
-protonvpn config set ipv6 off
-echo "Connecting to the fastest United States server..."
-protonvpn connect --country US
-
-echo "Public IP: $(curl -fsS --max-time 20 ifconfig.me)"
-echo "Testing BGA connectivity..."
-BGA_STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 https://en.boardgamearena.com/account)
-echo "  BGA HTTP status: $BGA_STATUS"
-if [ "$BGA_STATUS" = "000" ]; then
-    echo "ERROR: BGA is not reachable through Proton VPN"
-    exit 1
-fi
+echo "ERROR: VPN failed to connect in 60s"
+echo "OpenVPN log:"
+cat /tmp/openvpn.log
+exit 1

@@ -7,4 +7,3 @@ gcp-sa-key.json
 *.ovpn
 _upload_*.jsonl
 tobiko-backfill.json
-proton-cli-credentials.txt
