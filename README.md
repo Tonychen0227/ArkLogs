@@ -25,3 +25,12 @@ Playwright script that logs into [Board Game Arena](https://en.boardgamearena.co
    ```
 
 The script will launch Chrome, log in to BGA with your credentials, and exit once login is complete.
+
+## Azure Batch Pool
+
+The scraper pool uses Ubuntu 22.04 on one dedicated `Standard_B2ps_v2` node with one task slot.
+This burstable SKU provides 2 vCPUs and 8 GiB RAM, giving Chromium and Playwright more headroom than the prior `Standard_A1_v2` (1 vCPU, 2 GiB RAM) while retaining a cost-conscious profile.
+
+As of 2026-08-02, East US Linux retail pricing is $0.0672 per hour for a dedicated `Standard_B2ps_v2` node, approximately $1.61 per day or $49 per 730-hour month. Low-priority pricing is $0.0134 per hour, but those nodes can be evicted and are not used until task retry handling is robust.
+
+The pool intentionally remains at one node and one task slot: the scraper uses a random VPN endpoint, and the current reliability work favors a single controlled session over parallel VPN exits. Increase node count only after validating task-level retries and recovery.
