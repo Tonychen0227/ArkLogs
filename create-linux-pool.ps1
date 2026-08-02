@@ -38,7 +38,7 @@ $poolBody = @{
         }
     }
     properties = @{
-        vmSize = "Standard_D2as_v6"
+        vmSize = "Standard_D2s_v3"
         deploymentConfiguration = @{
             virtualMachineConfiguration = @{
                 imageReference = @{
