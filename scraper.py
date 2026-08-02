@@ -15,7 +15,7 @@ def _log(msg):
 async def login_to_bga(page, email: str, password: str):
     """Log in to Board Game Arena with email and password."""
     _log("Navigating to BGA...")
-    await page.goto("https://en.boardgamearena.com/account", timeout=60000, wait_until="domcontentloaded")
+    await page.goto("https://en.boardgamearena.com/account", timeout=300000, wait_until="domcontentloaded")
     await page.wait_for_load_state("networkidle", timeout=60000)
     _log(f"Page loaded: {page.url}")
 
