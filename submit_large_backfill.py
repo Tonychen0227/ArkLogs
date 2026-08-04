@@ -22,6 +22,7 @@ from azure.batch.models import (
     ElevationLevel,
     UserIdentity,
 )
+from azure.core.exceptions import ResourceNotFoundError, ServiceResponseError
 from azure.identity import DefaultAzureCredential
 from dotenv import load_dotenv
 
@@ -112,6 +113,25 @@ def build_command(table_ids: list[str], email: str, password: str) -> str:
     )
 
 
+def create_task_with_retry(client: BatchClient, job_id: str, task: BatchTaskCreateOptions) -> None:
+    """Create a task safely when the Batch service drops a transient response."""
+    for attempt in range(1, 6):
+        try:
+            client.create_task(job_id, task)
+            return
+        except ServiceResponseError:
+            try:
+                client.get_task(job_id, task.id)
+                print(f"  {task.id} was accepted before the connection closed")
+                return
+            except ResourceNotFoundError:
+                if attempt == 5:
+                    raise
+                wait_seconds = 2 ** attempt
+                print(f"  Retrying {task.id} in {wait_seconds}s (attempt {attempt}/5)")
+                time.sleep(wait_seconds)
+
+
 def submit_job(
     client: BatchClient,
     ledger: dict[str, dict[str, str]],
@@ -130,7 +150,7 @@ def submit_job(
 
     for task_number, task_ids in enumerate(batches(table_ids, TABLES_PER_TASK), start=1):
         task_id = f"scrape-{task_number:04d}"
-        client.create_task(job_id, BatchTaskCreateOptions(
+        create_task_with_retry(client, job_id, BatchTaskCreateOptions(
             id=task_id,
             command_line=build_command(task_ids, email, password),
             user_identity=UserIdentity(auto_user=AutoUserSpecification(elevation_level=ElevationLevel.ADMIN)),
