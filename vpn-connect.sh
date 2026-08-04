@@ -41,10 +41,11 @@ echo "  creds lines: $(wc -l < /tmp/proton-creds.txt)"
 
 chmod 600 /tmp/proton-creds.txt
 
-# Install OpenVPN
-echo "Installing OpenVPN..."
-apt-get update -qq
-apt-get install -y -qq openvpn
+# OpenVPN is installed by the pool start task.
+if ! command -v openvpn &>/dev/null; then
+    echo "ERROR: OpenVPN is not installed by the pool start task"
+    exit 1
+fi
 
 # Connect to VPN in background
 echo "Starting OpenVPN..."

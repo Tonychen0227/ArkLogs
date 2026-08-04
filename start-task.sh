@@ -15,8 +15,13 @@ if command -v python3 &>/dev/null; then
 else
     echo "  Installing Python 3..."
     apt-get update -qq
-    apt-get install -y -qq python3 python3-pip python3-venv
+    apt-get install -y -qq python3 python3-pip python3-venv openvpn
     echo "  Installed: $(python3 --version)"
+fi
+
+if ! command -v openvpn &>/dev/null; then
+    apt-get update -qq
+    apt-get install -y -qq openvpn
 fi
 
 # Ensure pip is available

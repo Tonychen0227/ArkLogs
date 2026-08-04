@@ -79,9 +79,10 @@ bga_email = os.environ["BGA_EMAIL"]
 bga_password = os.environ["BGA_PASSWORD"]
 
 REFRESH_CMD = (
-    "curl -fsSL https://github.com/Tonychen0227/arklogs/archive/refs/heads/main.zip -o /tmp/arklogs.zip && "
+    "flock /tmp/arklogs-refresh.lock /bin/bash -c "
+    "'curl -fsSL https://github.com/Tonychen0227/arklogs/archive/refs/heads/main.zip -o /tmp/arklogs.zip && "
     "unzip -oq /tmp/arklogs.zip -d /arklogs && "
-    "rm /tmp/arklogs.zip"
+    "rm /tmp/arklogs.zip'"
 )
 
 VPN_CONNECT = f"bash {WORK_DIR}/vpn-connect.sh"
