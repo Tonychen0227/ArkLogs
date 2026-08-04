@@ -67,7 +67,7 @@ $poolBody = @{
             maxTaskRetryCount = 1
             waitForSuccess = $true
         }
-        taskSlotsPerNode = 1
+        taskSlotsPerNode = 2
         networkConfiguration = @{
             publicIPAddressConfiguration = @{
                 provision = "BatchManaged"

@@ -28,9 +28,9 @@ The script will launch Chrome, log in to BGA with your credentials, and exit onc
 
 ## Azure Batch Pool
 
-The scraper pool uses Ubuntu 22.04 on one dedicated `Standard_D2s_v3` node with one task slot.
+The scraper pool uses Ubuntu 22.04 on one dedicated `Standard_D2s_v3` node with two task slots.
 This x86 SKU provides 2 vCPUs, 8 GiB RAM, and a 16 GiB resource disk, giving Chromium and Playwright more headroom than the prior `Standard_A1_v2` (1 vCPU, 2 GiB RAM). `Standard_B2ps_v2` is unavailable to this Batch pool, and `Standard_D2as_v6` has no Batch family quota; `Standard_D2s_v3` is the compatible, quota-enabled replacement.
 
 As of 2026-08-02, East US Linux retail pricing is $0.096 per hour for a dedicated `Standard_D2s_v3` node, approximately $2.30 per day or $70.08 per 730-hour month. Low-priority pricing is $0.019 per hour, but those nodes can be evicted and are not used until task retry handling is robust.
 
-The pool intentionally remains at one node and one task slot: the scraper uses a random VPN endpoint, and the current reliability work favors a single controlled session over parallel VPN exits. Increase node count only after validating task-level retries and recovery.
+The pool intentionally remains at one node with two task slots. Two concurrent tasks use separate VPN sessions while remaining within the node's 2-vCPU and 8-GiB capacity. Increase node count or task slots further only after validating task-level retries and recovery.
