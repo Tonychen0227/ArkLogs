@@ -38,7 +38,7 @@ BQ_TABLE = "fut-macro.ark_nova.games"
 
 
 def get_bigquery_schema():
-    schema_path = os.path.join(os.path.dirname(__file__), "bq_schema.json")
+    schema_path = os.path.join(os.path.dirname(__file__), "resources", "bq_schema.json")
     with open(schema_path, encoding="utf-8") as schema_file:
         fields = json.load(schema_file)
     return [

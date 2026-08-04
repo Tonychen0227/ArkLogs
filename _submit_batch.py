@@ -95,7 +95,7 @@ def build_command(table_ids):
         f'cd {WORK_DIR} && '
         f'export BGA_EMAIL={bga_email} && '
         f'export BGA_PASSWORD={bga_password} && '
-        f'export GOOGLE_APPLICATION_CREDENTIALS={WORK_DIR}/gcp-sa-key.json && '
+        f'export GOOGLE_APPLICATION_CREDENTIALS={WORK_DIR}/resources/gcp-sa-key.json && '
         f'export PLAYWRIGHT_BROWSERS_PATH=/mnt/batch/tasks/startup/wd/.cache/ms-playwright && '
         f'export PYTHONUNBUFFERED=1 && '
         f'python3 -u run_batch.py {",".join(table_ids)}"'

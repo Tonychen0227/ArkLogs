@@ -51,10 +51,12 @@ echo "  Playwright Chromium installed."
 echo ""
 echo "[4/5] Downloading GCP service account key..."
 
-GCP_KEY_PATH="$REPO_DIR/gcp-sa-key.json"
+GCP_KEY_PATH="$REPO_DIR/resources/gcp-sa-key.json"
 STORAGE_ACCOUNT="arknovastorage"
 CONTAINER="data"
 UAMI_RESOURCE_ID="/subscriptions/6dec0042-21fa-419c-9be1-7b94eb1a58ed/resourceGroups/ArkNovaStats/providers/Microsoft.ManagedIdentity/userAssignedIdentities/arknovauami"
+
+mkdir -p "$(dirname "$GCP_KEY_PATH")"
 
 # Get access token from Azure IMDS
 ENCODED_UAMI=$(python3 -c "import urllib.parse; print(urllib.parse.quote('$UAMI_RESOURCE_ID', safe=''))")
@@ -68,7 +70,7 @@ if [ -n "$ACCESS_TOKEN" ] && [ "$ACCESS_TOKEN" != "null" ]; then
     curl -s -o "$GCP_KEY_PATH" \
         -H "Authorization: Bearer $ACCESS_TOKEN" \
         -H "x-ms-version: 2020-10-02" \
-        "https://$STORAGE_ACCOUNT.blob.core.windows.net/$CONTAINER/gcp-sa-key.json"
+        "https://$STORAGE_ACCOUNT.blob.core.windows.net/$CONTAINER/resources/gcp-sa-key.json"
 
     export GOOGLE_APPLICATION_CREDENTIALS="$GCP_KEY_PATH"
     echo "  GCP SA key downloaded to $GCP_KEY_PATH"

@@ -3,6 +3,23 @@ set -e
 
 echo "=== VPN Connect Script ==="
 
+# Tasks on the same node share one tunnel. Serialize setup so a second task
+# reuses the connected VPN instead of racing over tun0 and temporary files.
+exec 9>/tmp/proton-vpn.lock
+flock 9
+
+if ip addr show tun0 &>/dev/null; then
+    BGA_STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 https://en.boardgamearena.com/account || true)
+    if [ "$BGA_STATUS" != "000" ]; then
+        echo "Reusing existing VPN connection."
+        echo "  BGA HTTP status: $BGA_STATUS"
+        exit 0
+    fi
+    echo "Existing VPN connection is unhealthy; reconnecting."
+    pkill openvpn || true
+    sleep 2
+fi
+
 # Download ProtonVPN config and credentials from Azure Blob using IMDS
 STORAGE_ACCOUNT="arknovastorage"
 CONTAINER="data"
