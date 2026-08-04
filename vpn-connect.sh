@@ -67,7 +67,7 @@ fi
 # Connect to VPN in background
 echo "Starting OpenVPN..."
 set +e  # Don't exit on openvpn failure - we'll check manually
-openvpn --config /tmp/proton.ovpn --auth-user-pass /tmp/proton-creds.txt --daemon --log /tmp/openvpn.log
+(exec 9>&-; openvpn --config /tmp/proton.ovpn --auth-user-pass /tmp/proton-creds.txt --daemon --log /tmp/openvpn.log)
 OPENVPN_EXIT=$?
 set -e
 
