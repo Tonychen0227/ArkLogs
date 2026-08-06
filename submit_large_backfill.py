@@ -19,10 +19,10 @@ from azure.batch.models import (
     BatchJobCreateOptions,
     BatchPoolInfo,
     BatchTaskCreateOptions,
+    BatchTaskGroup,
     ElevationLevel,
     UserIdentity,
 )
-from azure.core.exceptions import ResourceNotFoundError, ServiceResponseError
 from azure.identity import DefaultAzureCredential
 from dotenv import load_dotenv
 
@@ -113,25 +113,6 @@ def build_command(table_ids: list[str], email: str, password: str) -> str:
     )
 
 
-def create_task_with_retry(client: BatchClient, job_id: str, task: BatchTaskCreateOptions) -> None:
-    """Create a task safely when the Batch service drops a transient response."""
-    for attempt in range(1, 6):
-        try:
-            client.create_task(job_id, task)
-            return
-        except ServiceResponseError:
-            try:
-                client.get_task(job_id, task.id)
-                print(f"  {task.id} was accepted before the connection closed")
-                return
-            except ResourceNotFoundError:
-                if attempt == 5:
-                    raise
-                wait_seconds = 2 ** attempt
-                print(f"  Retrying {task.id} in {wait_seconds}s (attempt {attempt}/5)")
-                time.sleep(wait_seconds)
-
-
 def submit_job(
     client: BatchClient,
     ledger: dict[str, dict[str, str]],
@@ -148,20 +129,24 @@ def submit_job(
     ))
     print(f"Created {job_id} with {len(table_ids)} tables")
 
-    for task_number, task_ids in enumerate(batches(table_ids, TABLES_PER_TASK), start=1):
-        task_id = f"scrape-{task_number:04d}"
-        create_task_with_retry(client, job_id, BatchTaskCreateOptions(
-            id=task_id,
-            command_line=build_command(task_ids, email, password),
-            user_identity=UserIdentity(auto_user=AutoUserSpecification(elevation_level=ElevationLevel.ADMIN)),
-        ))
-        for table_id in task_ids:
-            ledger[table_id] = {"status": "submitted", "job_id": job_id, "task_id": task_id}
-        if task_number % 100 == 0:
-            save_ledger(ledger)
-            print(f"  Submitted {task_number} tasks")
+    task_batches = list(batches(table_ids, TABLES_PER_TASK))
+    for group_start in range(0, len(task_batches), 100):
+        task_group = task_batches[group_start:group_start + 100]
+        tasks = []
+        for task_number, task_ids in enumerate(task_group, start=group_start + 1):
+            task_id = f"scrape-{task_number:04d}"
+            tasks.append(BatchTaskCreateOptions(
+                id=task_id,
+                command_line=build_command(task_ids, email, password),
+                user_identity=UserIdentity(auto_user=AutoUserSpecification(elevation_level=ElevationLevel.ADMIN)),
+            ))
+        client.create_task_collection(job_id, BatchTaskGroup(task_values=tasks))
+        for task, task_ids in zip(tasks, task_group):
+            for table_id in task_ids:
+                ledger[table_id] = {"status": "submitted", "job_id": job_id, "task_id": task.id}
+        save_ledger(ledger)
+        print(f"  Submitted {group_start + len(task_group)} tasks")
 
-    save_ledger(ledger)
     return job_id
 
 
