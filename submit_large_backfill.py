@@ -174,8 +174,8 @@ def main() -> None:
 
     if args.count <= 0 or args.tables_per_job <= 0:
         raise ValueError("--count and --tables-per-job must be positive")
-    if args.count % TABLES_PER_TASK or args.tables_per_job % TABLES_PER_TASK:
-        raise ValueError(f"Counts must be divisible by {TABLES_PER_TASK}")
+    if args.tables_per_job % TABLES_PER_TASK:
+        raise ValueError(f"--tables-per-job must be divisible by {TABLES_PER_TASK}")
 
     load_dotenv()
     client = BatchClient(endpoint=BATCH_URL, credential=DefaultAzureCredential())
