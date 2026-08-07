@@ -1,2 +1,4 @@
 playwright==1.52.0
 python-dotenv==1.1.0
+google-cloud-bigquery==3.31.0
+google-auth==2.38.0

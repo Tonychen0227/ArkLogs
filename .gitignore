@@ -3,3 +3,10 @@ user_data/
 extension/
 __pycache__/
 *.pyc
+gcp-sa-key.json
+resources/gcp-sa-key.json
+*.ovpn
+_upload_*.jsonl
+tobiko-backfill.json
+tobiko-done.json
+results/
