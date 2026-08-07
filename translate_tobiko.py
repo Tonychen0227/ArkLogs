@@ -13,6 +13,7 @@ NONTRIVIAL = {
     "moveProjects", "takeBonus", "snapCard", "markCard", "gainMarked",
     "releaseAnimal", "cutDown", "upgradeCard", "advanceBreak",
     "slideMeeples", "getBonuses",
+    "fillPool", "discardCardsOnDisplay", "actionCardCleanup",
     "pDrawCards", "pDiscardCards", "updateBreakDiscardSelection",
     "updateInitialActionCardSelection", "updateInitialActionCardsKeep",
     "updateInitialSelection",
@@ -27,6 +28,18 @@ def card_ids(lst):
         else:
             out.append(c)
     return out
+
+
+def action_card_id(card):
+    if not isinstance(card, dict):
+        return card
+    if card.get("type"):
+        return card["type"]
+    action_type = card.get("actionType")
+    number = card.get("number")
+    if action_type and number is not None:
+        return f"{action_type}{number}" if number else action_type
+    return action_type
 
 
 def encode(ev, chan_pid=None):
@@ -50,16 +63,27 @@ def encode(ev, chan_pid=None):
         return {"v": "ACT", "p": pid, "card": ac.get("type"),
                 "strength": a.get("strength"), "level": ac.get("level")}
 
+    if t == "actionCardCleanup":
+        ac = a.get("actionCard", {}) or {}
+        return {"v": "ACTION_POSITION", "p": pid, "card": ac.get("type"),
+                "at": a.get("position")}
+
     if t == "buyBuilding":
         b = a.get("building", {}) or {}
-        return {"v": "BUILD", "p": pid, "building": b.get("type"),
+        return {"v": "BUILD", "p": pid, "id": b.get("id"),
+                "building": b.get("type"),
                 "size": b.get("size"), "at": [b.get("x"), b.get("y")],
                 "rot": b.get("rotation"), "pay": a.get("amount_money")}
 
     if t == "buyAnimal":
         return {"v": "ANIMAL", "p": pid, "card": a.get("card_id"),
                 "pay": a.get("amount"), "fromDisplay": a.get("fromDisplay"),
-                "into": card_ids(a.get("buildings"))}
+                "into": [
+                    {"id": b.get("id"), "building": b.get("type"),
+                     "size": b.get("size"), "at": [b.get("x"), b.get("y")],
+                     "rot": b.get("rotation")}
+                    for b in (a.get("buildings") or [])
+                ]}
 
     if t == "playSponsor":
         return {"v": "SPONSOR", "p": pid, "card": a.get("card_id"),
@@ -71,8 +95,11 @@ def encode(ev, chan_pid=None):
 
     if t == "takeBonus":
         bd = a.get("bonus_desc", {})
-        raw = bd.get("args", {}).get("bonus_raw_desc") if isinstance(bd, dict) else None
-        return {"v": "ASSOC", "p": pid, "bonus": raw}
+        bonus_args = bd.get("args", {}) if isinstance(bd, dict) else {}
+        return {"v": "ASSOC", "p": pid,
+                "bonus": bonus_args.get("bonus_raw_desc"),
+                "type": bonus_args.get("bonus_type"),
+                "n": bonus_args.get("bonus_n")}
 
     if t == "snapCard":
         return {"v": "SNAP", "p": pid, "cards": card_ids(a.get("cards"))}
@@ -103,14 +130,40 @@ def encode(ev, chan_pid=None):
                 "at": a.get("break"), "max": a.get("maxBreak")}
 
     if t == "slideMeeples":
-        meeples = [{"kind": m.get("type"), "at": m.get("location")}
-                   for m in (a.get("meeples") or [])]
-        return {"v": "WORKER", "p": pid, "strength": a.get("strength"),
-                "meeples": meeples}
+        meeples = []
+        for m in a.get("meeples") or []:
+            rec = {"kind": m.get("type"), "at": m.get("location")}
+            if m.get("id") is not None:
+                rec["id"] = m["id"]
+            meeples.append(rec)
+        if pid is None:
+            meeple_players = {m.get("pId") for m in a.get("meeples") or []
+                              if m.get("pId") is not None}
+            if len(meeple_players) == 1:
+                pid = meeple_players.pop()
+                if isinstance(pid, str) and pid.isdigit():
+                    pid = int(pid)
+        rec = {"v": "WORKER", "p": pid, "strength": a.get("strength"),
+               "meeples": meeples}
+        card = a.get("card")
+        if isinstance(card, dict) and str(card.get("id", "")).startswith("P"):
+            rec["project"] = card["id"]
+            rec["slot"] = a.get("slot")
+        return rec
 
     if t == "getBonuses":
         return {"v": "GAIN", "p": pid, "src": a.get("source"),
                 "get": a.get("bonuses")}
+
+    if t == "fillPool":
+        return {"v": "DISPLAY", "cards": [
+            {"card": c.get("id"), "at": c.get("location")}
+            for c in (a.get("cards") or [])
+        ]}
+
+    if t == "discardCardsOnDisplay":
+        return {"v": "DISPLAY_DISCARD", "p": pid,
+                "cards": card_ids(a.get("cards"))}
 
     if t == "pDrawCards":
         return {"v": "DRAW", "p": pid, "cards": card_ids(a.get("cards"))}
@@ -123,7 +176,9 @@ def encode(ev, chan_pid=None):
                 "keep": priv.get("selection"), "n": priv.get("n")}
 
     if t == "updateInitialActionCardSelection":
-        return {"v": "DRAFT_ACTION", "p": pid, "pick": priv.get("selection")}
+        return {"v": "DRAFT_ACTION", "p": pid,
+                "cards": [action_card_id(c) for c in (priv.get("cards") or [])],
+                "pick": priv.get("selection")}
 
     if t == "updateInitialActionCardsKeep":
         return {"v": "DRAFT_ACTION_KEEP", "p": pid, "pick": priv.get("selection")}

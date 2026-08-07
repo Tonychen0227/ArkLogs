@@ -13,6 +13,11 @@
     {
      "v": "DRAFT_ACTION",
      "p": 98907091,
+     "cards": [
+      "Animals3",
+      "Sponsors2",
+      "Animals2"
+     ],
      "pick": "Sponsors2"
     }
    ]
@@ -24,6 +29,11 @@
     {
      "v": "DRAFT_ACTION",
      "p": 94892221,
+     "cards": [
+      "Build1",
+      "Build3",
+      "Association4"
+     ],
      "pick": "Build1"
     }
    ]
@@ -35,6 +45,10 @@
     {
      "v": "DRAFT_ACTION",
      "p": 98907091,
+     "cards": [
+      "Build3",
+      "Association4"
+     ],
      "pick": "Build3"
     }
    ]
@@ -46,6 +60,10 @@
     {
      "v": "DRAFT_ACTION",
      "p": 94892221,
+     "cards": [
+      "Animals3",
+      "Animals2"
+     ],
      "pick": "Animals3"
     }
    ]
@@ -171,6 +189,35 @@
       "S264_FreerangeNewWorldMonkeys",
       "A525_GuineaPig"
      ]
+    },
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "A544_CaribbeanReefShark",
+       "at": "pool-1"
+      },
+      {
+       "card": "A468_CottontopTamarin",
+       "at": "pool-2"
+      },
+      {
+       "card": "A416_EurasianBrownBear",
+       "at": "pool-3"
+      },
+      {
+       "card": "A431_AsianElephant",
+       "at": "pool-4"
+      },
+      {
+       "card": "A493_ThornyDevil",
+       "at": "pool-5"
+      },
+      {
+       "card": "A437_Muskox",
+       "at": "pool-6"
+      }
+     ]
     }
    ]
   },
@@ -194,6 +241,7 @@
     {
      "v": "BUILD",
      "p": 94892221,
+     "id": 3,
      "building": "large-aquarium",
      "size": 5,
      "at": [
@@ -228,6 +276,7 @@
     {
      "v": "BUILD",
      "p": 94892221,
+     "id": 4,
      "building": "pavilion",
      "size": 1,
      "at": [
@@ -257,6 +306,27 @@
      "cards": [
       "A544_CaribbeanReefShark"
      ]
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Build1",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "move": 15,
+   "t": 1768441599,
+   "actions": [
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "A451_ProboscisMonkey",
+       "at": "pool-6"
+      }
+     ]
     }
    ]
   },
@@ -284,7 +354,8 @@
      "meeples": [
       {
        "kind": "worker",
-       "at": "association_4"
+       "at": "association_4",
+       "id": 67
       }
      ]
     },
@@ -294,7 +365,8 @@
      "meeples": [
       {
        "kind": "fac-science-rep",
-       "at": "university_1"
+       "at": "university_1",
+       "id": 25
       }
      ]
     },
@@ -305,6 +377,12 @@
      "get": {
       "reputation": 2
      }
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Association",
+     "at": 1
     }
    ]
   },
@@ -332,7 +410,16 @@
      "pay": 6,
      "fromDisplay": false,
      "into": [
-      1
+      {
+       "id": 1,
+       "building": "size-2",
+       "size": 2,
+       "at": [
+        4,
+        5
+       ],
+       "rot": 0
+      }
      ]
     },
     {
@@ -341,6 +428,24 @@
      "get": {
       "appeal": 3
      }
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Animals3",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "move": 21,
+   "t": 1768441639,
+   "actions": [
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Cards",
+     "at": 1
     }
    ]
   },
@@ -389,6 +494,12 @@
      "cards": [
       "A516_NorhternCassowary"
      ]
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Cards",
+     "at": 1
     }
    ]
   },
@@ -416,7 +527,8 @@
      "meeples": [
       {
        "kind": "worker",
-       "at": "association_4"
+       "at": "association_4",
+       "id": 56
       }
      ]
     },
@@ -426,7 +538,8 @@
      "meeples": [
       {
        "kind": "fac-science-primate",
-       "at": "university_1"
+       "at": "university_1",
+       "id": 36
       }
      ]
     }
@@ -442,6 +555,12 @@
      "cards": [
       "A458_JapaneseMacaque"
      ]
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Association",
+     "at": 1
     }
    ]
   },
@@ -465,6 +584,7 @@
     {
      "v": "BUILD",
      "p": 98907091,
+     "id": 6,
      "building": "large-aquarium",
      "size": 5,
      "at": [
@@ -481,6 +601,18 @@
      "get": {
       "money": 2
      }
+    }
+   ]
+  },
+  {
+   "move": 39,
+   "t": 1768441731,
+   "actions": [
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Build3",
+     "at": 1
     }
    ]
   },
@@ -530,6 +662,12 @@
      "get": {
       "money": 7
      }
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Sponsors",
+     "at": 1
     }
    ]
   },
@@ -584,11 +722,33 @@
      "meeples": [
       {
        "kind": "worker",
-       "at": "reserve"
+       "at": "reserve",
+       "id": 56
       },
       {
        "kind": "worker",
-       "at": "reserve"
+       "at": "reserve",
+       "id": 67
+      }
+     ]
+    },
+    {
+     "v": "DISPLAY_DISCARD",
+     "cards": [
+      "A416_EurasianBrownBear",
+      "A468_CottontopTamarin"
+     ]
+    },
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "A419_EuropeanBadger",
+       "at": "pool-5"
+      },
+      {
+       "card": "P113_ReleaseBavarian",
+       "at": "pool-6"
       }
      ]
     }
@@ -660,6 +820,12 @@
      "get": {
       "money": 3
      }
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Sponsors2",
+     "at": 1
     }
    ]
   },
@@ -687,7 +853,16 @@
      "pay": 18,
      "fromDisplay": false,
      "into": [
-      3
+      {
+       "id": 3,
+       "building": "large-aquarium",
+       "size": 5,
+       "at": [
+        3,
+        12
+       ],
+       "rot": 4
+      }
      ]
     }
    ]
@@ -696,6 +871,13 @@
    "move": 60,
    "t": 1768441840,
    "actions": [
+    {
+     "v": "DISPLAY_DISCARD",
+     "p": 94892221,
+     "cards": [
+      "A431_AsianElephant"
+     ]
+    },
     {
      "v": "GAIN",
      "p": 94892221,
@@ -723,6 +905,42 @@
      "get": {
       "reputation": 1
      }
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Animals3",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "move": 62,
+   "t": 1768441846,
+   "actions": [
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "S270_MarineResearchExpedition",
+       "at": "pool-6"
+      }
+     ]
+    },
+    {
+     "v": "DISPLAY_DISCARD",
+     "cards": [
+      "A493_ThornyDevil"
+     ]
+    },
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "A501_IndianPeafowl",
+       "at": "pool-6"
+      }
+     ]
     }
    ]
   },
@@ -750,7 +968,8 @@
      "meeples": [
       {
        "kind": "worker",
-       "at": "association_4"
+       "at": "association_4",
+       "id": 67
       }
      ]
     },
@@ -760,7 +979,8 @@
      "meeples": [
       {
        "kind": "fac-rep-hand",
-       "at": "university_2"
+       "at": "university_2",
+       "id": 21
       }
      ]
     }
@@ -788,6 +1008,12 @@
      "v": "UPGRADE",
      "p": 98907091,
      "card": "Animals"
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Association",
+     "at": 1
     }
    ]
   },
@@ -811,6 +1037,7 @@
     {
      "v": "BUILD",
      "p": 94892221,
+     "id": 8,
      "building": "size-2",
      "size": 2,
      "at": [
@@ -819,6 +1046,24 @@
      ],
      "rot": 5,
      "pay": 4
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Build1",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "move": 70,
+   "t": 1768441881,
+   "actions": [
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Cards",
+     "at": 1
     }
    ]
   },
@@ -842,6 +1087,7 @@
     {
      "v": "BUILD",
      "p": 98907091,
+     "id": 9,
      "building": "size-4",
      "size": 4,
      "at": [
@@ -858,6 +1104,12 @@
      "get": {
       "money": 2
      }
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Build3",
+     "at": 1
     }
    ]
   },
@@ -885,16 +1137,21 @@
      "meeples": [
       {
        "kind": "worker",
-       "at": "association_5"
+       "at": "association_5",
+       "id": 56
       }
-     ]
+     ],
+     "project": "P101_SpeciesDiversity",
+     "slot": "the second slot"
     },
     {
      "v": "WORKER",
+     "p": 94892221,
      "meeples": [
       {
        "kind": "token",
-       "at": "P101_SpeciesDiversity_1"
+       "at": "P101_SpeciesDiversity_1",
+       "id": 46
       }
      ]
     }
@@ -928,7 +1185,9 @@
     {
      "v": "ASSOC",
      "p": 94892221,
-     "bonus": "1 x upgrade-card"
+     "bonus": "1 x upgrade-card",
+     "type": "upgrade-card",
+     "n": 1
     }
    ]
   },
@@ -940,6 +1199,27 @@
      "v": "UPGRADE",
      "p": 94892221,
      "card": "Sponsors"
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Association",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "move": 84,
+   "t": 1768441931,
+   "actions": [
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "S262_Explorer",
+       "at": "pool-6"
+      }
+     ]
     }
    ]
   },
@@ -965,7 +1245,9 @@
     {
      "v": "ASSOC",
      "p": 98907091,
-     "bonus": "1 x upgrade-card"
+     "bonus": "1 x upgrade-card",
+     "type": "upgrade-card",
+     "n": 1
     }
    ]
   },
@@ -991,7 +1273,16 @@
      "pay": 8,
      "fromDisplay": true,
      "into": [
-      2
+      {
+       "id": 2,
+       "building": "size-2",
+       "size": 2,
+       "at": [
+        4,
+        5
+       ],
+       "rot": 0
+      }
      ]
     },
     {
@@ -1014,7 +1305,16 @@
      "pay": 9,
      "fromDisplay": false,
      "into": [
-      9
+      {
+       "id": 9,
+       "building": "size-4",
+       "size": 4,
+       "at": [
+        3,
+        0
+       ],
+       "rot": 2
+      }
      ]
     }
    ]
@@ -1029,6 +1329,39 @@
      "get": {
       "appeal": 4
      }
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Animals",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "move": 93,
+   "t": 1768441996,
+   "actions": [
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Animals",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "move": 94,
+   "t": 1768442004,
+   "actions": [
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "S214_ExpertOnAfrica",
+       "at": "pool-6"
+      }
+     ]
     }
    ]
   },
@@ -1070,6 +1403,12 @@
      "get": {
       "money": 10
      }
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Sponsors",
+     "at": 1
     }
    ]
   },
@@ -1082,11 +1421,33 @@
      "meeples": [
       {
        "kind": "worker",
-       "at": "reserve"
+       "at": "reserve",
+       "id": 56
       },
       {
        "kind": "worker",
-       "at": "reserve"
+       "at": "reserve",
+       "id": 67
+      }
+     ]
+    },
+    {
+     "v": "DISPLAY_DISCARD",
+     "cards": [
+      "A437_Muskox",
+      "A451_ProboscisMonkey"
+     ]
+    },
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "A559_CoquerelsSifaka",
+       "at": "pool-5"
+      },
+      {
+       "card": "A502_GreatHornbill",
+       "at": "pool-6"
       }
      ]
     }
@@ -1099,7 +1460,9 @@
     {
      "v": "ASSOC",
      "p": 94892221,
-     "bonus": "1 x Snapping"
+     "bonus": "1 x Snapping",
+     "type": "Snapping",
+     "n": 1
     }
    ]
   },
@@ -1127,6 +1490,21 @@
      "get": {
       "money": 14
      }
+    }
+   ]
+  },
+  {
+   "move": 101,
+   "t": 1768442022,
+   "actions": [
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "A418_EurasianLynx",
+       "at": "pool-6"
+      }
+     ]
     }
    ]
   },
@@ -1197,6 +1575,21 @@
       "P127_PrimateBreeding",
       "A554_AfricanPenguin"
      ]
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Sponsors2",
+     "at": 1
+    },
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "S225_QuarantineLab",
+       "at": "pool-6"
+      }
+     ]
     }
    ]
   },
@@ -1220,6 +1613,7 @@
     {
      "v": "BUILD",
      "p": 94892221,
+     "id": 10,
      "building": "size-4",
      "size": 4,
      "at": [
@@ -1238,6 +1632,7 @@
     {
      "v": "BUILD",
      "p": 94892221,
+     "id": 11,
      "building": "pavilion",
      "size": 1,
      "at": [
@@ -1270,6 +1665,12 @@
      "get": {
       "reputation": 1
      }
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Build1",
+     "at": 1
     }
    ]
   },
@@ -1318,6 +1719,12 @@
      "cards": [
       "A528_BennettsWallaby"
      ]
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Cards",
+     "at": 1
     }
    ]
   },
@@ -1353,9 +1760,12 @@
      "meeples": [
       {
        "kind": "worker",
-       "at": "association_5"
+       "at": "association_5",
+       "id": 56
       }
-     ]
+     ],
+     "project": "P113_ReleaseBavarian",
+     "slot": "the third slot"
     },
     {
      "v": "PROJECT",
@@ -1367,10 +1777,12 @@
     },
     {
      "v": "WORKER",
+     "p": 94892221,
      "meeples": [
       {
        "kind": "token",
-       "at": "P113_ReleaseBavarian_2"
+       "at": "P113_ReleaseBavarian_2",
+       "id": 48
       }
      ]
     },
@@ -1421,7 +1833,9 @@
     {
      "v": "ASSOC",
      "p": 94892221,
-     "bonus": "1 x Fac"
+     "bonus": "1 x Fac",
+     "type": "Fac",
+     "n": 1
     }
    ]
   },
@@ -1435,7 +1849,8 @@
      "meeples": [
       {
        "kind": "fac-science-rep",
-       "at": "university_2"
+       "at": "university_2",
+       "id": 26
       }
      ]
     }
@@ -1461,7 +1876,9 @@
     {
      "v": "ASSOC",
      "p": 94892221,
-     "bonus": "1 x upgrade-card"
+     "bonus": "1 x upgrade-card",
+     "type": "upgrade-card",
+     "n": 1
     }
    ]
   },
@@ -1473,6 +1890,12 @@
      "v": "UPGRADE",
      "p": 94892221,
      "card": "Build1"
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Association",
+     "at": 1
     }
    ]
   },
@@ -1500,9 +1923,12 @@
      "meeples": [
       {
        "kind": "worker",
-       "at": "association_5"
+       "at": "association_5",
+       "id": 67
       }
-     ]
+     ],
+     "project": "P119_ReleaseLowMountain",
+     "slot": "the first slot"
     },
     {
      "v": "PROJECT",
@@ -1514,10 +1940,12 @@
     },
     {
      "v": "WORKER",
+     "p": 98907091,
      "meeples": [
       {
        "kind": "token",
-       "at": "P119_ReleaseLowMountain_0"
+       "at": "P119_ReleaseLowMountain_0",
+       "id": 57
       }
      ]
     },
@@ -1565,7 +1993,9 @@
     {
      "v": "ASSOC",
      "p": 98907091,
-     "bonus": "3 x bonus-kiosk-pavilion"
+     "bonus": "3 x bonus-kiosk-pavilion",
+     "type": "bonus-kiosk-pavilion",
+     "n": 3
     }
    ]
   },
@@ -1576,6 +2006,7 @@
     {
      "v": "BUILD",
      "p": 98907091,
+     "id": 12,
      "building": "kiosk",
      "size": 1,
      "at": [
@@ -1602,6 +2033,7 @@
     {
      "v": "BUILD",
      "p": 98907091,
+     "id": 13,
      "building": "pavilion",
      "size": 1,
      "at": [
@@ -1636,6 +2068,7 @@
     {
      "v": "BUILD",
      "p": 98907091,
+     "id": 14,
      "building": "pavilion",
      "size": 1,
      "at": [
@@ -1662,7 +2095,9 @@
     {
      "v": "ASSOC",
      "p": 98907091,
-     "bonus": "1 x upgrade-card"
+     "bonus": "1 x upgrade-card",
+     "type": "upgrade-card",
+     "n": 1
     }
    ]
   },
@@ -1682,6 +2117,27 @@
      "get": {
       "reputation": 1
      }
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Association",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "move": 140,
+   "t": 1768442255,
+   "actions": [
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "A442_Moose",
+       "at": "pool-6"
+      }
+     ]
     }
    ]
   },
@@ -1722,6 +2178,12 @@
      "get": {
       "money": 8
      }
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Sponsors",
+     "at": 1
     }
    ]
   },
@@ -1745,6 +2207,7 @@
     {
      "v": "BUILD",
      "p": 98907091,
+     "id": 15,
      "building": "size-3",
      "size": 3,
      "at": [
@@ -1776,6 +2239,7 @@
     {
      "v": "BUILD",
      "p": 98907091,
+     "id": 16,
      "building": "petting-zoo",
      "size": 3,
      "at": [
@@ -1792,6 +2256,27 @@
      "get": {
       "xtoken": 1
      }
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Build3",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "move": 148,
+   "t": 1768442323,
+   "actions": [
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "S240_ExpertInHerbivores",
+       "at": "pool-6"
+      }
+     ]
     }
    ]
   },
@@ -1827,7 +2312,16 @@
      "pay": 16,
      "fromDisplay": true,
      "into": [
-      8
+      {
+       "id": 8,
+       "building": "size-2",
+       "size": 2,
+       "at": [
+        5,
+        6
+       ],
+       "rot": 5
+      }
      ]
     }
    ]
@@ -1881,6 +2375,33 @@
    ]
   },
   {
+   "move": 157,
+   "t": 1768442348,
+   "actions": [
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Animals3",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "move": 159,
+   "t": 1768442354,
+   "actions": [
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "A457_Mandrill",
+       "at": "pool-6"
+      }
+     ]
+    }
+   ]
+  },
+  {
    "move": 160,
    "t": 1768442363,
    "actions": [
@@ -1912,7 +2433,16 @@
      "pay": 7,
      "fromDisplay": false,
      "into": [
-      6
+      {
+       "id": 6,
+       "building": "large-aquarium",
+       "size": 5,
+       "at": [
+        5,
+        0
+       ],
+       "rot": 1
+      }
      ]
     }
    ]
@@ -1961,6 +2491,18 @@
    ]
   },
   {
+   "move": 166,
+   "t": 1768442393,
+   "actions": [
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Animals",
+     "at": 1
+    }
+   ]
+  },
+  {
    "move": 168,
    "t": 1768442399,
    "actions": [
@@ -2005,6 +2547,12 @@
      "cards": [
       "P136_ReptileManagementPlan"
      ]
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Cards",
+     "at": 1
     }
    ]
   },
@@ -2041,7 +2589,9 @@
     {
      "v": "ASSOC",
      "p": 98907091,
-     "bonus": "1 x add-worker"
+     "bonus": "1 x add-worker",
+     "type": "add-worker",
+     "n": 1
     },
     {
      "v": "WORKER",
@@ -2049,9 +2599,16 @@
      "meeples": [
       {
        "kind": "worker",
-       "at": "reserve"
+       "at": "reserve",
+       "id": 64
       }
      ]
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Sponsors2",
+     "at": 1
     }
    ]
   },
@@ -2075,6 +2632,7 @@
     {
      "v": "BUILD",
      "p": 94892221,
+     "id": 17,
      "building": "kiosk",
      "size": 1,
      "at": [
@@ -2101,6 +2659,7 @@
     {
      "v": "BUILD",
      "p": 94892221,
+     "id": 18,
      "building": "small-aquarium",
      "size": 2,
      "at": [
@@ -2119,6 +2678,7 @@
     {
      "v": "BUILD",
      "p": 94892221,
+     "id": 19,
      "building": "pavilion",
      "size": 1,
      "at": [
@@ -2145,6 +2705,7 @@
     {
      "v": "BUILD",
      "p": 94892221,
+     "id": 20,
      "building": "pavilion",
      "size": 1,
      "at": [
@@ -2161,6 +2722,18 @@
      "get": {
       "appeal": 1
      }
+    }
+   ]
+  },
+  {
+   "move": 180,
+   "t": 1768442471,
+   "actions": [
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Build1",
+     "at": 1
     }
    ]
   },
@@ -2188,7 +2761,8 @@
      "meeples": [
       {
        "kind": "worker",
-       "at": "association_3"
+       "at": "association_3",
+       "id": 64
       }
      ]
     },
@@ -2198,9 +2772,16 @@
      "meeples": [
       {
        "kind": "partner-Africa",
-       "at": "partner_1"
+       "at": "partner_1",
+       "id": 1
       }
      ]
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Association",
+     "at": 1
     }
    ]
   },
@@ -2272,6 +2853,12 @@
      "cards": [
       "P123_BirdBreeding"
      ]
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Sponsors",
+     "at": 1
     }
    ]
   },
@@ -2304,6 +2891,27 @@
      "p": 98907091,
      "cards": [
       "A457_Mandrill"
+     ]
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Cards",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "move": 197,
+   "t": 1768442542,
+   "actions": [
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "P131_LargeAnimals_MW",
+       "at": "pool-6"
+      }
      ]
     }
    ]
@@ -2352,6 +2960,12 @@
      "cards": [
       "A508_ScarletMacaw"
      ]
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Cards",
+     "at": 1
     }
    ]
   },
@@ -2401,6 +3015,12 @@
      "get": {
       "money": 5
      }
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Sponsors2",
+     "at": 1
     }
    ]
   },
@@ -2413,15 +3033,38 @@
      "meeples": [
       {
        "kind": "worker",
-       "at": "reserve"
+       "at": "reserve",
+       "id": 56
       },
       {
        "kind": "worker",
-       "at": "reserve"
+       "at": "reserve",
+       "id": 64
       },
       {
        "kind": "worker",
-       "at": "reserve"
+       "at": "reserve",
+       "id": 67
+      }
+     ]
+    },
+    {
+     "v": "DISPLAY_DISCARD",
+     "cards": [
+      "A501_IndianPeafowl",
+      "S214_ExpertOnAfrica"
+     ]
+    },
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "S231_SponsorshipPrimates",
+       "at": "pool-5"
+      },
+      {
+       "card": "S251_PolarBearExhibit",
+       "at": "pool-6"
       }
      ]
     }
@@ -2434,7 +3077,9 @@
     {
      "v": "ASSOC",
      "p": 98907091,
-     "bonus": "0 x MAP_13_INCOME"
+     "bonus": "0 x MAP_13_INCOME",
+     "type": "MAP_13_INCOME",
+     "n": 0
     },
     {
      "v": "GAIN",
@@ -2453,7 +3098,9 @@
     {
      "v": "ASSOC",
      "p": 98907091,
-     "bonus": "1 x Snapping"
+     "bonus": "1 x Snapping",
+     "type": "Snapping",
+     "n": 1
     }
    ]
   },
@@ -2497,9 +3144,20 @@
    "t": 1768442623,
    "actions": [
     {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "P120_ReleaseBambooForest",
+       "at": "pool-6"
+      }
+     ]
+    },
+    {
      "v": "ASSOC",
      "p": 94892221,
-     "bonus": "5 x money"
+     "bonus": "5 x money",
+     "type": "money",
+     "n": 5
     },
     {
      "v": "GAIN",
@@ -2518,7 +3176,9 @@
     {
      "v": "ASSOC",
      "p": 94892221,
-     "bonus": "1 x Snapping"
+     "bonus": "1 x Snapping",
+     "type": "Snapping",
+     "n": 1
     }
    ]
   },
@@ -2542,7 +3202,9 @@
     {
      "v": "ASSOC",
      "p": 94892221,
-     "bonus": "2 x MAP_13_INCOME"
+     "bonus": "2 x MAP_13_INCOME",
+     "type": "MAP_13_INCOME",
+     "n": 2
     },
     {
      "v": "GAIN",
@@ -2555,7 +3217,9 @@
     {
      "v": "ASSOC",
      "p": 94892221,
-     "bonus": "1 x add-worker"
+     "bonus": "1 x add-worker",
+     "type": "add-worker",
+     "n": 1
     },
     {
      "v": "WORKER",
@@ -2563,7 +3227,8 @@
      "meeples": [
       {
        "kind": "worker",
-       "at": "reserve"
+       "at": "reserve",
+       "id": 53
       }
      ]
     }
@@ -2592,6 +3257,21 @@
    ]
   },
   {
+   "move": 214,
+   "t": 1768442635,
+   "actions": [
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "A557_VietnamesePotbelliedPig",
+       "at": "pool-6"
+      }
+     ]
+    }
+   ]
+  },
+  {
    "move": 215,
    "t": 1768442637,
    "actions": [
@@ -2615,16 +3295,21 @@
      "meeples": [
       {
        "kind": "worker",
-       "at": "association_5"
+       "at": "association_5",
+       "id": 53
       }
-     ]
+     ],
+     "project": "P119_ReleaseLowMountain",
+     "slot": "the third slot"
     },
     {
      "v": "WORKER",
+     "p": 94892221,
      "meeples": [
       {
        "kind": "token",
-       "at": "P119_ReleaseLowMountain_2"
+       "at": "P119_ReleaseLowMountain_2",
+       "id": 47
       }
      ]
     },
@@ -2659,7 +3344,9 @@
     {
      "v": "ASSOC",
      "p": 94892221,
-     "bonus": "1 x size-3"
+     "bonus": "1 x size-3",
+     "type": "size-3",
+     "n": 1
     }
    ]
   },
@@ -2670,6 +3357,7 @@
     {
      "v": "BUILD",
      "p": 94892221,
+     "id": 21,
      "building": "size-3",
      "size": 3,
      "at": [
@@ -2715,6 +3403,12 @@
      "gain": {
       "money": 4
      }
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Association",
+     "at": 1
     }
    ]
   },
@@ -2738,6 +3432,7 @@
     {
      "v": "BUILD",
      "p": 98907091,
+     "id": 22,
      "building": "size-5",
      "size": 5,
      "at": [
@@ -2756,6 +3451,7 @@
     {
      "v": "BUILD",
      "p": 98907091,
+     "id": 23,
      "building": "kiosk",
      "size": 1,
      "at": [
@@ -2764,6 +3460,12 @@
      ],
      "rot": 0,
      "pay": 2
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Build3",
+     "at": 1
     }
    ]
   },
@@ -2807,6 +3509,7 @@
     {
      "v": "BUILD",
      "p": 94892221,
+     "id": 24,
      "building": "pavilion",
      "size": 1,
      "at": [
@@ -2833,6 +3536,7 @@
     {
      "v": "BUILD",
      "p": 94892221,
+     "id": 25,
      "building": "size-1",
      "size": 1,
      "at": [
@@ -2859,6 +3563,7 @@
     {
      "v": "BUILD",
      "p": 94892221,
+     "id": 28,
      "building": "size-2",
      "size": 2,
      "at": [
@@ -2885,6 +3590,7 @@
     {
      "v": "BUILD",
      "p": 94892221,
+     "id": 29,
      "building": "pavilion",
      "size": 1,
      "at": [
@@ -2909,6 +3615,24 @@
      "get": {
       "money": 2
      }
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Build1",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "move": 240,
+   "t": 1768442748,
+   "actions": [
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Cards",
+     "at": 1
     }
    ]
   },
@@ -2936,7 +3660,16 @@
      "pay": 11,
      "fromDisplay": false,
      "into": [
-      15
+      {
+       "id": 15,
+       "building": "size-3",
+       "size": 3,
+       "at": [
+        3,
+        6
+       ],
+       "rot": 2
+      }
      ]
     }
    ]
@@ -2959,6 +3692,18 @@
      "get": {
       "appeal": 3
      }
+    }
+   ]
+  },
+  {
+   "move": 245,
+   "t": 1768442766,
+   "actions": [
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Animals",
+     "at": 1
     }
    ]
   },
@@ -3002,6 +3747,7 @@
     {
      "v": "BUILD",
      "p": 94892221,
+     "id": 30,
      "building": "polar-bear",
      "size": 4,
      "at": [
@@ -3037,6 +3783,27 @@
      "get": {
       "appeal": 2
      }
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Sponsors",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "move": 252,
+   "t": 1768442783,
+   "actions": [
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "A482_Anaconda",
+       "at": "pool-6"
+      }
+     ]
     }
    ]
   },
@@ -3064,16 +3831,21 @@
      "meeples": [
       {
        "kind": "worker",
-       "at": "association_5"
+       "at": "association_5",
+       "id": 64
       }
-     ]
+     ],
+     "project": "P113_ReleaseBavarian",
+     "slot": "the second slot"
     },
     {
      "v": "WORKER",
+     "p": 98907091,
      "meeples": [
       {
        "kind": "token",
-       "at": "P113_ReleaseBavarian_1"
+       "at": "P113_ReleaseBavarian_1",
+       "id": 59
       }
      ]
     },
@@ -3110,7 +3882,9 @@
     {
      "v": "ASSOC",
      "p": 98907091,
-     "bonus": "1 x bonus-increased-hand"
+     "bonus": "1 x bonus-increased-hand",
+     "type": "bonus-increased-hand",
+     "n": 1
     }
    ]
   },
@@ -3123,6 +3897,27 @@
      "p": 98907091,
      "cards": [
       "S231_SponsorshipPrimates"
+     ]
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Association",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "move": 257,
+   "t": 1768442827,
+   "actions": [
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "S265_FranchiseBusiness",
+       "at": "pool-6"
+      }
      ]
     }
    ]
@@ -3151,7 +3946,8 @@
      "meeples": [
       {
        "kind": "worker",
-       "at": "association_3"
+       "at": "association_3",
+       "id": 56
       }
      ]
     },
@@ -3161,9 +3957,16 @@
      "meeples": [
       {
        "kind": "partner-Americas",
-       "at": "partner_1"
+       "at": "partner_1",
+       "id": 13
       }
      ]
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Association",
+     "at": 1
     }
    ]
   },
@@ -3212,6 +4015,12 @@
      "cards": [
       "A476_KomodoDragon"
      ]
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Cards",
+     "at": 1
     }
    ]
   },
@@ -3247,7 +4056,16 @@
      "pay": 13,
      "fromDisplay": false,
      "into": [
-      28
+      {
+       "id": 28,
+       "building": "size-2",
+       "size": 2,
+       "at": [
+        5,
+        2
+       ],
+       "rot": 1
+      }
      ]
     }
    ]
@@ -3311,7 +4129,16 @@
      "pay": 4,
      "fromDisplay": false,
      "into": [
-      25
+      {
+       "id": 25,
+       "building": "size-1",
+       "size": 1,
+       "at": [
+        5,
+        6
+       ],
+       "rot": 0
+      }
      ]
     }
    ]
@@ -3361,6 +4188,12 @@
       "money": -2,
       "appeal": 1
      }
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Animals3",
+     "at": 1
     }
    ]
   },
@@ -3436,6 +4269,27 @@
      "get": {
       "money": 5
      }
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Sponsors2",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "move": 282,
+   "t": 1768442916,
+   "actions": [
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "A413_Cougar",
+       "at": "pool-6"
+      }
+     ]
     }
    ]
   },
@@ -3470,6 +4324,12 @@
       "A445_CrestedPorcupine",
       "S216_TalentedCommunicator"
      ]
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Cards",
+     "at": 1
     }
    ]
   },
@@ -3497,7 +4357,8 @@
      "meeples": [
       {
        "kind": "worker",
-       "at": "association_3"
+       "at": "association_3",
+       "id": 67
       }
      ]
     },
@@ -3507,7 +4368,8 @@
      "meeples": [
       {
        "kind": "partner-Asia",
-       "at": "partner_2"
+       "at": "partner_2",
+       "id": 9
       }
      ]
     }
@@ -3521,6 +4383,12 @@
      "v": "UPGRADE",
      "p": 98907091,
      "card": "Cards"
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Association",
+     "at": 1
     }
    ]
   },
@@ -3553,9 +4421,16 @@
      "meeples": [
       {
        "kind": "worker",
-       "at": "reserve"
+       "at": "reserve",
+       "id": 54
       }
      ]
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Sponsors",
+     "at": 1
     }
    ]
   },
@@ -3579,6 +4454,7 @@
     {
      "v": "BUILD",
      "p": 98907091,
+     "id": 31,
      "building": "pavilion",
      "size": 1,
      "at": [
@@ -3605,6 +4481,7 @@
     {
      "v": "BUILD",
      "p": 98907091,
+     "id": 32,
      "building": "size-1",
      "size": 1,
      "at": [
@@ -3648,6 +4525,18 @@
    ]
   },
   {
+   "move": 297,
+   "t": 1768443012,
+   "actions": [
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Build3",
+     "at": 1
+    }
+   ]
+  },
+  {
    "move": 299,
    "t": 1768443017,
    "actions": [
@@ -3671,7 +4560,8 @@
      "meeples": [
       {
        "kind": "worker",
-       "at": "association_4"
+       "at": "association_4",
+       "id": 54
       }
      ]
     },
@@ -3681,7 +4571,8 @@
      "meeples": [
       {
        "kind": "fac-science-science",
-       "at": "university_3"
+       "at": "university_3",
+       "id": 29
       }
      ]
     },
@@ -3702,7 +4593,9 @@
     {
      "v": "ASSOC",
      "p": 94892221,
-     "bonus": "0 x DISCARD_SCORING"
+     "bonus": "0 x DISCARD_SCORING",
+     "type": "DISCARD_SCORING",
+     "n": 0
     }
    ]
   },
@@ -3729,6 +4622,12 @@
      "cards": [
       "F002_SmallAnimalZoo"
      ]
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Association",
+     "at": 1
     }
    ]
   },
@@ -3769,6 +4668,12 @@
      "get": {
       "money": 5
      }
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Sponsors2",
+     "at": 1
     }
    ]
   },
@@ -3792,6 +4697,7 @@
     {
      "v": "BUILD",
      "p": 94892221,
+     "id": 33,
      "building": "size-2",
      "size": 2,
      "at": [
@@ -3810,6 +4716,7 @@
     {
      "v": "BUILD",
      "p": 94892221,
+     "id": 34,
      "building": "kiosk",
      "size": 1,
      "at": [
@@ -3828,6 +4735,7 @@
     {
      "v": "BUILD",
      "p": 94892221,
+     "id": 35,
      "building": "pavilion",
      "size": 1,
      "at": [
@@ -3854,6 +4762,7 @@
     {
      "v": "BUILD",
      "p": 94892221,
+     "id": 36,
      "building": "pavilion",
      "size": 1,
      "at": [
@@ -3878,6 +4787,18 @@
      "get": {
       "money": 3
      }
+    }
+   ]
+  },
+  {
+   "move": 312,
+   "t": 1768443076,
+   "actions": [
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Build1",
+     "at": 1
     }
    ]
   },
@@ -3916,7 +4837,9 @@
     {
      "v": "ASSOC",
      "p": 98907091,
-     "bonus": "1 x take-in-range-or-deck"
+     "bonus": "1 x take-in-range-or-deck",
+     "type": "take-in-range-or-deck",
+     "n": 1
     }
    ]
   },
@@ -3952,7 +4875,16 @@
      "pay": 11,
      "fromDisplay": false,
      "into": [
-      32
+      {
+       "id": 32,
+       "building": "size-1",
+       "size": 1,
+       "at": [
+        0,
+        9
+       ],
+       "rot": 0
+      }
      ]
     }
    ]
@@ -3992,7 +4924,9 @@
     {
      "v": "ASSOC",
      "p": 98907091,
-     "bonus": "1 x xtoken"
+     "bonus": "1 x xtoken",
+     "type": "xtoken",
+     "n": 1
     },
     {
      "v": "GAIN",
@@ -4005,7 +4939,9 @@
     {
      "v": "ASSOC",
      "p": 98907091,
-     "bonus": "1 x conservation"
+     "bonus": "1 x conservation",
+     "type": "conservation",
+     "n": 1
     },
     {
      "v": "GAIN",
@@ -4035,7 +4971,16 @@
      "pay": 14,
      "fromDisplay": false,
      "into": [
-      15
+      {
+       "id": 15,
+       "building": "size-3",
+       "size": 3,
+       "at": [
+        3,
+        6
+       ],
+       "rot": 2
+      }
      ]
     }
    ]
@@ -4086,6 +5031,21 @@
      "get": {
       "appeal": 7
      }
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Animals",
+     "at": 1
+    },
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "A439_Llama",
+       "at": "pool-6"
+      }
+     ]
     }
    ]
   },
@@ -4113,30 +5073,69 @@
      "meeples": [
       {
        "kind": "worker",
-       "at": "reserve"
+       "at": "reserve",
+       "id": 53
       },
       {
        "kind": "worker",
-       "at": "reserve"
+       "at": "reserve",
+       "id": 54
       },
       {
        "kind": "worker",
-       "at": "reserve"
+       "at": "reserve",
+       "id": 56
       },
       {
        "kind": "worker",
-       "at": "reserve"
+       "at": "reserve",
+       "id": 64
       },
       {
        "kind": "worker",
-       "at": "reserve"
+       "at": "reserve",
+       "id": 67
+      }
+     ]
+    },
+    {
+     "v": "DISPLAY_DISCARD",
+     "cards": [
+      "P120_ReleaseBambooForest"
+     ]
+    },
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "S217_Engineer",
+       "at": "pool-5"
+      },
+      {
+       "card": "A552_GreenSeaTurtle",
+       "at": "pool-6"
+      }
+     ]
+    },
+    {
+     "v": "DISPLAY_DISCARD",
+     "cards": []
+    },
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "S201_ScienceLab",
+       "at": "pool-6"
       }
      ]
     },
     {
      "v": "ASSOC",
      "p": 98907091,
-     "bonus": "5 x money"
+     "bonus": "5 x money",
+     "type": "money",
+     "n": 5
     },
     {
      "v": "GAIN",
@@ -4155,7 +5154,9 @@
     {
      "v": "ASSOC",
      "p": 98907091,
-     "bonus": "1 x Snapping"
+     "bonus": "1 x Snapping",
+     "type": "Snapping",
+     "n": 1
     }
    ]
   },
@@ -4211,7 +5212,9 @@
     {
      "v": "ASSOC",
      "p": 98907091,
-     "bonus": "0 x MAP_13_INCOME"
+     "bonus": "0 x MAP_13_INCOME",
+     "type": "MAP_13_INCOME",
+     "n": 0
     },
     {
      "v": "GAIN",
@@ -4224,7 +5227,9 @@
     {
      "v": "ASSOC",
      "p": 98907091,
-     "bonus": "3 x MAP_13_INCOME"
+     "bonus": "3 x MAP_13_INCOME",
+     "type": "MAP_13_INCOME",
+     "n": 3
     }
    ]
   },
@@ -4248,9 +5253,20 @@
    "t": 1768443208,
    "actions": [
     {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "S254_ZooSchool",
+       "at": "pool-6"
+      }
+     ]
+    },
+    {
      "v": "ASSOC",
      "p": 94892221,
-     "bonus": "5 x money"
+     "bonus": "5 x money",
+     "type": "money",
+     "n": 5
     },
     {
      "v": "GAIN",
@@ -4269,7 +5285,9 @@
     {
      "v": "ASSOC",
      "p": 94892221,
-     "bonus": "1 x Snapping"
+     "bonus": "1 x Snapping",
+     "type": "Snapping",
+     "n": 1
     }
    ]
   },
@@ -4293,7 +5311,9 @@
     {
      "v": "ASSOC",
      "p": 94892221,
-     "bonus": "1 x MAP_13_INCOME"
+     "bonus": "1 x MAP_13_INCOME",
+     "type": "MAP_13_INCOME",
+     "n": 1
     },
     {
      "v": "GAIN",
@@ -4312,7 +5332,9 @@
     {
      "v": "ASSOC",
      "p": 94892221,
-     "bonus": "0 x MAP_13_INCOME"
+     "bonus": "0 x MAP_13_INCOME",
+     "type": "MAP_13_INCOME",
+     "n": 0
     },
     {
      "v": "GAIN",
@@ -4353,7 +5375,9 @@
     {
      "v": "ASSOC",
      "p": 94892221,
-     "bonus": "1 x CutDown"
+     "bonus": "1 x CutDown",
+     "type": "CutDown",
+     "n": 1
     }
    ]
   },
@@ -4369,6 +5393,21 @@
      "gain": {
       "money": 8
      }
+    }
+   ]
+  },
+  {
+   "move": 337,
+   "t": 1768443231,
+   "actions": [
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "A509_GoldenEagle",
+       "at": "pool-6"
+      }
+     ]
     }
    ]
   },
@@ -4396,7 +5435,16 @@
      "pay": 8,
      "fromDisplay": false,
      "into": [
-      33
+      {
+       "id": 33,
+       "building": "size-2",
+       "size": 2,
+       "at": [
+        2,
+        7
+       ],
+       "rot": 1
+      }
      ]
     },
     {
@@ -4442,6 +5490,50 @@
    ]
   },
   {
+   "move": 348,
+   "t": 1768443269,
+   "actions": [
+    {
+     "v": "DISPLAY_DISCARD",
+     "p": 94892221,
+     "cards": [
+      "A509_GoldenEagle"
+     ]
+    },
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "A401_Cheetah",
+       "at": "pool-6"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "move": 349,
+   "t": 1768443274,
+   "actions": [
+    {
+     "v": "DISPLAY_DISCARD",
+     "p": 94892221,
+     "cards": [
+      "A413_Cougar"
+     ]
+    },
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "A472_RockMonitor",
+       "at": "pool-6"
+      }
+     ]
+    }
+   ]
+  },
+  {
    "move": 350,
    "t": 1768443276,
    "actions": [
@@ -4467,7 +5559,16 @@
      "pay": 18,
      "fromDisplay": true,
      "into": [
-      3
+      {
+       "id": 3,
+       "building": "large-aquarium",
+       "size": 5,
+       "at": [
+        3,
+        12
+       ],
+       "rot": 4
+      }
      ]
     },
     {
@@ -4537,6 +5638,57 @@
       "money": -2,
       "appeal": 1
      }
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Animals3",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "move": 356,
+   "t": 1768443298,
+   "actions": [
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "A541_BluespottedRibbontailRay",
+       "at": "pool-6"
+      }
+     ]
+    },
+    {
+     "v": "DISPLAY_DISCARD",
+     "cards": [
+      "S265_FranchiseBusiness"
+     ]
+    },
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "A537_BlackbarTriggerfish",
+       "at": "pool-6"
+      }
+     ]
+    },
+    {
+     "v": "DISPLAY_DISCARD",
+     "cards": [
+      "A439_Llama"
+     ]
+    },
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "S204_ScienceMuseum",
+       "at": "pool-6"
+      }
+     ]
     }
    ]
   },
@@ -4570,6 +5722,27 @@
      "cards": [
       "S204_ScienceMuseum"
      ]
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Cards",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "move": 359,
+   "t": 1768443315,
+   "actions": [
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "A504_AndeanCondor",
+       "at": "pool-6"
+      }
+     ]
     }
    ]
   },
@@ -4597,7 +5770,8 @@
      "meeples": [
       {
        "kind": "worker",
-       "at": "association_3"
+       "at": "association_3",
+       "id": 53
       }
      ]
     },
@@ -4607,7 +5781,8 @@
      "meeples": [
       {
        "kind": "partner-Asia",
-       "at": "partner_2"
+       "at": "partner_2",
+       "id": 10
       }
      ]
     }
@@ -4641,6 +5816,12 @@
      "v": "UPGRADE",
      "p": 94892221,
      "card": "Cards"
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Association",
+     "at": 1
     }
    ]
   },
@@ -4688,6 +5869,12 @@
      "get": {
       "conservation": 1
      }
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Sponsors2",
+     "at": 1
     }
    ]
   },
@@ -4730,7 +5917,9 @@
     {
      "v": "ASSOC",
      "p": 94892221,
-     "bonus": "1 x take-in-range-or-deck"
+     "bonus": "1 x take-in-range-or-deck",
+     "type": "take-in-range-or-deck",
+     "n": 1
     }
    ]
   },
@@ -4767,6 +5956,7 @@
     {
      "v": "BUILD",
      "p": 94892221,
+     "id": 37,
      "building": "zoo-school",
      "size": 3,
      "at": [
@@ -4782,6 +5972,31 @@
      "get": {
       "conservation": 1
      }
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Sponsors",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "move": 376,
+   "t": 1768443370,
+   "actions": [
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "S239_ExpertInPredators",
+       "at": "pool-5"
+      },
+      {
+       "card": "A497_LesserFlamingo",
+       "at": "pool-6"
+      }
+     ]
     }
    ]
   },
@@ -4813,6 +6028,7 @@
     {
      "v": "BUILD",
      "p": 98907091,
+     "id": 38,
      "building": "size-3",
      "size": 3,
      "at": [
@@ -4831,6 +6047,7 @@
     {
      "v": "BUILD",
      "p": 98907091,
+     "id": 39,
      "building": "pavilion",
      "size": 1,
      "at": [
@@ -4867,7 +6084,9 @@
     {
      "v": "ASSOC",
      "p": 98907091,
-     "bonus": "1 x take-in-range-or-deck"
+     "bonus": "1 x take-in-range-or-deck",
+     "type": "take-in-range-or-deck",
+     "n": 1
     }
    ]
   },
@@ -4891,6 +6110,7 @@
     {
      "v": "BUILD",
      "p": 98907091,
+     "id": 40,
      "building": "size-2",
      "size": 2,
      "at": [
@@ -4899,6 +6119,39 @@
      ],
      "rot": 2,
      "pay": 4
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Build3",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "move": 385,
+   "t": 1768443428,
+   "actions": [
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Cards",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "move": 386,
+   "t": 1768443434,
+   "actions": [
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "A460_DuskyleafMonkey",
+       "at": "pool-6"
+      }
+     ]
     }
    ]
   },
@@ -4984,6 +6237,27 @@
      "cards": [
       "S267_FarmCat"
      ]
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Cards",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "move": 393,
+   "t": 1768443455,
+   "actions": [
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "A412_Jaguar",
+       "at": "pool-6"
+      }
+     ]
     }
    ]
   },
@@ -5017,7 +6291,9 @@
     {
      "v": "ASSOC",
      "p": 98907091,
-     "bonus": "1 x conservation"
+     "bonus": "1 x conservation",
+     "type": "conservation",
+     "n": 1
     },
     {
      "v": "GAIN",
@@ -5040,7 +6316,16 @@
      "pay": 10,
      "fromDisplay": false,
      "into": [
-      38
+      {
+       "id": 38,
+       "building": "size-3",
+       "size": 3,
+       "at": [
+        3,
+        10
+       ],
+       "rot": 1
+      }
      ]
     },
     {
@@ -5063,7 +6348,16 @@
      "pay": 25,
      "fromDisplay": false,
      "into": [
-      22
+      {
+       "id": 22,
+       "building": "size-5",
+       "size": 5,
+       "at": [
+        0,
+        5
+       ],
+       "rot": 3
+      }
      ]
     }
    ]
@@ -5085,6 +6379,24 @@
      "get": {
       "appeal": 9
      }
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Animals",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "move": 399,
+   "t": 1768443494,
+   "actions": [
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Build3",
+     "at": 1
     }
    ]
   },
@@ -5112,7 +6424,16 @@
      "pay": 14,
      "fromDisplay": false,
      "into": [
-      18
+      {
+       "id": 18,
+       "building": "small-aquarium",
+       "size": 2,
+       "at": [
+        6,
+        5
+       ],
+       "rot": 5
+      }
      ]
     }
    ]
@@ -5134,6 +6455,13 @@
    "move": 407,
    "t": 1768443524,
    "actions": [
+    {
+     "v": "DISPLAY_DISCARD",
+     "p": 94892221,
+     "cards": [
+      "A504_AndeanCondor"
+     ]
+    },
     {
      "v": "GAIN",
      "p": 94892221,
@@ -5203,7 +6531,16 @@
      "pay": 12,
      "fromDisplay": false,
      "into": [
-      1
+      {
+       "id": 1,
+       "building": "size-2",
+       "size": 2,
+       "at": [
+        4,
+        5
+       ],
+       "rot": 0
+      }
      ]
     },
     {
@@ -5255,6 +6592,31 @@
       "S242_Geologist",
       "S275_HorseWhisperer"
      ]
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Animals3",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "move": 418,
+   "t": 1768443560,
+   "actions": [
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "A421_NewZealandFurSeal",
+       "at": "pool-5"
+      },
+      {
+       "card": "A406_SiberianTiger",
+       "at": "pool-6"
+      }
+     ]
     }
    ]
   },
@@ -5282,16 +6644,21 @@
      "meeples": [
       {
        "kind": "worker",
-       "at": "association_5"
+       "at": "association_5",
+       "id": 64
       }
-     ]
+     ],
+     "project": "P108_Primates",
+     "slot": "the first slot"
     },
     {
      "v": "WORKER",
+     "p": 98907091,
      "meeples": [
       {
        "kind": "token",
-       "at": "P108_Primates_0"
+       "at": "P108_Primates_0",
+       "id": 61
       }
      ]
     }
@@ -5315,9 +6682,16 @@
      "meeples": [
       {
        "kind": "worker",
-       "at": "reserve"
+       "at": "reserve",
+       "id": 65
       }
      ]
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Association",
+     "at": 1
     }
    ]
   },
@@ -5345,7 +6719,16 @@
      "pay": 9,
      "fromDisplay": false,
      "into": [
-      21
+      {
+       "id": 21,
+       "building": "size-3",
+       "size": 3,
+       "at": [
+        8,
+        3
+       ],
+       "rot": 1
+      }
      ]
     }
    ]
@@ -5375,6 +6758,24 @@
       "money": -2,
       "appeal": 1
      }
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Animals3",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "move": 427,
+   "t": 1768443600,
+   "actions": [
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Build1",
+     "at": 1
     }
    ]
   },
@@ -5447,6 +6848,27 @@
      "get": {
       "appeal": 5
      }
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Sponsors2",
+     "at": 1
+    }
+   ]
+  },
+  {
+   "move": 441,
+   "t": 1768443681,
+   "actions": [
+    {
+     "v": "DISPLAY",
+     "cards": [
+      {
+       "card": "A454_RingtailedLemur",
+       "at": "pool-6"
+      }
+     ]
     }
    ]
   },
@@ -5474,8 +6896,17 @@
      "meeples": [
       {
        "kind": "worker",
-       "at": "association_5"
+       "at": "association_5",
+       "id": 54
       }
+     ],
+     "project": "P128_Aquatic",
+     "slot": "the second slot"
+    },
+    {
+     "v": "DISPLAY_DISCARD",
+     "cards": [
+      "P113_ReleaseBavarian"
      ]
     },
     {
@@ -5488,10 +6919,12 @@
     },
     {
      "v": "WORKER",
+     "p": 94892221,
      "meeples": [
       {
        "kind": "token",
-       "at": "P128_Aquatic_1"
+       "at": "P128_Aquatic_1",
+       "id": 49
       }
      ]
     }
@@ -5538,6 +6971,12 @@
       "F003_ResearchZoo_MW",
       "F015_CateredPicnicAreas"
      ]
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 94892221,
+     "card": "Association",
+     "at": 1
     }
    ]
   },
@@ -5573,7 +7012,8 @@
      "meeples": [
       {
        "kind": "worker",
-       "at": "association_4"
+       "at": "association_4",
+       "id": 65
       }
      ]
     },
@@ -5583,7 +7023,8 @@
      "meeples": [
       {
        "kind": "fac-science-marine",
-       "at": "university_3"
+       "at": "university_3",
+       "id": 39
       }
      ]
     }
@@ -5634,11 +7075,24 @@
    "t": 1768443824,
    "actions": [
     {
+     "v": "DISPLAY_DISCARD",
+     "p": 98907091,
+     "cards": [
+      "S237_Herpetologist"
+     ]
+    },
+    {
      "v": "GAIN",
      "p": 98907091,
      "get": {
       "conservation": 1
      }
+    },
+    {
+     "v": "ACTION_POSITION",
+     "p": 98907091,
+     "card": "Association",
+     "at": 1
     }
    ]
   },
